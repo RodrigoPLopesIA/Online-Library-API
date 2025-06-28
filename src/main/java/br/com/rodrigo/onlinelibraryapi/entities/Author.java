@@ -1,7 +1,6 @@
 package br.com.rodrigo.onlinelibraryapi.entities;
 
 import java.sql.Date;
-import java.sql.Time;
 import java.time.Instant;
 
 import org.springframework.data.annotation.CreatedDate;
