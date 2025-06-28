@@ -1,4 +1,4 @@
-package br.com.rodrigo.onlinelibraryapi.entities;
+package br.com.rodrigo.onlinelibraryapi.entities.embedded;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
