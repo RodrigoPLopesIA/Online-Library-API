@@ -1,6 +1,9 @@
 package br.com.rodrigo.onlinelibraryapi.entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.Getter;
+
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -11,6 +14,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
 @Table(name = "books")
+@Data
 public class Book {
 
     @Id
