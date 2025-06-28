@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.util.UUID;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -15,7 +15,7 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    private UUID id;
 
     @Column(nullable = false, length = 20)
     private String isbn;

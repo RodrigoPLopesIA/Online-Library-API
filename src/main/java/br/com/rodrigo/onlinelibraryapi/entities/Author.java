@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -34,7 +35,7 @@ public class Author {
 
     @Id()
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    private UUID id;
 
     @Column(nullable = false, length = 100)
     private String name;
@@ -48,7 +49,7 @@ public class Author {
     @OneToMany(mappedBy = "author")
     private List<Book> books = new ArrayList<>();
 
-    
+
     @CreatedDate
     @Column(nullable = false, updatable = false)
     private Instant createdAt;
