@@ -38,12 +38,11 @@ public class User {
     @Embedded
     private Name name;
 
-
     @Embedded
     private Authentication authentication;
 
     @Embedded
-    private Address address; 
+    private Address address;
 
     @CreatedDate
     @Column(nullable = false, updatable = false)
@@ -54,9 +53,14 @@ public class User {
     private Instant updatedAt;
 
     public User(CreateUserDto user) {
-        this.setName(user.name());
-        this.setAuthentication(user.authentication());
-        this.setAddress(user.address());
-    } 
-    
+        this.update(user);
+    }
+
+    public void update(CreateUserDto user) {
+        this.setName(new Name(user.first_name(), user.last_name()));
+        this.setAuthentication(new Authentication(user.email(), user.password()));
+        this.setAddress(new Address(user.street(), user.number(), user.complement(), user.neighborhood(), user.city(),
+                user.state(), user.zipCode()));
+    }
+
 }

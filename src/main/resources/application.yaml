@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: onlinelibraryapi
+    port: 8000
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/onlinelibrary?useSSL=false&usePublicKeyRetrieval=true
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: false
+
+springdoc:
+  swagger-ui:
+    path: /docs.html
+  api-docs:
+    path: /docs
+  packages-to-scan: br.com.rodrigo.onlinelibraryapi.controllers
