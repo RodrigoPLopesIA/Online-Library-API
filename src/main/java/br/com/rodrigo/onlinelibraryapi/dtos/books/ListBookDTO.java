@@ -1,4 +1,4 @@
-package br.com.rodrigo.onlinelibraryapi.dtos;
+package br.com.rodrigo.onlinelibraryapi.dtos.books;
 
 import java.math.BigDecimal;
 import java.time.Instant;

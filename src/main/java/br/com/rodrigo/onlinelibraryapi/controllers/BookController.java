@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import br.com.rodrigo.onlinelibraryapi.dtos.CreateBookDTO;
-import br.com.rodrigo.onlinelibraryapi.dtos.ListBookDTO;
+import br.com.rodrigo.onlinelibraryapi.dtos.books.CreateBookDTO;
+import br.com.rodrigo.onlinelibraryapi.dtos.books.ListBookDTO;
 import br.com.rodrigo.onlinelibraryapi.entities.Book;
 import br.com.rodrigo.onlinelibraryapi.services.BookService;
 import org.springframework.web.bind.annotation.RequestBody;

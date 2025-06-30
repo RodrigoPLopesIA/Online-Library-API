@@ -1,4 +1,4 @@
-package br.com.rodrigo.onlinelibraryapi.dtos;
+package br.com.rodrigo.onlinelibraryapi.dtos.user;
 import br.com.rodrigo.onlinelibraryapi.entities.embedded.Address;
 import br.com.rodrigo.onlinelibraryapi.entities.User;
 

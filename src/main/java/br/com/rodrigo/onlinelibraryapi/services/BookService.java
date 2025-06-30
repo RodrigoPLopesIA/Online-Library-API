@@ -5,7 +5,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.rodrigo.onlinelibraryapi.dtos.CreateBookDTO;
+import br.com.rodrigo.onlinelibraryapi.dtos.books.CreateBookDTO;
 import br.com.rodrigo.onlinelibraryapi.entities.Author;
 import br.com.rodrigo.onlinelibraryapi.entities.Book;
 import br.com.rodrigo.onlinelibraryapi.repositories.BookRepository;

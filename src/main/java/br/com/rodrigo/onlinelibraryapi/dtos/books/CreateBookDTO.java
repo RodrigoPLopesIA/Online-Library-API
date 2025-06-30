@@ -1,4 +1,4 @@
-package br.com.rodrigo.onlinelibraryapi.dtos;
+package br.com.rodrigo.onlinelibraryapi.dtos.books;
 import jakarta.validation.constraints.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
