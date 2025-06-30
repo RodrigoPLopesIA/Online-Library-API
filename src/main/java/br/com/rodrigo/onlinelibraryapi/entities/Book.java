@@ -2,6 +2,7 @@ package br.com.rodrigo.onlinelibraryapi.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -17,6 +18,7 @@ import br.com.rodrigo.onlinelibraryapi.enums.Genre;
 @Entity
 @Table(name = "books")
 @Data
+@NoArgsConstructor
 public class Book {
 
     @Id
