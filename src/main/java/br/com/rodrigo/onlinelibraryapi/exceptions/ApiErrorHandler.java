@@ -31,6 +31,14 @@ public class ApiErrorHandler {
                 .body(new ErrorMessage(request, HttpStatus.CONFLICT, ex.getMessage()));
     }
 
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<ErrorMessage> illegalArgumentException(IllegalArgumentException ex,
+            HttpServletRequest request) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .contentType(MediaType.APPLICATION_JSON)
+                .body(new ErrorMessage(request, HttpStatus.BAD_REQUEST, ex.getMessage()));
+    }
+
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity<ErrorMessage> entityNotFoundException(EntityNotFoundException ex,
             HttpServletRequest request) {
