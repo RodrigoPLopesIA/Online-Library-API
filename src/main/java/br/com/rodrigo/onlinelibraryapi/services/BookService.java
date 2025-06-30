@@ -18,7 +18,7 @@ public class BookService {
     @Autowired
     private AuthorService authorService;
 
-    public Book createBook(CreateBookDTO data) {
+    public Book create(CreateBookDTO data) {
        
         // verify if book alread exists by isbn
         if (bookRepository.existsByIsbn(data.isbn())) {
