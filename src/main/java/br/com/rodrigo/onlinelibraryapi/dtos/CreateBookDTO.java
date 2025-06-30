@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 
-import br.com.rodrigo.onlinelibraryapi.entities.Genre;
+import br.com.rodrigo.onlinelibraryapi.enums.Genre;
 
 public record CreateBookDTO(
     @NotBlank

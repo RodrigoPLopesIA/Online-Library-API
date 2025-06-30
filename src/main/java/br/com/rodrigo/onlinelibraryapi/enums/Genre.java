@@ -1,4 +1,4 @@
-package br.com.rodrigo.onlinelibraryapi.entities;
+package br.com.rodrigo.onlinelibraryapi.enums;
 
 public enum Genre {
     Fiction,

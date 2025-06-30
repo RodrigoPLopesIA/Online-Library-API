@@ -12,6 +12,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import br.com.rodrigo.onlinelibraryapi.dtos.CreateBookDTO;
+import br.com.rodrigo.onlinelibraryapi.enums.Genre;
 
 @Entity
 @Table(name = "books")
