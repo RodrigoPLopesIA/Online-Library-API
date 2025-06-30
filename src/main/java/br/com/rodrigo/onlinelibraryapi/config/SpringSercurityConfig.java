@@ -19,10 +19,10 @@ public class SpringSercurityConfig {
         return http.csrf(csrf -> csrf.disable())
                 .httpBasic(basic -> basic.disable())
                 .formLogin(form -> form.disable())
-                .authorizeHttpRequests(auth -> auth.requestMatchers(HttpMethod.POST, "/api/v1/books")
+                /* .authorizeHttpRequests(auth -> auth.requestMatchers(HttpMethod.POST, "/api/v1/*")
                 
                 .permitAll()
-                        .anyRequest().authenticated())
+                        .anyRequest().authenticated())*/
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).build();
     }
 
