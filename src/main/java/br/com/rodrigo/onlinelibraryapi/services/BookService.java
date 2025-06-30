@@ -1,5 +1,7 @@
 package br.com.rodrigo.onlinelibraryapi.services;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -7,6 +9,7 @@ import br.com.rodrigo.onlinelibraryapi.dtos.CreateBookDTO;
 import br.com.rodrigo.onlinelibraryapi.entities.Author;
 import br.com.rodrigo.onlinelibraryapi.entities.Book;
 import br.com.rodrigo.onlinelibraryapi.repositories.BookRepository;
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class BookService {
@@ -39,7 +42,11 @@ public class BookService {
 
         return bookRepository.save(book);
     }
-
+    public Book show(UUID id) {
+        return bookRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Book with ID " + id + " not found."));
+    }
+    
     public Boolean existsByIsbn(String isbn) {
         return bookRepository.existsByIsbn(isbn);
     }
