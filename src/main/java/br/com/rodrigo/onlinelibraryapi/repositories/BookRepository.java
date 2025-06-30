@@ -17,6 +17,10 @@ import jakarta.transaction.Transactional;
 public interface BookRepository extends JpaRepository<Book, UUID> {
 
 
+    Boolean existsByIsbn(String isbn);
+
+    Boolean existsByTitle(String title);
+
     @Query ("SELECT b FROM Book b WHERE b.title LIKE %:title%")
     List<Book> findAllBooksLikeTitle(@Param("title") String title);
 

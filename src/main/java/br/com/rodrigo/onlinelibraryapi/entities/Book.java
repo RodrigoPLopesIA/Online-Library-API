@@ -11,6 +11,8 @@ import java.util.UUID;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
+import br.com.rodrigo.onlinelibraryapi.dtos.CreateBookDTO;
+
 @Entity
 @Table(name = "books")
 @Data
@@ -48,5 +50,16 @@ public class Book {
     @LastModifiedDate
     @Column(nullable = false, name = "updated_at")
     private Instant updatedAt;
+
+
+
+    public Book(CreateBookDTO data) {
+        this.isbn = data.isbn();
+        this.title = data.title();
+        this.publicationDate = data.publicationDate();
+        this.genre = data.genre();
+        this.price = data.price();
+
+    }
 }
 

@@ -27,4 +27,7 @@ public record CreateBookDTO(
 
     @NotNull
     UUID authorId
-) {}
+) {
+
+
+}
