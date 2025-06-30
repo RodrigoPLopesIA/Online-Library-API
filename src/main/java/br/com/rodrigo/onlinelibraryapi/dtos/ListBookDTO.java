@@ -1,11 +1,18 @@
 package br.com.rodrigo.onlinelibraryapi.dtos;
 
+import java.math.BigDecimal;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.util.UUID;
+
 import br.com.rodrigo.onlinelibraryapi.entities.Book;
+import br.com.rodrigo.onlinelibraryapi.enums.Genre;
 
-public record ListBookDTO(String title, String isbn) {
-    
+public record ListBookDTO(UUID id, String title, String isbn, LocalDate publicationDate, Genre genre, BigDecimal price,
+        Instant createdAt, Instant updatedAt) {
 
-    public ListBookDTO(Book book){
-        this(book.getTitle(), book.getIsbn());
+    public ListBookDTO(Book book) {
+        this(book.getId(), book.getTitle(), book.getIsbn(), book.getPublicationDate(), book.getGenre(), book.getPrice(),
+                book.getCreatedAt(), book.getUpdatedAt());
     }
 }
