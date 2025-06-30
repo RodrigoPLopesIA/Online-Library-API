@@ -20,13 +20,8 @@ import jakarta.validation.Valid;
 @RequestMapping("books")
 public class BookController {
 
-
-
     @Autowired
     private BookService bookService;
-
-
-
 
     @PostMapping
     public ResponseEntity<ListBookDTO> create(@Valid @RequestBody CreateBookDTO data, UriComponentsBuilder uri) {
