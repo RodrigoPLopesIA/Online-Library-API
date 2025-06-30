@@ -27,13 +27,13 @@ public class SpringSercurityConfig {
     }
 
 
-    @Bean
+    //@Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
 
 
-    @Bean
+    //@Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception{
         return authenticationConfiguration.getAuthenticationManager();
     }
