@@ -17,7 +17,7 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("books")
+@RequestMapping("api/v1/books")
 public class BookController {
 
     @Autowired

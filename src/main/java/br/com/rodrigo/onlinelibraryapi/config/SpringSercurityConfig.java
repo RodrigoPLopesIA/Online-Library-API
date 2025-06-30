@@ -19,7 +19,9 @@ public class SpringSercurityConfig {
         return http.csrf(csrf -> csrf.disable())
                 .httpBasic(basic -> basic.disable())
                 .formLogin(form -> form.disable())
-                .authorizeHttpRequests(auth -> auth.requestMatchers(HttpMethod.POST, "/api/v1/users").permitAll()
+                .authorizeHttpRequests(auth -> auth.requestMatchers(HttpMethod.POST, "/api/v1/books")
+                
+                .permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).build();
     }

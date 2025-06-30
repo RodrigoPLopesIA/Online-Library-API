@@ -24,14 +24,5 @@ public interface BookRepository extends JpaRepository<Book, UUID> {
     @Query ("SELECT b FROM Book b WHERE b.title LIKE %:title%")
     List<Book> findAllBooksLikeTitle(@Param("title") String title);
 
-    @Modifying()
-    @Transactional()
-    @Query("DELETE FROM Book b WHERE b.genre = :genre")
-    Book deleteBookByGenre(Genre genre);
-
-    @Modifying()
-    @Transactional()
-    @Query("UPDATE Book b SET b.title = :book.title, b.publicationDate = :book.publicationDate, b.genre = :book.genre, b.price = :book.price WHERE b.author.id = :author_id")
-    Book updateBookByAuthorId(UUID author_id, Book book);
     
 }
