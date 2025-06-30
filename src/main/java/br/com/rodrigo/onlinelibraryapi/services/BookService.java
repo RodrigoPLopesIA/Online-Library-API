@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.rodrigo.onlinelibraryapi.dtos.CreateBookDTO;
+import br.com.rodrigo.onlinelibraryapi.entities.Author;
 import br.com.rodrigo.onlinelibraryapi.entities.Book;
 import br.com.rodrigo.onlinelibraryapi.repositories.BookRepository;
 
@@ -14,6 +15,8 @@ public class BookService {
     @Autowired
     private BookRepository bookRepository;
 
+    @Autowired
+    private AuthorService authorService;
 
     public Book createBook(CreateBookDTO data) {
        
@@ -26,13 +29,15 @@ public class BookService {
         if (bookRepository.existsByTitle(data.title())) {
             throw new IllegalArgumentException("Book with title " + data.title() + " already exists.");
         }
-        
 
         // verify if author exists by id
+        Author author = authorService.show(data.authorId());
 
 
+        Book book = new Book(data);
+        book.setAuthor(author);
 
-        return new Book();
+        return bookRepository.save(book);
     }
     
 }
