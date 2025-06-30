@@ -21,12 +21,12 @@ public class BookService {
     public Book create(CreateBookDTO data) {
        
         // verify if book alread exists by isbn
-        if (bookRepository.existsByIsbn(data.isbn())) {
+        if (this.existsByIsbn(data.isbn())) {
             throw new IllegalArgumentException("Book with ISBN " + data.isbn() + " already exists.");
         }
 
         // verify if book already exists by title
-        if (bookRepository.existsByTitle(data.title())) {
+        if (this.existsByTitle(data.title())) {
             throw new IllegalArgumentException("Book with title " + data.title() + " already exists.");
         }
 
@@ -38,6 +38,13 @@ public class BookService {
         book.setAuthor(author);
 
         return bookRepository.save(book);
+    }
+
+    public Boolean existsByIsbn(String isbn) {
+        return bookRepository.existsByIsbn(isbn);
+    }
+    public Boolean existsByTitle(String title) {
+        return bookRepository.existsByTitle(title);
     }
     
 }
