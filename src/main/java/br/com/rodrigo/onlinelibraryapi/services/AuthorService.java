@@ -36,7 +36,7 @@ public class AuthorService {
         Example<Author> example = Example.of(author, matcher);
 
         Page<Author> authors = authorRepository.findAll(example, pageable);
-        return authors.map(ListAuthorDTO::new); 
+        return authors.map(ListAuthorDTO::new);
     }
 
     public Author create(CreateAuthorDTO data) {
@@ -46,6 +46,19 @@ public class AuthorService {
         }
 
         Author author = new Author(data);
+        return authorRepository.save(author);
+    }
+
+    public Author update(UUID id, CreateAuthorDTO data) {
+        
+        Author author = this.show(id);
+        author.update(data);
+
+        if (this.existsByName(data.name())) {
+            throw new IllegalArgumentException("Author with name " + data.name() + " already exists.");
+        }
+
+
         return authorRepository.save(author);
     }
 
