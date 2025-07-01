@@ -9,6 +9,7 @@ import java.util.UUID;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
+import br.com.rodrigo.onlinelibraryapi.dtos.author.CreateAuthorDTO;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -33,6 +34,11 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Author {
+
+    public Author(CreateAuthorDTO data) {
+        this.name = data.name();
+        this.dateBirth = data.dateBirth();
+    }
 
     @Id()
     @GeneratedValue(strategy = GenerationType.UUID)
