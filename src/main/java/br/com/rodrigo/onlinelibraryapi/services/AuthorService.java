@@ -80,8 +80,8 @@ public class AuthorService {
         return authorRepository.findByName(name).isPresent();
     }
 
-    public void delete(UUID fromString) {
-        Author author = this.show(fromString);
+    public void delete(UUID id) {
+        Author author = this.show(id);
         this.authorRepository.delete(author);
     }
 }
