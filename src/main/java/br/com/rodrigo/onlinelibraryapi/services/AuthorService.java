@@ -54,7 +54,7 @@ public class AuthorService {
         Author author = this.show(id);
         author.update(data);
 
-        if (this.existsByName(data.name())) {
+        if (!author.getName().equals(data.name()) && this.existsByName(data.name())) {
             throw new IllegalArgumentException("Author with name " + data.name() + " already exists.");
         }
 
