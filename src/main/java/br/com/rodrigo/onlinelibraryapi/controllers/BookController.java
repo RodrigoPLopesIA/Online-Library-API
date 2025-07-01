@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -29,10 +30,12 @@ public class BookController {
 
     @Autowired
     private BookService bookService;
-    
+
     @GetMapping
-    public ResponseEntity<Page<ListBookDTO>> index(Pageable pageable) {
-        Page<ListBookDTO> books = bookService.index(pageable);
+    public ResponseEntity<Page<ListBookDTO>> index(@RequestParam(value = "title", required = false) String title,
+            @RequestParam(value = "isbn", required = false) String isbn,
+            Pageable pageable) {
+        Page<ListBookDTO> books = bookService.index(pageable, title, isbn);
         return ResponseEntity.ok().body(books);
     }
 
@@ -46,7 +49,6 @@ public class BookController {
         Book book = bookService.create(data);
 
         URI uriBuilder = uri.path("/books/{id}").buildAndExpand(book.getId()).toUri();
-        
 
         return ResponseEntity.created(uriBuilder).body(new ListBookDTO(book));
     }
@@ -63,6 +65,4 @@ public class BookController {
         return ResponseEntity.noContent().build();
     }
 
-    
-    
 }

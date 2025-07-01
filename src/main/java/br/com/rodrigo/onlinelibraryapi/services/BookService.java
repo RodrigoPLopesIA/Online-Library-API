@@ -1,5 +1,6 @@
 package br.com.rodrigo.onlinelibraryapi.services;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,19 +18,31 @@ import jakarta.persistence.EntityNotFoundException;
 @Service
 public class BookService {
 
-
     @Autowired
     private BookRepository bookRepository;
 
     @Autowired
     private AuthorService authorService;
 
-    public Page<ListBookDTO> index(Pageable pageable) {
-        return bookRepository.findAll(pageable).map(ListBookDTO::new);
+    public Page<ListBookDTO> index(Pageable pageable, String title, String isbn) {
+        Page<Book> books = bookRepository.findAll(pageable);
+
+        if(title != null) {
+            books = bookRepository.findByTitleContaining(title, pageable);
+        }
+
+        if(isbn != null) {
+            books = bookRepository.findByIsbnContaining(isbn, pageable);
+        }
+
+        if(title != null && isbn != null) {
+            books = bookRepository.findByTitleContainingAndIsbnContaining(title, isbn, pageable);
+        }
+        return books.map(ListBookDTO::new);
     }
 
     public Book create(CreateBookDTO data) {
-       
+
         // verify if book alread exists by isbn
         if (this.existsByIsbn(data.isbn())) {
             throw new IllegalArgumentException("Book with ISBN " + data.isbn() + " already exists.");
@@ -42,7 +55,6 @@ public class BookService {
 
         // verify if author exists by id
         Author author = authorService.show(data.authorId());
-
 
         Book book = new Book(data);
         book.setAuthor(author);
@@ -80,15 +92,15 @@ public class BookService {
     public void delete(UUID id) {
         Book book = this.show(id);
         bookRepository.delete(book);
-       
+
     }
-    
+
     public Boolean existsByIsbn(String isbn) {
         return bookRepository.existsByIsbn(isbn);
     }
+
     public Boolean existsByTitle(String title) {
         return bookRepository.existsByTitle(title);
     }
-    
-    
+
 }
