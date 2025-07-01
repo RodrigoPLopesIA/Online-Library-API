@@ -22,10 +22,11 @@ public class AuthorService {
     @Autowired
     private AuthorRepository authorRepository;
 
-    public Page<ListAuthorDTO> index(Pageable pageable, String name, Date dateBirth) {
+    public Page<ListAuthorDTO> index(Pageable pageable, String name, String nationality, Date dateBirth) {
         Author author = new Author();
         author.setName(name);
         author.setDateBirth(dateBirth);
+        author.setNationality(nationality);
 
         var matcher = ExampleMatcher.matching()
                 .withIgnoreNullValues()

@@ -29,8 +29,9 @@ public class AuthorController {
     public ResponseEntity<Page<ListAuthorDTO>> index(
             Pageable pageable,
             @RequestParam(name = "name", required = false) String name,
-            @RequestParam( name = "dateBirth", required = false) Date dateBirth) {
-        Page<ListAuthorDTO> authors = authorService.index(pageable, name, dateBirth);
+            @RequestParam( name = "dateBirth", required = false) Date dateBirth,
+            @RequestParam( name = "nationality", required = false) String nationality) {
+        Page<ListAuthorDTO> authors = authorService.index(pageable, name, nationality, dateBirth);
         return ResponseEntity.ok(authors);
     }
 
