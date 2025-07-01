@@ -79,4 +79,9 @@ public class AuthorService {
     public boolean existsByName(String name) {
         return authorRepository.findByName(name).isPresent();
     }
+
+    public void delete(UUID fromString) {
+        Author author = this.show(fromString);
+        this.authorRepository.delete(author);
+    }
 }
