@@ -43,7 +43,7 @@ public class Book {
     @Column(precision = 15, scale = 2)
     private BigDecimal price;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_author", nullable = false)
     private Author author;
 

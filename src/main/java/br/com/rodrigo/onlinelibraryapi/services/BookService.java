@@ -71,10 +71,16 @@ public class BookService {
 
         return bookRepository.save(book);
     }
-    
+
     public Book show(UUID id) {
         return bookRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Book with ID " + id + " not found."));
+    }
+
+    public void delete(UUID id) {
+        Book book = this.show(id);
+        bookRepository.delete(book);
+       
     }
     
     public Boolean existsByIsbn(String isbn) {
