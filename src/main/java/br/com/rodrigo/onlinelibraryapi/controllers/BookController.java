@@ -4,6 +4,8 @@ import java.net.URI;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +27,15 @@ public class BookController {
 
     @Autowired
     private BookService bookService;
+
+    
+    
+    @GetMapping
+    public ResponseEntity<Page<ListBookDTO>> index(Pageable pageable) {
+        Page<ListBookDTO> books = bookService.index(pageable);
+        return ResponseEntity.ok().body(books);
+    }
+
 
     @PostMapping
     public ResponseEntity<ListBookDTO> create(@Valid @RequestBody CreateBookDTO data, UriComponentsBuilder uri) {

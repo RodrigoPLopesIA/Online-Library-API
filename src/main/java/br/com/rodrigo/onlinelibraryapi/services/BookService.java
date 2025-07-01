@@ -3,9 +3,12 @@ package br.com.rodrigo.onlinelibraryapi.services;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import br.com.rodrigo.onlinelibraryapi.dtos.books.CreateBookDTO;
+import br.com.rodrigo.onlinelibraryapi.dtos.books.ListBookDTO;
 import br.com.rodrigo.onlinelibraryapi.entities.Author;
 import br.com.rodrigo.onlinelibraryapi.entities.Book;
 import br.com.rodrigo.onlinelibraryapi.repositories.BookRepository;
@@ -20,6 +23,10 @@ public class BookService {
 
     @Autowired
     private AuthorService authorService;
+
+    public Page<ListBookDTO> index(Pageable pageable) {
+        return bookRepository.findAll(pageable).map(ListBookDTO::new);
+    }
 
     public Book create(CreateBookDTO data) {
        
@@ -53,5 +60,6 @@ public class BookService {
     public Boolean existsByTitle(String title) {
         return bookRepository.existsByTitle(title);
     }
+    
     
 }
