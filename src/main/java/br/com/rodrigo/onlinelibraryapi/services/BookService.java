@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -25,19 +27,20 @@ public class BookService {
     private AuthorService authorService;
 
     public Page<ListBookDTO> index(Pageable pageable, String title, String isbn) {
-        Page<Book> books = bookRepository.findAll(pageable);
 
-        if(title != null) {
-            books = bookRepository.findByTitleContaining(title, pageable);
-        }
+        Book book = new Book();
+        book.setTitle(title);
+        book.setIsbn(isbn);
 
-        if(isbn != null) {
-            books = bookRepository.findByIsbnContaining(isbn, pageable);
-        }
+        ExampleMatcher matcher = ExampleMatcher
+                .matching()
+                .withIgnoreNullValues()
+                .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING)
+                .withIgnoreCase();
 
-        if(title != null && isbn != null) {
-            books = bookRepository.findByTitleContainingAndIsbnContaining(title, isbn, pageable);
-        }
+        Example<Book> example = Example.of(book, matcher);
+
+        Page<Book> books = bookRepository.findAll(example, pageable);
         return books.map(ListBookDTO::new);
     }
 
