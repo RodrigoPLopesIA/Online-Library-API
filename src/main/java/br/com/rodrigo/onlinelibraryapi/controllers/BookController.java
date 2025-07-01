@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -42,6 +43,12 @@ public class BookController {
         
 
         return ResponseEntity.created(uriBuilder).body(new ListBookDTO(book));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ListBookDTO> update(@PathVariable String id, @Valid @RequestBody CreateBookDTO data) {
+        Book book = bookService.update(UUID.fromString(id), data);
+        return ResponseEntity.ok().body(new ListBookDTO(book));
     }
 
     @GetMapping("/{id}")
