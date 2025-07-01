@@ -26,7 +26,7 @@ public class AuthorService {
         Author author = new Author();
         author.setName(name);
         author.setDateBirth(dateBirth);
-        
+
         var matcher = ExampleMatcher.matching()
                 .withIgnoreNullValues()
                 .withIgnoreCase()
