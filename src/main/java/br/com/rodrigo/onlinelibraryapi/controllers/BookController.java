@@ -27,15 +27,12 @@ public class BookController {
 
     @Autowired
     private BookService bookService;
-
-    
     
     @GetMapping
     public ResponseEntity<Page<ListBookDTO>> index(Pageable pageable) {
         Page<ListBookDTO> books = bookService.index(pageable);
         return ResponseEntity.ok().body(books);
     }
-
 
     @PostMapping
     public ResponseEntity<ListBookDTO> create(@Valid @RequestBody CreateBookDTO data, UriComponentsBuilder uri) {
@@ -46,7 +43,6 @@ public class BookController {
 
         return ResponseEntity.created(uriBuilder).body(new ListBookDTO(book));
     }
-
 
     @GetMapping("/{id}")
     public ResponseEntity<ListBookDTO> show(@PathVariable String id) {

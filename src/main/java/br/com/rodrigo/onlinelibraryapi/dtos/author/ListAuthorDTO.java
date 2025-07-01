@@ -12,7 +12,6 @@ public record ListAuthorDTO(UUID id, String name, Date dateBirth, String nationa
     public ListAuthorDTO(Author author) {
         this(author.getId(), author.getName(), author.getDateBirth(), author.getNationality(), author.getCreatedAt(),
                 author.getUpdatedAt());
-
     }
 
 }
