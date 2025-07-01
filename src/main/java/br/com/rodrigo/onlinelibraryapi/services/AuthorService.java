@@ -27,14 +27,16 @@ public class AuthorService {
         return authorRepository.save(author);
     }
 
-    public Author findByName(String name) {
-        return authorRepository.findByName(name)
-                .orElseThrow(() -> new EntityNotFoundException("Author with name " + name + " not found."));
-    }
     public Author show(UUID id) {
         return authorRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Author with ID " + id + " not found."));
     }
+
+    public Author findByName(String name) {
+        return authorRepository.findByName(name)
+                .orElseThrow(() -> new EntityNotFoundException("Author with name " + name + " not found."));
+    }
+    
 
     public boolean existsById(UUID id) {
         return authorRepository.existsById(id);
