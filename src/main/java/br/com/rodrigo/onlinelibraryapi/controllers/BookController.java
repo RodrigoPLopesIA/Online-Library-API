@@ -41,8 +41,9 @@ public class BookController {
             @RequestParam(value = "isbn", required = false) String isbn,
             @RequestParam(value = "authorName", required = false) String authorName,
             @RequestParam(value = "genre", required = false) Genre genre,
+            @RequestParam(value = "nationality", required = false) String nationality,
             Pageable pageable) {
-        Page<ListBookDTO> books = bookService.index(pageable, title, isbn, authorName, genre).map(mapper::toDto);
+        Page<ListBookDTO> books = bookService.index(pageable, title, isbn, authorName, genre, nationality).map(mapper::toDto);
         return ResponseEntity.ok().body(books);
     }
 
