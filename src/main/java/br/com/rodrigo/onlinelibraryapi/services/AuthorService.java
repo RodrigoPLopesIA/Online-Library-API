@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import br.com.rodrigo.onlinelibraryapi.dtos.author.CreateAuthorDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.author.ListAuthorDTO;
 import br.com.rodrigo.onlinelibraryapi.entities.Author;
+import br.com.rodrigo.onlinelibraryapi.mapper.AuthorMapper;
 import br.com.rodrigo.onlinelibraryapi.repositories.AuthorRepository;
 import jakarta.persistence.EntityNotFoundException;
 
@@ -22,7 +23,9 @@ public class AuthorService {
     @Autowired
     private AuthorRepository authorRepository;
 
-    public Page<ListAuthorDTO> index(Pageable pageable, String name, String nationality, Date dateBirth) {
+    
+
+    public Page<Author> index(Pageable pageable, String name, String nationality, Date dateBirth) {
         Author author = new Author();
         author.setName(name);
         author.setDateBirth(dateBirth);
@@ -36,28 +39,26 @@ public class AuthorService {
         Example<Author> example = Example.of(author, matcher);
 
         Page<Author> authors = authorRepository.findAll(example, pageable);
-        return authors.map(ListAuthorDTO::new);
+        return authors;
     }
 
-    public Author create(CreateAuthorDTO data) {
+    public Author create(Author data) {
 
-        if (this.existsByName(data.name())) {
-            throw new IllegalArgumentException("Author with name " + data.name() + " already exists.");
+        if (this.existsByName(data.getName())) {
+            throw new IllegalArgumentException("Author with name " + data.getName() + " already exists.");
         }
 
-        Author author = new Author(data);
-        return authorRepository.save(author);
+        return authorRepository.save(data);
     }
 
-    public Author update(UUID id, CreateAuthorDTO data) {
+    public Author update(UUID id, Author data) {
         
         Author author = this.show(id);
         author.update(data);
 
-        if (!author.getName().equals(data.name()) && this.existsByName(data.name())) {
-            throw new IllegalArgumentException("Author with name " + data.name() + " already exists.");
+        if (!author.getName().equals(data.getName()) && this.existsByName(data.getName())) {
+            throw new IllegalArgumentException("Author with name " + data.getName() + " already exists.");
         }
-
 
         return authorRepository.save(author);
     }

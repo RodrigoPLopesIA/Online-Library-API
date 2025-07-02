@@ -69,10 +69,10 @@ public class Author {
     @Column(nullable = false)
     private Instant updatedAt;
 
-    public void update(CreateAuthorDTO data) {
-        this.setName(data.name());
-        this.setDateBirth(data.dateBirth());
-        this.setNationality(data.nationality());
+    public void update(Author data) {
+        this.setName(data.getName());
+        this.setDateBirth(data.getDateBirth());
+        this.setNationality(data.getNationality());
     }
 
 }

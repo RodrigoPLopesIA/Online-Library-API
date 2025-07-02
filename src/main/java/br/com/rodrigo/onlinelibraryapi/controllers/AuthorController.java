@@ -21,6 +21,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import br.com.rodrigo.onlinelibraryapi.dtos.author.CreateAuthorDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.author.ListAuthorDTO;
 import br.com.rodrigo.onlinelibraryapi.entities.Author;
+import br.com.rodrigo.onlinelibraryapi.mapper.AuthorMapper;
 import br.com.rodrigo.onlinelibraryapi.services.AuthorService;
 
 @RestController
@@ -30,24 +31,28 @@ public class AuthorController {
     @Autowired
     private AuthorService authorService;
 
+    @Autowired
+    private AuthorMapper authorMapper;
+
     @GetMapping
     public ResponseEntity<Page<ListAuthorDTO>> index(
             Pageable pageable,
             @RequestParam(name = "name", required = false) String name,
             @RequestParam(name = "dateBirth", required = false) Date dateBirth,
             @RequestParam(name = "nationality", required = false) String nationality) {
-        Page<ListAuthorDTO> authors = authorService.index(pageable, name, nationality, dateBirth);
+        Page<ListAuthorDTO> authors = authorService.index(pageable, name, nationality, dateBirth)
+                .map(authorMapper::toListAuthorDTO);
         return ResponseEntity.ok(authors);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ListAuthorDTO> show(@PathVariable String id) {
-        return ResponseEntity.ok(new ListAuthorDTO(authorService.show(UUID.fromString(id))));
+        return ResponseEntity.ok(authorMapper.toListAuthorDTO(authorService.show(UUID.fromString(id))));
     }
 
     @PostMapping
     public ResponseEntity<ListAuthorDTO> create(@RequestBody CreateAuthorDTO data, UriComponentsBuilder uriBuilder) {
-        Author author = authorService.create(data);
+        Author author = authorService.create(authorMapper.toAuthor(data));
 
         var uri = uriBuilder.path("/api/v1/authors/{id}").buildAndExpand(author.getId()).toUri();
 
@@ -57,9 +62,10 @@ public class AuthorController {
 
     @PutMapping("/{id}")
     public ResponseEntity<ListAuthorDTO> update(@PathVariable String id, @RequestBody CreateAuthorDTO data) {
-        Author author = authorService.update(UUID.fromString(id), data);
+        Author author = authorService.update(UUID.fromString(id), authorMapper.toAuthor(data));
         return ResponseEntity.ok(new ListAuthorDTO(author));
     }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<ListAuthorDTO> delete(@PathVariable String id) {
         authorService.delete(UUID.fromString(id));
