@@ -16,6 +16,7 @@ import br.com.rodrigo.onlinelibraryapi.dtos.books.ListBookDTO;
 import br.com.rodrigo.onlinelibraryapi.entities.Author;
 import br.com.rodrigo.onlinelibraryapi.entities.Book;
 import br.com.rodrigo.onlinelibraryapi.repositories.BookRepository;
+import br.com.rodrigo.onlinelibraryapi.repositories.specs.BookSpecification;
 import jakarta.persistence.EntityNotFoundException;
 
 @Service
@@ -29,21 +30,21 @@ public class BookService {
 
     public Page<Book> index(Pageable pageable, String title, String isbn, String authorName) {
 
-        Book book = new Book();
-        book.setTitle(title);
-        book.setIsbn(isbn);
+        Specification<Book> spec = Specification.where(null);
 
+        if (title != null && !title.isBlank()) {
+            spec = spec.and(BookSpecification.titleContains(title));
+        }
 
-        ExampleMatcher matcher = ExampleMatcher
-                .matching()
-                .withIgnoreNullValues()
-                .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING)
-                .withIgnoreCase();
+        if (isbn != null && !isbn.isBlank()) {
+            spec = spec.and(BookSpecification.isbnContains(isbn));
+        }
 
-        Example<Book> example = Example.of(book, matcher);
+        if (authorName != null && !authorName.isBlank()) {
+            spec = spec.and(BookSpecification.authorNameContains(authorName));
+        }
 
-        Page<Book> books = bookRepository.findAll(example, pageable);
-        return books;
+        return bookRepository.findAll(spec, pageable);
     }
 
     public Book create(Book data) {
