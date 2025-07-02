@@ -44,25 +44,23 @@ public class BookService {
         return books.map(ListBookDTO::new);
     }
 
-    public Book create(CreateBookDTO data) {
+    public Book create(Book data) {
 
         // verify if book alread exists by isbn
-        if (this.existsByIsbn(data.isbn())) {
-            throw new IllegalArgumentException("Book with ISBN " + data.isbn() + " already exists.");
+        if (this.existsByIsbn(data.getIsbn())) {
+            throw new IllegalArgumentException("Book with ISBN " + data.getIsbn() + " already exists.");
         }
 
         // verify if book already exists by title
-        if (this.existsByTitle(data.title())) {
-            throw new IllegalArgumentException("Book with title " + data.title() + " already exists.");
+        if (this.existsByTitle(data.getTitle())) {
+            throw new IllegalArgumentException("Book with title " + data.getTitle() + " already exists.");
         }
 
         // verify if author exists by id
-        Author author = authorService.show(data.authorId());
+        Author author = authorService.show(data.getAuthor().getId());
+        data.setAuthor(author);
 
-        Book book = new Book(data);
-        book.setAuthor(author);
-
-        return bookRepository.save(book);
+        return bookRepository.save(data);
     }
 
     public Book update(UUID id, CreateBookDTO data) {

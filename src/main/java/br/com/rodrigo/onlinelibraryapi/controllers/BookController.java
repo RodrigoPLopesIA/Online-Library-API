@@ -20,6 +20,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import br.com.rodrigo.onlinelibraryapi.dtos.books.CreateBookDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.books.ListBookDTO;
 import br.com.rodrigo.onlinelibraryapi.entities.Book;
+import br.com.rodrigo.onlinelibraryapi.mapper.BookMapper;
 import br.com.rodrigo.onlinelibraryapi.services.BookService;
 import org.springframework.web.bind.annotation.RequestBody;
 import jakarta.validation.Valid;
@@ -30,6 +31,9 @@ public class BookController {
 
     @Autowired
     private BookService bookService;
+
+    @Autowired
+    private BookMapper mapper;
 
     @GetMapping
     public ResponseEntity<Page<ListBookDTO>> index(@RequestParam(value = "title", required = false) String title,
@@ -46,11 +50,11 @@ public class BookController {
 
     @PostMapping
     public ResponseEntity<ListBookDTO> create(@Valid @RequestBody CreateBookDTO data, UriComponentsBuilder uri) {
-        Book book = bookService.create(data);
-
+        Book book = bookService.create(mapper.toEntity(data));
+        
         URI uriBuilder = uri.path("/books/{id}").buildAndExpand(book.getId()).toUri();
 
-        return ResponseEntity.created(uriBuilder).body(new ListBookDTO(book));
+        return ResponseEntity.created(uriBuilder).body(mapper.toDto(book));
     }
 
     @PutMapping("/{id}")
