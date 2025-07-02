@@ -9,11 +9,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
-
-import br.com.rodrigo.onlinelibraryapi.dtos.author.CreateAuthorDTO;
-import br.com.rodrigo.onlinelibraryapi.dtos.author.ListAuthorDTO;
 import br.com.rodrigo.onlinelibraryapi.entities.Author;
-import br.com.rodrigo.onlinelibraryapi.mapper.AuthorMapper;
 import br.com.rodrigo.onlinelibraryapi.repositories.AuthorRepository;
 import jakarta.persistence.EntityNotFoundException;
 
@@ -22,8 +18,6 @@ public class AuthorService {
 
     @Autowired
     private AuthorRepository authorRepository;
-
-    
 
     public Page<Author> index(Pageable pageable, String name, String nationality, Date dateBirth) {
         Author author = new Author();
