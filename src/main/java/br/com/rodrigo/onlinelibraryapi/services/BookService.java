@@ -8,6 +8,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import br.com.rodrigo.onlinelibraryapi.dtos.books.CreateBookDTO;
@@ -26,11 +27,12 @@ public class BookService {
     @Autowired
     private AuthorService authorService;
 
-    public Page<Book> index(Pageable pageable, String title, String isbn) {
+    public Page<Book> index(Pageable pageable, String title, String isbn, String authorName) {
 
         Book book = new Book();
         book.setTitle(title);
         book.setIsbn(isbn);
+
 
         ExampleMatcher matcher = ExampleMatcher
                 .matching()
