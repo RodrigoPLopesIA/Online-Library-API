@@ -39,13 +39,13 @@ public class BookController {
     public ResponseEntity<Page<ListBookDTO>> index(@RequestParam(value = "title", required = false) String title,
             @RequestParam(value = "isbn", required = false) String isbn,
             Pageable pageable) {
-        Page<ListBookDTO> books = bookService.index(pageable, title, isbn);
+        Page<ListBookDTO> books = bookService.index(pageable, title, isbn).map(mapper::toDto);
         return ResponseEntity.ok().body(books);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ListBookDTO> show(@PathVariable String id) {
-        return ResponseEntity.ok().body(new ListBookDTO(bookService.show(UUID.fromString(id))));
+        return ResponseEntity.ok().body(mapper.toDto(bookService.show(UUID.fromString(id))));
     }
 
     @PostMapping
@@ -59,8 +59,8 @@ public class BookController {
 
     @PutMapping("/{id}")
     public ResponseEntity<ListBookDTO> update(@PathVariable String id, @Valid @RequestBody CreateBookDTO data) {
-        Book book = bookService.update(UUID.fromString(id), data);
-        return ResponseEntity.ok().body(new ListBookDTO(book));
+        Book book = bookService.update(UUID.fromString(id), mapper.toEntity(data));
+        return ResponseEntity.ok().body(mapper.toDto(book));
     }
 
     @DeleteMapping("/{id}")

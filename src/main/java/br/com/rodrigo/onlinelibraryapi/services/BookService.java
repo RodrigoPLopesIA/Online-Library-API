@@ -26,7 +26,7 @@ public class BookService {
     @Autowired
     private AuthorService authorService;
 
-    public Page<ListBookDTO> index(Pageable pageable, String title, String isbn) {
+    public Page<Book> index(Pageable pageable, String title, String isbn) {
 
         Book book = new Book();
         book.setTitle(title);
@@ -41,7 +41,7 @@ public class BookService {
         Example<Book> example = Example.of(book, matcher);
 
         Page<Book> books = bookRepository.findAll(example, pageable);
-        return books.map(ListBookDTO::new);
+        return books;
     }
 
     public Book create(Book data) {
@@ -63,21 +63,21 @@ public class BookService {
         return bookRepository.save(data);
     }
 
-    public Book update(UUID id, CreateBookDTO data) {
+    public Book update(UUID id, Book data) {
         Book book = this.show(id);
 
         // verify if book already exists by isbn
-        if (!book.getIsbn().equals(data.isbn()) && this.existsByIsbn(data.isbn())) {
-            throw new IllegalArgumentException("Book with ISBN " + data.isbn() + " already exists.");
+        if (!book.getIsbn().equals(data.getIsbn()) && this.existsByIsbn(data.getIsbn())) {
+            throw new IllegalArgumentException("Book with ISBN " + data.getIsbn() + " already exists.");
         }
 
         // verify if book already exists by title
-        if (!book.getTitle().equals(data.title()) && this.existsByTitle(data.title())) {
-            throw new IllegalArgumentException("Book with title " + data.title() + " already exists.");
+        if (!book.getTitle().equals(data.getTitle()) && this.existsByTitle(data.getTitle())) {
+            throw new IllegalArgumentException("Book with title " + data.getTitle() + " already exists.");
         }
 
         // verify if author exists by id
-        Author author = authorService.show(data.authorId());
+        Author author = authorService.show(data.getAuthor().getId());
 
         book.update(data);
         book.setAuthor(author);

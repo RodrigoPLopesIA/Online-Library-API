@@ -58,12 +58,12 @@ public class Book {
 
 
 
-    public void update(CreateBookDTO data) {
-        this.isbn = data.isbn();
-        this.title = data.title();
-        this.publicationDate = data.publicationDate();
-        this.genre = data.genre();
-        this.price = data.price();
+    public void update(Book data) {
+        this.isbn = data.getIsbn();
+        this.title = data.getTitle();
+        this.publicationDate = data.getPublicationDate();
+        this.genre = data.getGenre();
+        this.price = data.getPrice();
     }
 
     public Book(CreateBookDTO data) {
