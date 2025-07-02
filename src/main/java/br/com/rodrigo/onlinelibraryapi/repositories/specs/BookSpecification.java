@@ -32,10 +32,10 @@ public class BookSpecification {
         };
     }
 
-    public static Specification<Book> authorNameLike(String name) {
+    public static Specification<Book> authorNationalityLike(String nationality) {
         return (root, query, cb) -> {
             var joinAuthro = root.join("author", JoinType.LEFT);
-            return cb.like(cb.upper(joinAuthro.get("name")), "%" + name.toUpperCase() + "%");
+            return cb.like(cb.upper(joinAuthro.get("nationality")), "%" + nationality.toUpperCase() + "%");
         }
     }
 
