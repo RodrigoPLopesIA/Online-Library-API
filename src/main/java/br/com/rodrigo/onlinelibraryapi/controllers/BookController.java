@@ -20,6 +20,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import br.com.rodrigo.onlinelibraryapi.dtos.books.CreateBookDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.books.ListBookDTO;
 import br.com.rodrigo.onlinelibraryapi.entities.Book;
+import br.com.rodrigo.onlinelibraryapi.enums.Genre;
 import br.com.rodrigo.onlinelibraryapi.mapper.BookMapper;
 import br.com.rodrigo.onlinelibraryapi.services.BookService;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,8 +39,10 @@ public class BookController {
     @GetMapping
     public ResponseEntity<Page<ListBookDTO>> index(@RequestParam(value = "title", required = false) String title,
             @RequestParam(value = "isbn", required = false) String isbn,
+            @RequestParam(value = "authorName", required = false) String authorName,
+            @RequestParam(value = "genre", required = false) Genre genre,
             Pageable pageable) {
-        Page<ListBookDTO> books = bookService.index(pageable, title, isbn).map(mapper::toDto);
+        Page<ListBookDTO> books = bookService.index(pageable, title, isbn, authorName, genre).map(mapper::toDto);
         return ResponseEntity.ok().body(books);
     }
 

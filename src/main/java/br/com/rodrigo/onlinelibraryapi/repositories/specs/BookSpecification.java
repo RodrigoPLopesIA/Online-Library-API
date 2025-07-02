@@ -7,6 +7,9 @@ import br.com.rodrigo.onlinelibraryapi.enums.Genre;
 
 public class BookSpecification {
 
+    public static Specification<Book> conjution() {
+        return (root, query, cb) -> cb.conjunction();
+    }
     public static Specification<Book> titleContains(String title) {
         return (root, query, cb) -> title == null ? null
                 : cb.like(cb.lower(root.get("title")), "%" + title.toLowerCase() + "%");
@@ -16,10 +19,10 @@ public class BookSpecification {
         return (root, query, cb) -> isbn == null ? null
                 : cb.like(cb.lower(root.get("isbn")), "%" + isbn.toLowerCase() + "%");
     }
-    public static Specification<Book> GenreContains(Genre genre) {
-        return (root, query, cb) -> genre == null ? null
-                : cb.equal(cb.lower(root.get("genre")), genre.toString().toLowerCase());
-    }
+    public static Specification<Book> genreEquals(Genre genre) {
+    return (root, query, cb) -> genre == null ? null
+            : cb.equal(root.get("genre"), genre);
+}
     public static Specification<Book> authorNameContains(String authorName) {
         return (root, query, cb) -> {
             if (authorName == null)

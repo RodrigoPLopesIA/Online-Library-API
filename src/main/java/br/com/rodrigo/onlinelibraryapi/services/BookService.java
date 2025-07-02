@@ -31,14 +31,14 @@ public class BookService {
 
     public Page<Book> index(Pageable pageable, String title, String isbn, String authorName, Genre genre) {
 
-        Specification<Book> spec = Specification.where(null);
+        Specification<Book> spec = BookSpecification.conjution();
 
         if (title != null && !title.isBlank()) {
             spec = spec.and(BookSpecification.titleContains(title));
         }
 
         if (genre != null && !genre.toString().isBlank()) {
-            spec = spec.and(BookSpecification.GenreContains(genre));
+            spec = spec.and(BookSpecification.genreEquals(genre));
         }
 
         if (isbn != null && !isbn.isBlank()) {
