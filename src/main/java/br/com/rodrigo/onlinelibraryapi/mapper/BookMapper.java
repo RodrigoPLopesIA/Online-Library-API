@@ -15,7 +15,7 @@ public abstract class BookMapper {
     @Autowired
     protected AuthorRepository authorRepository;
 
-    @Mapping(target = "author", expression = "java(authorRepository.findById(bookDto.authorId()).orElse(null))")
+    @Mapping(target = "author", expression = "java(authorRepository.findById(bookDto.author().id()).orElse(null))")
     public abstract Book toEntity(ListBookDTO bookDto);
 
     @Mapping(target = "author", expression = "java(authorRepository.findById(bookDto.authorId()).orElse(null))")
