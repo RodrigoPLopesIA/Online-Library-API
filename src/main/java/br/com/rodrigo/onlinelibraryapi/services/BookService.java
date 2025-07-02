@@ -15,6 +15,7 @@ import br.com.rodrigo.onlinelibraryapi.dtos.books.CreateBookDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.books.ListBookDTO;
 import br.com.rodrigo.onlinelibraryapi.entities.Author;
 import br.com.rodrigo.onlinelibraryapi.entities.Book;
+import br.com.rodrigo.onlinelibraryapi.enums.Genre;
 import br.com.rodrigo.onlinelibraryapi.repositories.BookRepository;
 import br.com.rodrigo.onlinelibraryapi.repositories.specs.BookSpecification;
 import jakarta.persistence.EntityNotFoundException;
@@ -28,12 +29,16 @@ public class BookService {
     @Autowired
     private AuthorService authorService;
 
-    public Page<Book> index(Pageable pageable, String title, String isbn, String authorName) {
+    public Page<Book> index(Pageable pageable, String title, String isbn, String authorName, Genre genre) {
 
         Specification<Book> spec = Specification.where(null);
 
         if (title != null && !title.isBlank()) {
             spec = spec.and(BookSpecification.titleContains(title));
+        }
+
+        if (genre != null && !genre.toString().isBlank()) {
+            spec = spec.and(BookSpecification.GenreContains(genre));
         }
 
         if (isbn != null && !isbn.isBlank()) {
