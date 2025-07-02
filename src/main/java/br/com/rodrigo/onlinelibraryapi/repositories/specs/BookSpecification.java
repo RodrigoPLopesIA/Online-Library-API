@@ -36,7 +36,7 @@ public class BookSpecification {
         return (root, query, cb) -> {
             var joinAuthro = root.join("author", JoinType.LEFT);
             return cb.like(cb.lower(joinAuthro.get("nationality")), "%" + nationality.toLowerCase() + "%");
-        }
+        };
     }
 
 }
