@@ -8,34 +8,40 @@ import jakarta.persistence.criteria.JoinType;
 
 public class BookSpecification {
 
-    public static Specification<Book> conjution() {
+    public static Specification<Book> conjunction() {
         return (root, query, cb) -> cb.conjunction();
     }
+
     public static Specification<Book> titleContains(String title) {
         return (root, query, cb) -> title == null ? null
-                : cb.like(cb.lower(root.get("title")), "%" + title.toLowerCase() + "%");
+                : cb.like(cb.lower(root.get("title")),
+                 "%" + title.toLowerCase() + "%");
     }
 
     public static Specification<Book> isbnContains(String isbn) {
         return (root, query, cb) -> isbn == null ? null
                 : cb.like(cb.lower(root.get("isbn")), "%" + isbn.toLowerCase() + "%");
     }
+
     public static Specification<Book> genreEquals(Genre genre) {
-    return (root, query, cb) -> genre == null ? null
-            : cb.equal(root.get("genre"), genre);
-}
+        return (root, query, cb) -> genre == null ? null
+                : cb.equal(root.get("genre"), genre);
+    }
+
     public static Specification<Book> authorNameContains(String authorName) {
         return (root, query, cb) -> {
             if (authorName == null)
                 return null;
-            return cb.like(cb.lower(root.join("author", JoinType.INNER).get("name")), "%" + authorName.toLowerCase() + "%");
+            return cb.like(cb.lower(root.join("author", JoinType.INNER).get("name")),
+                    "%" + authorName.toLowerCase() + "%");
         };
     }
 
     public static Specification<Book> authorNationalityLike(String nationality) {
         return (root, query, cb) -> {
             var joinAuthro = root.join("author", JoinType.LEFT);
-            return cb.like(cb.lower(joinAuthro.get("nationality")), "%" + nationality.toLowerCase() + "%");
+            return cb.like(cb.lower(joinAuthro.get("nationality")), 
+            "%" + nationality.toLowerCase() + "%");
         };
     }
 

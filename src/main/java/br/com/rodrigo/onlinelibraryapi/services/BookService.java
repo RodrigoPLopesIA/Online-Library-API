@@ -26,7 +26,7 @@ public class BookService {
 
     public Page<Book> index(Pageable pageable, String title, String isbn, String authorName, Genre genre, String nationality) {
 
-        Specification<Book> spec = BookSpecification.conjution();
+        Specification<Book> spec = BookSpecification.conjunction();
 
         if (title != null && !title.isBlank()) {
             spec = spec.and(BookSpecification.titleContains(title));
