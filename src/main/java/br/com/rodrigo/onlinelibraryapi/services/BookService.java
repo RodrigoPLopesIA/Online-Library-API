@@ -24,7 +24,7 @@ public class BookService {
     @Autowired
     private AuthorService authorService;
 
-    public Page<Book> index(Pageable pageable, String title, String isbn, String authorName, Genre genre) {
+    public Page<Book> index(Pageable pageable, String title, String isbn, String authorName, Genre genre, String nationality) {
 
         Specification<Book> spec = BookSpecification.conjution();
 
@@ -42,6 +42,10 @@ public class BookService {
 
         if (authorName != null && !authorName.isBlank()) {
             spec = spec.and(BookSpecification.authorNameContains(authorName));
+        }
+
+        if(nationality != null && !nationality.isBlank()) {
+            spec = spec.and(BookSpecification.authorNationalityLike(nationality));
         }
 
         return bookRepository.findAll(spec, pageable);
