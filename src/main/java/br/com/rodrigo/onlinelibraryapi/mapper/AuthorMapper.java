@@ -1,7 +1,5 @@
 package br.com.rodrigo.onlinelibraryapi.mapper;
 
-import java.util.List;
-
 import org.mapstruct.Mapper;
 
 import br.com.rodrigo.onlinelibraryapi.dtos.author.CreateAuthorDTO;
