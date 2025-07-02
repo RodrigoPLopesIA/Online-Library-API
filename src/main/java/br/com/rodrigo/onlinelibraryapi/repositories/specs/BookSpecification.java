@@ -28,14 +28,14 @@ public class BookSpecification {
         return (root, query, cb) -> {
             if (authorName == null)
                 return null;
-            return cb.like(cb.lower(root.join("author").get("name")), "%" + authorName.toLowerCase() + "%");
+            return cb.like(cb.lower(root.join("author", JoinType.INNER).get("name")), "%" + authorName.toLowerCase() + "%");
         };
     }
 
     public static Specification<Book> authorNationalityLike(String nationality) {
         return (root, query, cb) -> {
             var joinAuthro = root.join("author", JoinType.LEFT);
-            return cb.like(cb.upper(joinAuthro.get("nationality")), "%" + nationality.toUpperCase() + "%");
+            return cb.like(cb.lower(joinAuthro.get("nationality")), "%" + nationality.toLowerCase() + "%");
         }
     }
 
