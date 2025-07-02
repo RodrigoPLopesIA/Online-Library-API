@@ -4,6 +4,7 @@ import org.springframework.data.jpa.domain.Specification;
 
 import br.com.rodrigo.onlinelibraryapi.entities.Book;
 import br.com.rodrigo.onlinelibraryapi.enums.Genre;
+import jakarta.persistence.criteria.JoinType;
 
 public class BookSpecification {
 
@@ -29,6 +30,13 @@ public class BookSpecification {
                 return null;
             return cb.like(cb.lower(root.join("author").get("name")), "%" + authorName.toLowerCase() + "%");
         };
+    }
+
+    public static Specification<Book> authorNameLike(String name) {
+        return (root, query, cb) -> {
+            var joinAuthro = root.join("author", JoinType.LEFT);
+            return cb.like(cb.upper(joinAuthro.get("name")), "%" + name.toUpperCase() + "%");
+        }
     }
 
 }
