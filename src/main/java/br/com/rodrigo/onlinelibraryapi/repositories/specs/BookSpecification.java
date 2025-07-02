@@ -3,6 +3,7 @@ package br.com.rodrigo.onlinelibraryapi.repositories.specs;
 import org.springframework.data.jpa.domain.Specification;
 
 import br.com.rodrigo.onlinelibraryapi.entities.Book;
+import br.com.rodrigo.onlinelibraryapi.enums.Genre;
 
 public class BookSpecification {
 
@@ -15,7 +16,10 @@ public class BookSpecification {
         return (root, query, cb) -> isbn == null ? null
                 : cb.like(cb.lower(root.get("isbn")), "%" + isbn.toLowerCase() + "%");
     }
-
+    public static Specification<Book> GenreContains(Genre genre) {
+        return (root, query, cb) -> genre == null ? null
+                : cb.equal(cb.lower(root.get("genre")), genre.toString().toLowerCase());
+    }
     public static Specification<Book> authorNameContains(String authorName) {
         return (root, query, cb) -> {
             if (authorName == null)
