@@ -18,8 +18,8 @@ public class SpringSercurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
-                .httpBasic(Customizer.withDefaults())
-                .formLogin(Customizer.withDefaults())
+                // .httpBasic(Customizer.withDefaults())
+                .formLogin(form -> form.loginPage("/login").permitAll())
                 .authorizeRequests(authorize -> authorize.anyRequest().authenticated()).build();
     }
 
