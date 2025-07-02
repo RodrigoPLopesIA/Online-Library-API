@@ -16,6 +16,7 @@ public record CreateBookDTO(
     String title,
 
     @NotNull
+    @PastOrPresent
     LocalDate publicationDate,
 
     @NotNull
