@@ -19,8 +19,8 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import br.com.rodrigo.onlinelibraryapi.dtos.CreateUserDto;
-import br.com.rodrigo.onlinelibraryapi.dtos.ListUserDto;
+import br.com.rodrigo.onlinelibraryapi.dtos.user.CreateUserDto;
+import br.com.rodrigo.onlinelibraryapi.dtos.user.ListUserDto;
 import br.com.rodrigo.onlinelibraryapi.exceptions.UniqueViolationException;
 
 @Tag(name = "Users", description = "managing user-related operations in the Online Library API. Provides endpoints to create, retrieve, update, and delete users.")

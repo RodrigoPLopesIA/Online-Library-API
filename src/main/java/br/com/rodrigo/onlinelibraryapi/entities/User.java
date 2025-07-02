@@ -6,7 +6,10 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import br.com.rodrigo.onlinelibraryapi.dtos.CreateUserDto;
+import br.com.rodrigo.onlinelibraryapi.dtos.user.CreateUserDto;
+import br.com.rodrigo.onlinelibraryapi.entities.embedded.Address;
+import br.com.rodrigo.onlinelibraryapi.entities.embedded.Authentication;
+import br.com.rodrigo.onlinelibraryapi.entities.embedded.Name;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;

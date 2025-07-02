@@ -19,19 +19,21 @@ public class SpringSercurityConfig {
         return http.csrf(csrf -> csrf.disable())
                 .httpBasic(basic -> basic.disable())
                 .formLogin(form -> form.disable())
-                .authorizeHttpRequests(auth -> auth.requestMatchers(HttpMethod.POST, "/api/v1/users").permitAll()
-                        .anyRequest().authenticated())
+                /* .authorizeHttpRequests(auth -> auth.requestMatchers(HttpMethod.POST, "/api/v1/*")
+                
+                .permitAll()
+                        .anyRequest().authenticated())*/
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)).build();
     }
 
 
-    @Bean
+    //@Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
 
 
-    @Bean
+    //@Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception{
         return authenticationConfiguration.getAuthenticationManager();
     }

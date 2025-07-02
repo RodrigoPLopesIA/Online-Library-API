@@ -6,8 +6,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import br.com.rodrigo.onlinelibraryapi.dtos.CreateUserDto;
-import br.com.rodrigo.onlinelibraryapi.dtos.ListUserDto;
+import br.com.rodrigo.onlinelibraryapi.dtos.user.CreateUserDto;
+import br.com.rodrigo.onlinelibraryapi.dtos.user.ListUserDto;
 import br.com.rodrigo.onlinelibraryapi.entities.User;
 import br.com.rodrigo.onlinelibraryapi.exceptions.UniqueViolationException;
 import br.com.rodrigo.onlinelibraryapi.repositories.UserRepository;

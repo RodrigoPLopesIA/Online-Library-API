@@ -4,7 +4,8 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 
-import br.com.rodrigo.onlinelibraryapi.dtos.TokenJWT;
+import br.com.rodrigo.onlinelibraryapi.dtos.token.TokenJWT;
+
 import org.springframework.beans.factory.annotation.Value;
 
 public class JWTUtils {
