@@ -56,14 +56,14 @@ public class AuthorController {
 
         var uri = uriBuilder.path("/api/v1/authors/{id}").buildAndExpand(author.getId()).toUri();
 
-        return ResponseEntity.created(uri).body(new ListAuthorDTO(author));
+        return ResponseEntity.created(uri).body(authorMapper.toListAuthorDTO(author));
 
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<ListAuthorDTO> update(@PathVariable String id, @RequestBody CreateAuthorDTO data) {
         Author author = authorService.update(UUID.fromString(id), authorMapper.toAuthor(data));
-        return ResponseEntity.ok(new ListAuthorDTO(author));
+        return ResponseEntity.ok(authorMapper.toListAuthorDTO(author));
     }
 
     @DeleteMapping("/{id}")
