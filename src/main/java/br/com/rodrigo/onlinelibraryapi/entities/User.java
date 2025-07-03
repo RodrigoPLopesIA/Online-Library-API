@@ -1,10 +1,13 @@
 package br.com.rodrigo.onlinelibraryapi.entities;
 
 import java.time.Instant;
+import java.util.Collection;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import br.com.rodrigo.onlinelibraryapi.dtos.user.CreateUserDto;
 import br.com.rodrigo.onlinelibraryapi.entities.embedded.Address;
@@ -32,7 +35,7 @@ import lombok.Setter;
 @Setter
 @EqualsAndHashCode(of = "id")
 @EntityListeners(AuditingEntityListener.class)
-public class User {
+public class User implements UserDetails{
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -64,6 +67,22 @@ public class User {
         this.setAuthentication(new Authentication(user.email(), user.password()));
         this.setAddress(new Address(user.street(), user.number(), user.complement(), user.neighborhood(), user.city(),
                 user.state(), user.zipCode()));
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        // Assuming no specific roles or authorities are defined for this user
+        return null; // or Collections.emptyList() if you prefer
+    }
+
+    @Override
+    public String getPassword() {
+        return this.authentication.getPassword();
+    }
+
+    @Override
+    public String getUsername() {
+        return this.authentication.getEmail();
     }
 
 }

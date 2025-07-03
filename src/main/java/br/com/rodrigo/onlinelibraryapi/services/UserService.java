@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +19,7 @@ import br.com.rodrigo.onlinelibraryapi.repositories.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 
 @Service
-public class UserService {
+public class UserService implements UserDetailsService{
 
 
     @Autowired
@@ -40,9 +43,6 @@ public class UserService {
     }
 
     public ListUserDto save(CreateUserDto data) {
-        System.out.println("============================");
-        System.out.println(data);
-        System.out.println("============================");
         try {
             User user = userMapper.toUser(data);
             user.getAuthentication().setPassword(passwordEncoder.encode(data.password()));
@@ -50,7 +50,6 @@ public class UserService {
             User newUser = userRepository.save(user);
             return userMapper.toListUserDTO(newUser);
         } catch (DataIntegrityViolationException e) {
-            System.out.println(e.getMessage());
             throw new UniqueViolationException(String.format("user %s already registered", data.email()));
         }
     }
@@ -69,6 +68,16 @@ public class UserService {
             throw new EntityNotFoundException(String.format("User %s not found!", id));
         });
         userRepository.delete(user);
+    }
+
+    @Override
+    public User loadUserByUsername(String email) {
+        User user = this.userRepository.findByAuthenticationEmail(email);
+
+        if (user == null) {
+            throw new UsernameNotFoundException(String.format("User with email %s not found", email));
+        }
+        return user;
     }
 
 }
