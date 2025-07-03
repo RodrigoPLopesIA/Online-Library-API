@@ -13,7 +13,7 @@ public interface UserMapper {
 
     @Mapping(target = "authentication", expression = "java(new br.com.rodrigo.onlinelibraryapi.entities.embedded.Authentication(userDTO.email(), userDTO.password()))")
     @Mapping(target = "name", expression = "java(new br.com.rodrigo.onlinelibraryapi.entities.embedded.Name(userDTO.first_name(), userDTO.last_name()))")
-    @Mapping(target = "address", expression = "java(new br.com.rodrigo.onlinelibraryapi.entities.embedded.Address(userDTO.street(), userDTO.number(), userDTO.complement(), userDTO.neighborhood(), userDTO.city(), userDTO.state(), userDTO.zipCode()))")
+    @Mapping(target = "address", expression = "java(new br.com.rodrigo.onlinelibraryapi.entities.embedded.Address(userDTO.address().street(), userDTO.address().number(), userDTO.address().complement(), userDTO.address().neighborhood(), userDTO.address().city(), userDTO.address().state(), userDTO.address().zipCode()))")
     User toUser(ListUserDto userDTO);
 
     @Mapping(target = "authentication", expression = "java(new br.com.rodrigo.onlinelibraryapi.entities.embedded.Authentication(userDTO.email(), userDTO.password()))")
@@ -23,7 +23,8 @@ public interface UserMapper {
 
     @Mapping(target = "first_name", expression = "java(user.getName().getFirst_name())")
     @Mapping(target = "last_name", expression = "java(user.getName().getLast_name())")
-    @Mapping(target = "email", expression = "java(user.getAuthentication().getEmail())") // Password should not be exposed
+    @Mapping(target = "email", expression = "java(user.getAuthentication().getEmail())") 
+    @Mapping(target = "address", expression = "java(user.getAddress())")
     @Mapping(target = "created_at", expression = "java(user.getCreatedAt())")
     @Mapping(target = "updated_at", expression = "java(user.getUpdatedAt())")
     ListUserDto toListUserDTO(User user);
