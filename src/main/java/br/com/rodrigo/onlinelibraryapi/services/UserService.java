@@ -40,6 +40,9 @@ public class UserService {
     }
 
     public ListUserDto save(CreateUserDto data) {
+        System.out.println("============================");
+        System.out.println(data);
+        System.out.println("============================");
         try {
             User user = userMapper.toUser(data);
             user.getAuthentication().setPassword(passwordEncoder.encode(data.password()));
@@ -47,6 +50,7 @@ public class UserService {
             User newUser = userRepository.save(user);
             return userMapper.toListUserDTO(newUser);
         } catch (DataIntegrityViolationException e) {
+            System.out.println(e.getMessage());
             throw new UniqueViolationException(String.format("user %s already registered", data.email()));
         }
     }
