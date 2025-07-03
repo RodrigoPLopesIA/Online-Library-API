@@ -11,6 +11,7 @@ import br.com.rodrigo.onlinelibraryapi.dtos.user.CreateUserDto;
 import br.com.rodrigo.onlinelibraryapi.dtos.user.ListUserDto;
 import br.com.rodrigo.onlinelibraryapi.entities.User;
 import br.com.rodrigo.onlinelibraryapi.exceptions.UniqueViolationException;
+import br.com.rodrigo.onlinelibraryapi.mapper.UserMapper;
 import br.com.rodrigo.onlinelibraryapi.repositories.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 
@@ -20,8 +21,12 @@ public class UserService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private UserMapper userMapper;
 
     public Page<ListUserDto> findAll(Pageable pageable) {
         return userRepository.findAll(pageable).map(ListUserDto::new);
@@ -34,12 +39,15 @@ public class UserService {
         return new ListUserDto(user);
     }
 
-    public ListUserDto save(CreateUserDto user) {
+    public ListUserDto save(CreateUserDto data) {
         try {
-            User newUser = userRepository.save(new User(user));
-            return new ListUserDto(newUser);
+            User user = userMapper.toUser(data);
+            user.getAuthentication().setPassword(passwordEncoder.encode(data.password()));
+
+            User newUser = userRepository.save(user);
+            return userMapper.toListUserDTO(newUser);
         } catch (DataIntegrityViolationException e) {
-            throw new UniqueViolationException(String.format("user %s already registered", user.email()));
+            throw new UniqueViolationException(String.format("user %s already registered", data.email()));
         }
     }
 
