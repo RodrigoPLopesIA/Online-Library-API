@@ -29,7 +29,9 @@ public class SpringSercurityConfig {
         return http.csrf(AbstractHttpConfigurer::disable)
                 .httpBasic(Customizer.withDefaults())
                 .formLogin(form -> form.loginPage("/login").permitAll())
-                .authorizeRequests(authorize -> authorize.anyRequest().authenticated()).build();
+                .authorizeRequests(authorize -> authorize.requestMatchers(HttpMethod.POST, "/api/v1/users").permitAll()
+                        .anyRequest().authenticated())
+                .build();
     }
 
     @Bean
