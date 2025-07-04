@@ -11,9 +11,10 @@ import br.com.rodrigo.onlinelibraryapi.entities.embedded.Authentication;
 @Mapper(componentModel = "spring")
 public interface UserMapper {
 
-    @Mapping(target = "authentication", expression = "java(new br.com.rodrigo.onlinelibraryapi.entities.embedded.Authentication(userDTO.email(), userDTO.password()))")
+    @Mapping(target = "authentication", expression = "java(new br.com.rodrigo.onlinelibraryapi.entities.embedded.Authentication(userDTO.email()))")
+
     @Mapping(target = "name", expression = "java(new br.com.rodrigo.onlinelibraryapi.entities.embedded.Name(userDTO.first_name(), userDTO.last_name()))")
-    @Mapping(target = "address", expression = "java(new br.com.rodrigo.onlinelibraryapi.entities.embedded.Address(userDTO.address().street(), userDTO.address().number(), userDTO.address().complement(), userDTO.address().neighborhood(), userDTO.address().city(), userDTO.address().state(), userDTO.address().zipCode()))")
+    @Mapping(target = "address", expression = "java(new br.com.rodrigo.onlinelibraryapi.entities.embedded.Address(userDTO.address().getStreet(), userDTO.address().getNumber(), userDTO.address().getComplement(), userDTO.address().getNeighborhood(), userDTO.address().getCity(), userDTO.address().getState(), userDTO.address().getZipCode()))")
     User toUser(ListUserDto userDTO);
 
     @Mapping(target = "authentication", expression = "java(new br.com.rodrigo.onlinelibraryapi.entities.embedded.Authentication(userDTO.email(), userDTO.password()))")

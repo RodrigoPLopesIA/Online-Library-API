@@ -17,6 +17,13 @@ spring:
     properties:
       hibernate:
         format_sql: false
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${AUTH2_CLIENT_ID}
+            client-secret: ${AUTH2_CLIENT_SECRET}
 
 springdoc:
   swagger-ui:

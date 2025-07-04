@@ -28,9 +28,13 @@ public class SpringSercurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
                 .httpBasic(Customizer.withDefaults())
-                .formLogin(form -> form.loginPage("/login").permitAll())
-                .authorizeRequests(authorize -> authorize.requestMatchers(HttpMethod.POST, "/api/v1/users").permitAll()
-                        .anyRequest().authenticated())
+                .formLogin(Customizer.withDefaults())
+                // .formLogin(form -> form.loginPage("/login").permitAll())
+                .authorizeRequests(authorize -> {
+                    authorize.requestMatchers(HttpMethod.POST, "/api/v1/users").permitAll();
+                    authorize.anyRequest().authenticated();
+                })
+                .oauth2Login(Customizer.withDefaults())
                 .build();
     }
 

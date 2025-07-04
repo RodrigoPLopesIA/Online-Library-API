@@ -19,4 +19,8 @@ public class Authentication {
     
     @Column(nullable = false)
     private String password;
+
+    public Authentication(String email) {
+        this.email = email;
+    }
 }
