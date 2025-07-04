@@ -18,8 +18,7 @@ public class CustomAuthentication implements Authentication{
 
     @Override
     public String getName() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getName'");
+        return user.getUsername();
     }
 
     @Override
