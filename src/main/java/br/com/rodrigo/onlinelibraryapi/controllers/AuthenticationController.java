@@ -16,6 +16,7 @@ import org.springframework.web.reactive.result.view.RedirectView;
 import br.com.rodrigo.onlinelibraryapi.dtos.authentication.CredentialsDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.token.TokenJWT;
 import br.com.rodrigo.onlinelibraryapi.services.AuthenticationService;
+import br.com.rodrigo.onlinelibraryapi.services.GoogleAuthenticationService;
 import jakarta.validation.Valid;
 
 @RestController
@@ -25,7 +26,6 @@ public class AuthenticationController {
     @Autowired
     private AuthenticationService authenticationService;
 
-    
 
     @PostMapping
     public ResponseEntity<TokenJWT> signin(@Valid @RequestBody CredentialsDTO credentials) {
@@ -34,12 +34,5 @@ public class AuthenticationController {
 
         return ResponseEntity.ok().body(signin);
 
-    }
-
-    @GetMapping("/login/oauth2/code/{provider}")
-    public RedirectView loginSuccess(@PathVariable String provider, OAuth2AuthenticationToken authenticationToken) {
-        
-
-        return new RedirectView("/login-success");
     }
 }
