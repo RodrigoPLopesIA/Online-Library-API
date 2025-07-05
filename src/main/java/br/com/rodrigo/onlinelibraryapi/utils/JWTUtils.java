@@ -45,7 +45,19 @@ public class JWTUtils {
         }
         return null;
     }
-
+    public static boolean isValidToken(String token) {
+        try {
+            Algorithm algorithm = Algorithm.HMAC256(JWT_SECRET_KEY);
+            JWTVerifier verifier = JWT.require(algorithm)
+                    .withIssuer("Online library API")
+                    .build();
+            verifier.verify(token);
+            return true;
+        } catch (JWTVerificationException e) {
+            log.error(String.format("Invalid token: %s", e.getMessage()));
+            return false;
+        }
+    }
     public static DecodedJWT decode(String token) {
         try {
             Algorithm algorithm = Algorithm.HMAC256(JWT_SECRET_KEY);
