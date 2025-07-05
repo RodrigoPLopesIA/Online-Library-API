@@ -1,6 +1,7 @@
 package br.com.rodrigo.onlinelibraryapi.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
@@ -17,6 +18,8 @@ import br.com.rodrigo.onlinelibraryapi.dtos.authentication.CredentialsDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.token.TokenJWT;
 import br.com.rodrigo.onlinelibraryapi.services.AuthenticationService;
 import br.com.rodrigo.onlinelibraryapi.services.GoogleAuthenticationService;
+import br.com.rodrigo.onlinelibraryapi.services.GoogleCredentialDTO;
+import br.com.rodrigo.onlinelibraryapi.services.strategy.AuthenticationStrategy;
 import jakarta.validation.Valid;
 
 @RestController
@@ -24,13 +27,27 @@ import jakarta.validation.Valid;
 public class AuthenticationController {
 
     @Autowired
-    private AuthenticationService authenticationService;
+    @Qualifier("normalAuth")
+    private AuthenticationStrategy<CredentialsDTO> authenticationService;
+
+    @Autowired
+    @Qualifier("googleAuth")
+    private AuthenticationStrategy<GoogleCredentialDTO> googleAuthenticationService;
 
 
-    @PostMapping
+    @PostMapping("login")
     public ResponseEntity<TokenJWT> signin(@Valid @RequestBody CredentialsDTO credentials) {
 
         TokenJWT signin = authenticationService.authenticate(credentials);
+
+        return ResponseEntity.ok().body(signin);
+
+    }
+
+    @PostMapping("google")
+    public ResponseEntity<TokenJWT> googleSignin(@Valid @RequestBody GoogleCredentialDTO credentials) {
+
+        TokenJWT signin = googleAuthenticationService.authenticate(credentials);
 
         return ResponseEntity.ok().body(signin);
 

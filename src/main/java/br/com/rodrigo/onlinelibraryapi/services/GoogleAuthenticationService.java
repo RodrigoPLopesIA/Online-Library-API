@@ -9,14 +9,17 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import br.com.rodrigo.onlinelibraryapi.dtos.authentication.CredentialsDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.token.TokenJWT;
 import br.com.rodrigo.onlinelibraryapi.entities.User;
 import br.com.rodrigo.onlinelibraryapi.repositories.UserRepository;
 import br.com.rodrigo.onlinelibraryapi.services.strategy.AuthenticationStrategy;
 import br.com.rodrigo.onlinelibraryapi.utils.JWTUtils;
 
+@Service("googleAuth")
 public class GoogleAuthenticationService extends AuthenticationStrategy<GoogleCredentialDTO> {
 
     @Value("${google.client-id}")
@@ -82,9 +85,10 @@ public class GoogleAuthenticationService extends AuthenticationStrategy<GoogleCr
             user.getName().setFirst_name(name);
             userRepository.save(user);
         }
-
+        // change password.
+        User authenticated = this.authenticateUser(new CredentialsDTO(user.getUsername(), "1234"));
         // 4. Gerar JWT
-        TokenJWT token = JWTUtils.createToken(user.getUsername());
+        TokenJWT token = JWTUtils.createToken(authenticated.getUsername());
 
         return token;
     }

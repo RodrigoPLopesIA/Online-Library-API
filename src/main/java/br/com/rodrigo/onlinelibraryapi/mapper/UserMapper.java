@@ -17,7 +17,7 @@ public interface UserMapper {
     @Mapping(target = "address", expression = "java(new br.com.rodrigo.onlinelibraryapi.entities.embedded.Address(userDTO.address().getStreet(), userDTO.address().getNumber(), userDTO.address().getComplement(), userDTO.address().getNeighborhood(), userDTO.address().getCity(), userDTO.address().getState(), userDTO.address().getZipCode()))")
     User toUser(ListUserDto userDTO);
 
-    @Mapping(target = "authentication", expression = "java(new br.com.rodrigo.onlinelibraryapi.entities.embedded.Authentication(userDTO.email(), userDTO.password()))")
+    @Mapping(target = "authentication", expression = "java(new br.com.rodrigo.onlinelibraryapi.entities.embedded.Authentication(userDTO.email(), userDTO.password(), userDTO.provider()))")
     @Mapping(target = "name", expression = "java(new br.com.rodrigo.onlinelibraryapi.entities.embedded.Name(userDTO.first_name(), userDTO.last_name()))")
     @Mapping(target = "address", expression = "java(new br.com.rodrigo.onlinelibraryapi.entities.embedded.Address(userDTO.street(), userDTO.number(), userDTO.complement(), userDTO.neighborhood(), userDTO.city(), userDTO.state(), userDTO.zipCode()))")
     User toUser(CreateUserDto userDTO);
