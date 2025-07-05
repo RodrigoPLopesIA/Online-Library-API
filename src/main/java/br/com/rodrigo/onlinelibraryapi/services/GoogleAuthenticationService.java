@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import br.com.rodrigo.onlinelibraryapi.dtos.authentication.CredentialsDTO;
+import br.com.rodrigo.onlinelibraryapi.dtos.authentication.GoogleCredentialDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.token.TokenJWT;
 import br.com.rodrigo.onlinelibraryapi.entities.User;
 import br.com.rodrigo.onlinelibraryapi.repositories.UserRepository;
