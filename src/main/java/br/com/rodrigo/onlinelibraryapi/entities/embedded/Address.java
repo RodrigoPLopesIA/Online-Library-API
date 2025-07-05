@@ -1,4 +1,4 @@
-package br.com.rodrigo.onlinelibraryapi.entities;
+package br.com.rodrigo.onlinelibraryapi.entities.embedded;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;

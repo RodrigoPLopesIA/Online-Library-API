@@ -1,4 +1,4 @@
-package br.com.rodrigo.onlinelibraryapi.entities;
+package br.com.rodrigo.onlinelibraryapi.entities.embedded;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
@@ -8,16 +8,21 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Embeddable
-@Getter
 @Setter
-@AllArgsConstructor
+@Getter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Authentication {
     
-
-    @Column(unique = true, nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
-
+    
     @Column(nullable = false)
     private String password;
+
+    private String provider;
+
+    public Authentication(String email) {
+        this.email = email;
+    }
 }

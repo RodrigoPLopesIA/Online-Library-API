@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.com.rodrigo.onlinelibraryapi.entities.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, String>{
-
+public interface UserRepository extends JpaRepository<User, String> {
+    User findByAuthenticationEmail(String email);
 }

@@ -1,5 +1,5 @@
-package br.com.rodrigo.onlinelibraryapi.dtos;
-import br.com.rodrigo.onlinelibraryapi.entities.Address;
+package br.com.rodrigo.onlinelibraryapi.dtos.user;
+import br.com.rodrigo.onlinelibraryapi.entities.embedded.Address;
 import br.com.rodrigo.onlinelibraryapi.entities.User;
 
 import java.time.Instant;
