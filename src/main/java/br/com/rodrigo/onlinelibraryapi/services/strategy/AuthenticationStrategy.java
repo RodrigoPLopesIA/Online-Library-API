@@ -17,13 +17,12 @@ public abstract class  AuthenticationStrategy<T> {
     public abstract TokenJWT authenticate(T input);
 
 
-    public User signin(CredentialsDTO input){
+    public User authenticateUser(CredentialsDTO input){
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
                 input.email(), input.password());
 
         Authentication authenticate = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
 
         return (User) authenticate.getPrincipal();
-
     }
 }

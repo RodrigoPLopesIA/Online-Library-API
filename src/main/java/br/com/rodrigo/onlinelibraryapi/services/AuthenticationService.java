@@ -22,7 +22,7 @@ public class AuthenticationService extends AuthenticationStrategy<CredentialsDTO
     @Override
     public TokenJWT authenticate(CredentialsDTO input) {
 
-        User user = this.signin(input);
+        User user = this.authenticateUser(input);
         TokenJWT token = JWTUtils.createToken(user.getUsername());
 
         return new TokenJWT(token.token(), token.expiresIn());
