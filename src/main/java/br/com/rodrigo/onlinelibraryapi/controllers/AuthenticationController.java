@@ -38,7 +38,7 @@ public class AuthenticationController {
     private AuthenticationStrategy<GoogleCredentialDTO> googleAuthenticationService;
 
     @Operation(summary = "SignIn with username and passowrd", responses = {
-            @ApiResponse(responseCode = "201", description = "SignIn with a user by username/password", content = @Content(mediaType = "application/json", schema = @Schema(implementation = CredentialsDTO.class))),
+            @ApiResponse(responseCode = "200", description = "SignIn with a user by username/password", content = @Content(mediaType = "application/json", schema = @Schema(implementation = CredentialsDTO.class))),
     })
     @PostMapping("login")
     public ResponseEntity<TokenJWT> signin(@Valid @RequestBody CredentialsDTO credentials) {
@@ -49,7 +49,7 @@ public class AuthenticationController {
 
     }
     @Operation(summary = "SignIn with social (google)", responses = {
-            @ApiResponse(responseCode = "201", description = "SignIn with a user by social (google)", content = @Content(mediaType = "application/json", schema = @Schema(implementation = GoogleCredentialDTO.class))),
+            @ApiResponse(responseCode = "200", description = "SignIn with a user by social (google)", content = @Content(mediaType = "application/json", schema = @Schema(implementation = GoogleCredentialDTO.class))),
     })
     @PostMapping("google")
     public ResponseEntity<TokenJWT> googleSignin(@Valid @RequestBody GoogleCredentialDTO credentials) {
