@@ -17,19 +17,19 @@ spring:
     properties:
       hibernate:
         format_sql: false
-  security:
-    oauth2:
-      client:
-        registration:
-          google:
-            client-id: ${AUTH2_CLIENT_ID}
-            client-secret: ${AUTH2_CLIENT_SECRET}
+
+google:
+  client-id: ${AUTH2_CLIENT_ID}
+  client-secret: ${AUTH2_SECRET}
+  redirect-uri: http://localhost:8080/api/v1/auth/google
 server:
   port: 8080
 
 springdoc:
   swagger-ui:
-    path: /docs.html
+    path: /swagger-ui.html
+    url: /v3/api-docs
+    config-url: /v3/api-docs/swagger-config
   api-docs:
-    path: /docs
+    path: /v3/api-docs
   packages-to-scan: br.com.rodrigo.onlinelibraryapi.controllers
