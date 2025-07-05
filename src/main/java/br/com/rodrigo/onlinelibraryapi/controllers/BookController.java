@@ -21,7 +21,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 import br.com.rodrigo.onlinelibraryapi.dtos.books.CreateBookDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.books.ListBookDTO;
 import br.com.rodrigo.onlinelibraryapi.entities.Book;
-import br.com.rodrigo.onlinelibraryapi.entities.User;
 import br.com.rodrigo.onlinelibraryapi.enums.Genre;
 import br.com.rodrigo.onlinelibraryapi.mapper.BookMapper;
 import br.com.rodrigo.onlinelibraryapi.services.BookService;
