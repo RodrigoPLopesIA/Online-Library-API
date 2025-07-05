@@ -20,13 +20,22 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.rodrigo.onlinelibraryapi.dtos.books.CreateBookDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.books.ListBookDTO;
+import br.com.rodrigo.onlinelibraryapi.dtos.user.ListUserDto;
 import br.com.rodrigo.onlinelibraryapi.entities.Book;
 import br.com.rodrigo.onlinelibraryapi.enums.Genre;
 import br.com.rodrigo.onlinelibraryapi.mapper.BookMapper;
 import br.com.rodrigo.onlinelibraryapi.services.BookService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 import org.springframework.web.bind.annotation.RequestBody;
 import jakarta.validation.Valid;
 
+@Tag(name = "Books", description = "managing user-related operations in the Online Library API. Provides endpoints to create, retrieve, update, and delete books.")
 @RestController
 @RequestMapping("api/v1/books")
 public class BookController {
@@ -37,6 +46,9 @@ public class BookController {
     @Autowired
     private BookMapper mapper;
 
+    @Operation(summary = "Get all Books", responses = {
+            @ApiResponse(responseCode = "200", description = "Successfully retrieved list of books", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = ListUserDto.class))))
+    })
     @GetMapping
     public ResponseEntity<Page<ListBookDTO>> index(@RequestParam(value = "title", required = false) String title,
             @RequestParam(value = "isbn", required = false) String isbn,

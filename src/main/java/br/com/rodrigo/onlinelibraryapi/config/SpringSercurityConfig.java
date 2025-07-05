@@ -8,6 +8,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,27 +20,26 @@ import br.com.rodrigo.onlinelibraryapi.filters.AuthenticationFilter;
 @Configuration
 @EnableWebSecurity
 public class SpringSercurityConfig {
- 
+
     @Autowired
     private AuthenticationFilter authenticationFilter;
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-
         http
                 .csrf(csrf -> csrf.disable())
-                .httpBasic(httpBasic -> httpBasic.disable())
-                .formLogin(form -> form.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(request -> {
-                    request
-                            .requestMatchers(HttpMethod.POST, "/api/v1/auth/**")
-                            .permitAll()
-                            .requestMatchers(HttpMethod.POST, "/api/v1/users")
-                            .permitAll()
-                            .anyRequest()
-                            .authenticated();
-
-                }).addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
+                .authorizeHttpRequests(requests -> requests
+                        .requestMatchers(
+                                "/swagger-ui.html",
+                                "/swagger-ui/**",
+                                "/v3/api-docs/swagger-config",
+                                "/v3/api-docs/**")
+                        .permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/v1/auth/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/v1/users").permitAll()
+                        .anyRequest().authenticated())
+                .addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
