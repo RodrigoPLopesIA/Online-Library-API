@@ -24,6 +24,8 @@ spring:
           google:
             client-id: ${AUTH2_CLIENT_ID}
             client-secret: ${AUTH2_CLIENT_SECRET}
+server:
+  port: 8080
 
 springdoc:
   swagger-ui:
