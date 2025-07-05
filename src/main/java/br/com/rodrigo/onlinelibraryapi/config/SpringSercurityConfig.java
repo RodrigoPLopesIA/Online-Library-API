@@ -28,7 +28,7 @@ public class SpringSercurityConfig {
                     request.requestMatchers(HttpMethod.POST, "/api/v1/auth")
                             .permitAll()
                             .anyRequest()
-                            .authenticated();
+                            .permitAll();
 
                 });
 
