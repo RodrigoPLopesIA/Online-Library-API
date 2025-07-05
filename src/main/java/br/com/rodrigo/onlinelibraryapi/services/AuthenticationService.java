@@ -17,24 +17,15 @@ import br.com.rodrigo.onlinelibraryapi.utils.JWTUtils;
 import jakarta.validation.Valid;
 
 @Service
-public class AuthenticationService implements AuthenticationStrategy<CredentialsDTO>{
-
-    @Autowired
-    private AuthenticationManager authenticationManager;
-
+public class AuthenticationService extends AuthenticationStrategy<CredentialsDTO> {
 
     @Override
     public TokenJWT authenticate(CredentialsDTO input) {
-        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
-                input.email(), input.password());
 
-        Authentication authenticate = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
-
-        User user = (User) authenticate.getPrincipal();
-
+        User user = this.signin(input);
         TokenJWT token = JWTUtils.createToken(user.getUsername());
 
         return new TokenJWT(token.token(), token.expiresIn());
-        
+
     }
 }
