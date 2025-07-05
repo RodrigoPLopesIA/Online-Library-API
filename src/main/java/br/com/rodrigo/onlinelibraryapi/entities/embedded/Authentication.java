@@ -19,4 +19,10 @@ public class Authentication {
     
     @Column(nullable = false)
     private String password;
+
+    private String provider;
+
+    public Authentication(String email) {
+        this.email = email;
+    }
 }
