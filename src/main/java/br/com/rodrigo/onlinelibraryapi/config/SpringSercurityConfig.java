@@ -32,7 +32,7 @@ public class SpringSercurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(request -> {
                     request
-                            .requestMatchers(HttpMethod.POST, "/api/v1/auth")
+                            .requestMatchers(HttpMethod.POST, "/api/v1/auth/**")
                             .permitAll()
                             .requestMatchers(HttpMethod.POST, "/api/v1/users")
                             .permitAll()

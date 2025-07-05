@@ -40,7 +40,7 @@ public class GoogleAuthenticationService extends AuthenticationStrategy<GoogleCr
     public TokenJWT authenticate(GoogleCredentialDTO input) {
         String code = input.code();
 
-        // 1. Trocar o code por access_token
+        
         HttpHeaders tokenHeaders = new HttpHeaders();
         tokenHeaders.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
 
@@ -60,7 +60,7 @@ public class GoogleAuthenticationService extends AuthenticationStrategy<GoogleCr
 
         String accessToken = (String) tokenResponse.getBody().get("access_token");
 
-        // 2. Buscar dados do usuário com o access_token
+        
         HttpHeaders userHeaders = new HttpHeaders();
         userHeaders.setBearerAuth(accessToken);
         HttpEntity<Void> userRequest = new HttpEntity<>(userHeaders);
@@ -76,7 +76,7 @@ public class GoogleAuthenticationService extends AuthenticationStrategy<GoogleCr
         String email = (String) userInfo.get("email");
         String name = (String) userInfo.get("name");
 
-        // 3. Buscar ou criar usuário no banco
+        
         User user = userRepository.findByAuthenticationEmail(email);
         if (user == null) {
             user = new User();
@@ -85,9 +85,9 @@ public class GoogleAuthenticationService extends AuthenticationStrategy<GoogleCr
             user.getName().setFirst_name(name);
             userRepository.save(user);
         }
-        // change password.
+        
         User authenticated = this.authenticateUser(new CredentialsDTO(user.getUsername(), "1234"));
-        // 4. Gerar JWT
+        
         TokenJWT token = JWTUtils.createToken(authenticated.getUsername());
 
         return token;
