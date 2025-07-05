@@ -1,5 +1,5 @@
 package br.com.rodrigo.onlinelibraryapi.services;
 
-public record GoogleCredentialDTO() {
+public record GoogleCredentialDTO(String code) {
 
 }
