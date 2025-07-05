@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.rodrigo.onlinelibraryapi.dtos.authentication.CredentialsDTO;
+import br.com.rodrigo.onlinelibraryapi.dtos.token.TokenJWT;
 import br.com.rodrigo.onlinelibraryapi.entities.User;
+import br.com.rodrigo.onlinelibraryapi.utils.JWTUtils;
 import jakarta.validation.Valid;
 
 @RestController
@@ -24,17 +26,18 @@ public class AuthenticationController {
     private AuthenticationManager authenticationManager;
 
     @PostMapping
-    public ResponseEntity signin(@Valid @RequestBody CredentialsDTO credentials) {
+    public ResponseEntity<TokenJWT> signin(@Valid @RequestBody CredentialsDTO credentials) {
 
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
                 credentials.email(), credentials.password());
 
         Authentication authenticate = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
 
-
         User user = (User) authenticate.getPrincipal();
 
-        return ResponseEntity.ok().build();
+        TokenJWT token = JWTUtils.createToken(user.getUsername());
+
+        return ResponseEntity.ok().body(new TokenJWT(token.token(), token.expiresIn()));
 
     }
 }
