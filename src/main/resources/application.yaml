@@ -37,4 +37,12 @@ springdoc:
   api-docs:
     path: /v3/api-docs
   packages-to-scan: br.com.rodrigo.onlinelibraryapi.controllers
+management:
+  server:
+    port: 9090
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
 
