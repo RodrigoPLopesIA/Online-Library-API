@@ -1,5 +1,6 @@
 package br.com.rodrigo.onlinelibraryapi.services;
 
+import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
@@ -19,8 +20,7 @@ import br.com.rodrigo.onlinelibraryapi.repositories.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 
 @Service
-public class UserService implements UserDetailsService{
-
+public class UserService implements UserDetailsService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -45,6 +45,10 @@ public class UserService implements UserDetailsService{
     public ListUserDto save(CreateUserDto data) {
         try {
             User user = userMapper.toUser(data);
+
+            if (!data.confirmPassword().equals(data.password()))
+                throw new IllegalArgumentException("Password and confirm password must be equal.");
+
             user.getAuthentication().setPassword(passwordEncoder.encode(data.password()));
 
             User newUser = userRepository.save(user);
