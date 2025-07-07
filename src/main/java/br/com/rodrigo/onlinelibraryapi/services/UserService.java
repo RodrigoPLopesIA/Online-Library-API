@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -17,6 +18,7 @@ import br.com.rodrigo.onlinelibraryapi.entities.User;
 import br.com.rodrigo.onlinelibraryapi.exceptions.UniqueViolationException;
 import br.com.rodrigo.onlinelibraryapi.mapper.UserMapper;
 import br.com.rodrigo.onlinelibraryapi.repositories.UserRepository;
+import br.com.rodrigo.onlinelibraryapi.repositories.specs.UsersSpecification;
 import jakarta.persistence.EntityNotFoundException;
 
 @Service
@@ -31,8 +33,20 @@ public class UserService implements UserDetailsService {
     @Autowired
     private UserMapper userMapper;
 
-    public Page<ListUserDto> findAll(Pageable pageable) {
-        return userRepository.findAll(pageable).map(ListUserDto::new);
+    public Page<ListUserDto> findAll(Pageable pageable, String firstName, String lastName, String email) {
+
+        Specification<User> spec = UsersSpecification.conjunction();
+
+        if(firstName != null) {
+            spec = spec.and(UsersSpecification.nameContains(firstName));
+        }
+        if(lastName != null) {
+            spec = spec.and(UsersSpecification.nameContains(lastName));
+        }
+        if(email != null) {
+            spec = spec.and(UsersSpecification.nameContains(email));
+        }
+        return userRepository.findAll(spec, pageable).map(ListUserDto::new);
     }
 
     public ListUserDto findById(String id) {

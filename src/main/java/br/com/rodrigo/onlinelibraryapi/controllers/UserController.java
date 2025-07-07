@@ -51,9 +51,12 @@ public class UserController {
             @ApiResponse(responseCode = "200", description = "Successfully retrieved list of users", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = ListUserDto.class))))
     })
     @GetMapping
-    public ResponseEntity<Page<ListUserDto>> index(Pageable page, Authentication auth) {
+    public ResponseEntity<Page<ListUserDto>> index(Pageable page,
+            @PathVariable(value = "firstName", required = false) String firstName,
+            @PathVariable(value = "lastName", required = false) String lastName,
+            @PathVariable(value = "email", required = false) String email) {
 
-        return ResponseEntity.ok(userService.findAll(page));
+        return ResponseEntity.ok(userService.findAll(page, firstName, lastName, email));
     }
 
     @Operation(summary = "Retrieves a user by id", responses = {
