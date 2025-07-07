@@ -1,7 +1,9 @@
 package br.com.rodrigo.onlinelibraryapi.entities;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -20,6 +22,7 @@ import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -50,6 +53,10 @@ public class User implements UserDetails {
     @Embedded
     private Address address;
 
+
+    @OneToMany(mappedBy = "user")
+    List<Book> books = new ArrayList<>();
+    
     @CreatedDate
     @Column(nullable = false, updatable = false)
     private Instant createdAt;

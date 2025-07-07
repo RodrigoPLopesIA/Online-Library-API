@@ -16,6 +16,7 @@ import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -50,8 +51,12 @@ public class UserController {
             @ApiResponse(responseCode = "200", description = "Successfully retrieved list of users", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = ListUserDto.class))))
     })
     @GetMapping
-    public ResponseEntity<Page<ListUserDto>> index(Pageable page) {
-        return ResponseEntity.ok(userService.findAll(page));
+    public ResponseEntity<Page<ListUserDto>> index(Pageable page,
+            @PathVariable(value = "firstName", required = false) String firstName,
+            @PathVariable(value = "lastName", required = false) String lastName,
+            @PathVariable(value = "email", required = false) String email) {
+
+        return ResponseEntity.ok(userService.findAll(page, firstName, lastName, email));
     }
 
     @Operation(summary = "Retrieves a user by id", responses = {
@@ -62,30 +67,6 @@ public class UserController {
     public ResponseEntity<ListUserDto> show(@PathVariable String id) {
         ListUserDto user = userService.findById(id);
         return ResponseEntity.ok().body(user);
-    }
-
-    @Operation(summary = "Update a user", responses = {
-            @ApiResponse(responseCode = "200", description = "Update user successfully.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ListUserDto.class))),
-            @ApiResponse(responseCode = "409", description = "Email already exists", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UniqueViolationException.class))),
-            @ApiResponse(responseCode = "422", description = "Recurso não processado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = MethodArgumentNotValidException.class))),
-            @ApiResponse(responseCode = "404", description = "User not found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = EntityNotFoundException.class)))
-
-    })
-    @PutMapping("/{id}")
-    public ResponseEntity<ListUserDto> update(@PathVariable String id, @Valid @RequestBody CreateUserDto user) {
-        ListUserDto updatedUser = userService.update(id, user);
-        return ResponseEntity.ok().body(updatedUser);
-    }
-
-    @Operation(summary = "Delete a user by id", responses = {
-            @ApiResponse(responseCode = "200", description = "Delete a user successfully.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ListUserDto.class))),
-            @ApiResponse(responseCode = "404", description = "User not found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = EntityNotFoundException.class))),
-    })
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable String id) {
-        this.userService.delete(id);
-        return ResponseEntity.noContent().build();
-
     }
 
 }

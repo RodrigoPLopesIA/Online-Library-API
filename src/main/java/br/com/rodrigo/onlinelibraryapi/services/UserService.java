@@ -1,9 +1,11 @@
 package br.com.rodrigo.onlinelibraryapi.services;
 
+import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,11 +18,11 @@ import br.com.rodrigo.onlinelibraryapi.entities.User;
 import br.com.rodrigo.onlinelibraryapi.exceptions.UniqueViolationException;
 import br.com.rodrigo.onlinelibraryapi.mapper.UserMapper;
 import br.com.rodrigo.onlinelibraryapi.repositories.UserRepository;
+import br.com.rodrigo.onlinelibraryapi.repositories.specs.UsersSpecification;
 import jakarta.persistence.EntityNotFoundException;
 
 @Service
-public class UserService implements UserDetailsService{
-
+public class UserService implements UserDetailsService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -31,8 +33,20 @@ public class UserService implements UserDetailsService{
     @Autowired
     private UserMapper userMapper;
 
-    public Page<ListUserDto> findAll(Pageable pageable) {
-        return userRepository.findAll(pageable).map(ListUserDto::new);
+    public Page<ListUserDto> findAll(Pageable pageable, String firstName, String lastName, String email) {
+
+        Specification<User> spec = UsersSpecification.conjunction();
+
+        if(firstName != null && !firstName.isBlank()) {
+            spec = spec.and(UsersSpecification.firstNameContains(firstName));
+        }
+        if(lastName != null && !lastName.isBlank()) {
+            spec = spec.and(UsersSpecification.lastNameContains(lastName));
+        }
+        if(email != null && !email.isBlank()) {
+            spec = spec.and(UsersSpecification.emailContains(email));
+        }
+        return userRepository.findAll(spec, pageable).map(ListUserDto::new);
     }
 
     public ListUserDto findById(String id) {
@@ -45,6 +59,10 @@ public class UserService implements UserDetailsService{
     public ListUserDto save(CreateUserDto data) {
         try {
             User user = userMapper.toUser(data);
+
+            if (!data.confirmPassword().equals(data.password()))
+                throw new IllegalArgumentException("Password and confirm password must be equal.");
+
             user.getAuthentication().setPassword(passwordEncoder.encode(data.password()));
 
             User newUser = userRepository.save(user);
