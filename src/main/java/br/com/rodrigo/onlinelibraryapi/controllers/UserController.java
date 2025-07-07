@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
@@ -31,10 +32,11 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @SecurityRequirement(name = "")
     @Operation(summary = "Creates a new user", responses = {
             @ApiResponse(responseCode = "201", description = "Create a new user successfully.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ListUserDto.class))),
             @ApiResponse(responseCode = "409", description = "Email already exists", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UniqueViolationException.class))),
-            @ApiResponse(responseCode = "422", description = "Recurso não processado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = MethodArgumentNotValidException.class)))
+            @ApiResponse(responseCode = "422", description = "Recurso não processado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = MethodArgumentNotValidException.class))),
     })
     @PostMapping
     public ResponseEntity<ListUserDto> create(@Valid @RequestBody CreateUserDto user, UriComponentsBuilder builder) {
@@ -51,7 +53,7 @@ public class UserController {
     public ResponseEntity<Page<ListUserDto>> index(Pageable page) {
         return ResponseEntity.ok(userService.findAll(page));
     }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+
     @Operation(summary = "Retrieves a user by id", responses = {
             @ApiResponse(responseCode = "200", description = "Retrieves a user successfully.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ListUserDto.class))),
             @ApiResponse(responseCode = "404", description = "User not found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = EntityNotFoundException.class))),

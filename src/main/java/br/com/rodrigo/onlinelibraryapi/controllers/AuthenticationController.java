@@ -20,11 +20,13 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 
 @Tag(name = "Authentication", description = "managing authentication-related operations in the Online Library API. Provides endpoints to authenticate by social (google) and username/password.")
+@SecurityRequirement(name = "") 
 @RestController
 @RequestMapping("/api/v1/auth")
 public class AuthenticationController {
