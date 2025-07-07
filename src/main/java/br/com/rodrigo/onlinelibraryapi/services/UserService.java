@@ -37,14 +37,14 @@ public class UserService implements UserDetailsService {
 
         Specification<User> spec = UsersSpecification.conjunction();
 
-        if(firstName != null) {
-            spec = spec.and(UsersSpecification.nameContains(firstName));
+        if(firstName != null && !firstName.isBlank()) {
+            spec = spec.and(UsersSpecification.firstNameContains(firstName));
         }
-        if(lastName != null) {
-            spec = spec.and(UsersSpecification.nameContains(lastName));
+        if(lastName != null && !lastName.isBlank()) {
+            spec = spec.and(UsersSpecification.lastNameContains(lastName));
         }
-        if(email != null) {
-            spec = spec.and(UsersSpecification.nameContains(email));
+        if(email != null && !email.isBlank()) {
+            spec = spec.and(UsersSpecification.emailContains(email));
         }
         return userRepository.findAll(spec, pageable).map(ListUserDto::new);
     }

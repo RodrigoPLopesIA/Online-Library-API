@@ -23,7 +23,7 @@ public class UsersSpecification {
                         "%" + last_name.toLowerCase() + "%");
     }
 
-    public static Specification<User> nameContains(String email) {
+    public static Specification<User> emailContains(String email) {
         return (root, query, cb) -> email == null ? null
                 : cb.like(cb.lower(root.get("authentication").get("email")),
                         "%" + email.toLowerCase() + "%");
