@@ -1219,3 +1219,51 @@ Caused by: java.net.ConnectException: Conexão recusada
 2025-07-07T11:44:32.354-03:00  INFO 47608 --- [onlinelibraryapi] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2025-07-07T11:44:32.356-03:00  INFO 47608 --- [onlinelibraryapi] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown initiated...
 2025-07-07T11:44:32.358-03:00  INFO 47608 --- [onlinelibraryapi] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown completed.
+2025-07-07T11:47:54.310-03:00  INFO 49215 --- [onlinelibraryapi] [main] b.c.r.o.OnlinelibraryapiApplication      : Starting OnlinelibraryapiApplication v0.0.1-SNAPSHOT using Java 21.0.7 with PID 49215 (/home/rodrigo/Documentos/projeto/Online-Library-API/target/onlinelibraryapi-0.0.1-SNAPSHOT.jar started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-07T11:47:54.314-03:00  INFO 49215 --- [onlinelibraryapi] [main] b.c.r.o.OnlinelibraryapiApplication      : No active profile set, falling back to 1 default profile: "default"
+2025-07-07T11:47:56.383-03:00  INFO 49215 --- [onlinelibraryapi] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-07T11:47:56.604-03:00  INFO 49215 --- [onlinelibraryapi] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 207 ms. Found 3 JPA repository interfaces.
+2025-07-07T11:47:57.817-03:00  INFO 49215 --- [onlinelibraryapi] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-07T11:47:57.842-03:00  INFO 49215 --- [onlinelibraryapi] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-07T11:47:57.842-03:00  INFO 49215 --- [onlinelibraryapi] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-07T11:47:57.893-03:00  INFO 49215 --- [onlinelibraryapi] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-07-07T11:47:57.894-03:00  INFO 49215 --- [onlinelibraryapi] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3494 ms
+2025-07-07T11:47:58.077-03:00  WARN 49215 --- [onlinelibraryapi] [main] com.zaxxer.hikari.HikariConfig           : library-db-pool - idleTimeout is close to or more than maxLifetime, disabling it.
+2025-07-07T11:47:58.085-03:00  INFO 49215 --- [onlinelibraryapi] [main] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Starting...
+2025-07-07T11:47:58.553-03:00  INFO 49215 --- [onlinelibraryapi] [main] com.zaxxer.hikari.pool.HikariPool        : library-db-pool - Added connection org.postgresql.jdbc.PgConnection@64665781
+2025-07-07T11:47:58.556-03:00  INFO 49215 --- [onlinelibraryapi] [main] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Start completed.
+2025-07-07T11:47:58.671-03:00  INFO 49215 --- [onlinelibraryapi] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-07T11:47:58.732-03:00  INFO 49215 --- [onlinelibraryapi] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.18.Final
+2025-07-07T11:47:58.783-03:00  INFO 49215 --- [onlinelibraryapi] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-07T11:47:59.100-03:00  INFO 49215 --- [onlinelibraryapi] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-07T11:47:59.166-03:00  WARN 49215 --- [onlinelibraryapi] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-07T11:47:59.210-03:00  INFO 49215 --- [onlinelibraryapi] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (library-db-pool)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-07T11:48:00.235-03:00  INFO 49215 --- [onlinelibraryapi] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-07T11:48:00.440-03:00  INFO 49215 --- [onlinelibraryapi] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-07T11:48:00.956-03:00  INFO 49215 --- [onlinelibraryapi] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2025-07-07T11:48:01.028-03:00  INFO 49215 --- [onlinelibraryapi] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-07-07T11:48:01.728-03:00  WARN 49215 --- [onlinelibraryapi] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-07T11:48:02.498-03:00  WARN 49215 --- [onlinelibraryapi] [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-07-07T11:48:03.746-03:00  INFO 49215 --- [onlinelibraryapi] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-07T11:48:03.889-03:00  INFO 49215 --- [onlinelibraryapi] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-07-07T11:48:03.891-03:00  INFO 49215 --- [onlinelibraryapi] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-07T11:48:03.891-03:00  INFO 49215 --- [onlinelibraryapi] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-07T11:48:03.894-03:00  INFO 49215 --- [onlinelibraryapi] [main] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-07T11:48:03.895-03:00  INFO 49215 --- [onlinelibraryapi] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 144 ms
+2025-07-07T11:48:03.917-03:00  INFO 49215 --- [onlinelibraryapi] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoints beneath base path '/actuator'
+2025-07-07T11:48:04.056-03:00  INFO 49215 --- [onlinelibraryapi] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-07-07T11:48:04.095-03:00  INFO 49215 --- [onlinelibraryapi] [main] b.c.r.o.OnlinelibraryapiApplication      : Started OnlinelibraryapiApplication in 10.428 seconds (process running for 10.915)
+2025-07-07T11:48:26.236-03:00  INFO 49215 --- [onlinelibraryapi] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-07T11:48:26.241-03:00  INFO 49215 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-07T11:48:26.242-03:00  INFO 49215 --- [onlinelibraryapi] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-07T11:48:26.244-03:00  INFO 49215 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-07T11:48:26.279-03:00  INFO 49215 --- [onlinelibraryapi] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-07T11:48:26.280-03:00  INFO 49215 --- [onlinelibraryapi] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown initiated...
+2025-07-07T11:48:26.282-03:00  INFO 49215 --- [onlinelibraryapi] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown completed.
