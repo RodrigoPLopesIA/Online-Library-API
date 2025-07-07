@@ -34,9 +34,9 @@ public class AuthenticationController {
     @PostMapping("login")
     public ResponseEntity<TokenJWT> signin(@Valid @RequestBody CredentialsDTO credentials) {
 
-        TokenJWT signin = authenticationService.authenticate(credentials);
+        TokenJWT token = authenticationService.authenticate(credentials);
 
-        return ResponseEntity.ok().body(signin);
+        return ResponseEntity.ok().body(token);
 
     }
 }
