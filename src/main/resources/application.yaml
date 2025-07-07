@@ -17,14 +17,18 @@ spring:
     properties:
       hibernate:
         format_sql: false
-
+logging:
+  file:
+    name: app.log
 google:
-  client-id: ${AUTH2_CLIENT_ID}
-  client-secret: ${AUTH2_SECRET}
+  client-id: asdasdasdasd
+  client-secret: asdasdasdasd
   redirect-uri: http://localhost:8080/api/v1/auth/google
 server:
   port: 8080
-
+output:
+  ansi:
+    enabled: false
 springdoc:
   swagger-ui:
     path: /swagger-ui.html
@@ -33,3 +37,12 @@ springdoc:
   api-docs:
     path: /v3/api-docs
   packages-to-scan: br.com.rodrigo.onlinelibraryapi.controllers
+management:
+  server:
+    port: 9090
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+

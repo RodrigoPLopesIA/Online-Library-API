@@ -1,0 +1,7 @@
+2025-07-07T01:48:14.596-03:00  INFO 192390 --- [onlinelibraryapi] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-07T01:48:14.690-03:00  INFO 192390 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-07T01:48:14.692-03:00  INFO 192390 --- [onlinelibraryapi] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-07T01:48:14.712-03:00  INFO 192390 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-07T01:48:14.773-03:00  INFO 192390 --- [onlinelibraryapi] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-07T01:48:14.777-03:00  INFO 192390 --- [onlinelibraryapi] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown initiated...
+2025-07-07T01:48:14.782-03:00  INFO 192390 --- [onlinelibraryapi] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown completed.
