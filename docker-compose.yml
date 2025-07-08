@@ -29,20 +29,24 @@ services:
       - "${DB_PORT}:${DB_PORT}"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-  onlinelibrary_storage:
-    container_name: online_library_storage
-    image: docker.io/bitnami/minio:2022
+  minio:
+    image: quay.io/minio/minio:latest
     ports:
-      - '9000:9000'
-      - '9001:9001'
-    networks:
-      - minionetwork
+      - "9000:9000"
+      - "9001:9001"
     volumes:
-      - 'minio_data:/data'
+      - minio_data:/data
     environment:
-      - MINIO_ROOT_USER=your_username
-      - MINIO_ROOT_PASSWORD=your_pasword
-      - MINIO_DEFAULT_BUCKETS=your_bucket_name
+      - MINIO_ROOT_USER=${MINIO_NAME}
+      - MINIO_ROOT_PASSWORD=${MINIO_SECRET}
+      - MINIO_DEFAULT_BUCKETS=${BUCKET_NAME}
+      - MINIO_SCHEME=http
+    command: server /data --console-address ":9001"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
 
 networks:
   minionetwork:

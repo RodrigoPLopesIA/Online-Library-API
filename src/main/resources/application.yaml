@@ -29,11 +29,12 @@ logging:
 
 
 minio:
-  url: http://localhost:9000 
+  url: ${MINIO_HOST:http://localhost:9000}
   access:
-    name: admin 
-    secret: admin
-  
+    name: ${MINIO_NAME:admin} 
+    secret: ${MINIO_SECRET:admin}
+  bucket:
+    name: ${BUCKET_NAME:onlinelibrary}
 
 springdoc:
   swagger-ui:
