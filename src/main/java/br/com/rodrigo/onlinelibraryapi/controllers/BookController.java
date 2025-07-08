@@ -124,9 +124,10 @@ public class BookController {
                 return ResponseEntity.noContent().build();
         }
 
-    @PatchMapping("/{id}/upload")
-    public ResponseEntity<UploadFileDTO> upload(@AuthenticationPrincipal User user, @PathVariable String id,  @RequestBody MultipartFile file) {
-        return ResponseEntity.ok().body(this.bookService.uploadBookFile(UUID.fromString(id), user, file));
-    }
+        @PatchMapping("/{id}/upload")
+        public ResponseEntity<UploadFileDTO> upload(@AuthenticationPrincipal User user, @PathVariable String id,
+                        @RequestBody MultipartFile file) {
+                return ResponseEntity.ok().body(this.bookService.uploadBookFile(UUID.fromString(id), user, file));
+        }
 
 }

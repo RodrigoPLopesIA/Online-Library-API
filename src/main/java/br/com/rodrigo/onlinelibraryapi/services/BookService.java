@@ -190,7 +190,7 @@ public class BookService {
 
             this.bookRepository.save(book);
 
-            return new UploadFileDTO("Upload succefully!", url_image);
+            return new UploadFileDTO("Upload successfully!", url_image);
 
         } catch (Exception e) {
             throw new UniqueViolationException("Error: " + e.getMessage());
