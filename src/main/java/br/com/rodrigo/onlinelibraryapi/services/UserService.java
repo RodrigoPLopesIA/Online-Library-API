@@ -1,19 +1,16 @@
 package br.com.rodrigo.onlinelibraryapi.services;
 
-import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.com.rodrigo.onlinelibraryapi.dtos.user.CreateUserDto;
-import br.com.rodrigo.onlinelibraryapi.dtos.user.ListUserDto;
 import br.com.rodrigo.onlinelibraryapi.entities.User;
 import br.com.rodrigo.onlinelibraryapi.exceptions.UniqueViolationException;
 import br.com.rodrigo.onlinelibraryapi.mapper.UserMapper;
@@ -66,7 +63,7 @@ public class UserService implements UserDetailsService {
             user.getAuthentication().setPassword(passwordEncoder.encode(data.password()));
 
             User newUser = userRepository.save(user);
-            return userMapper.toListUserDTO(newUser);
+            return newUser;
         } catch (DataIntegrityViolationException e) {
             throw new UniqueViolationException(String.format("user %s already registered", data.email()));
         }
@@ -77,8 +74,9 @@ public class UserService implements UserDetailsService {
             throw new EntityNotFoundException(String.format("User %s not found!", id));
         });
         user.update(userDetails);
+        user.getAuthentication().setPassword(passwordEncoder.encode(user.getAuthentication().getPassword()));
 
-        return new ListUserDto(this.userRepository.save(user));
+        return this.userRepository.save(user);
     }
 
     public void delete(String id) {

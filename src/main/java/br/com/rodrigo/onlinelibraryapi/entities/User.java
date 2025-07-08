@@ -11,6 +11,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import br.com.rodrigo.onlinelibraryapi.dtos.profile.CreateProfileDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.user.CreateUserDto;
 import br.com.rodrigo.onlinelibraryapi.entities.embedded.Address;
 import br.com.rodrigo.onlinelibraryapi.entities.embedded.Authentication;
@@ -71,7 +72,13 @@ public class User implements UserDetails {
 
     public void update(CreateUserDto user) {
         this.setName(new Name(user.first_name(), user.last_name()));
-        this.setAuthentication(new Authentication(user.email(), user.password(), user.provider()));
+        this.setAuthentication(new Authentication(user.email(), user.provider()));
+        this.setAddress(new Address(user.street(), user.number(), user.complement(), user.neighborhood(), user.city(),
+                user.state(), user.zipCode()));
+    }
+    public void update(CreateProfileDTO user) {
+        this.setName(new Name(user.first_name(), user.last_name()));
+        this.setAuthentication(new Authentication(user.email(), ""));
         this.setAddress(new Address(user.street(), user.number(), user.complement(), user.neighborhood(), user.city(),
                 user.state(), user.zipCode()));
     }
