@@ -25,6 +25,7 @@ import br.com.rodrigo.onlinelibraryapi.dtos.user.CreateUserDto;
 import br.com.rodrigo.onlinelibraryapi.dtos.user.ListUserDto;
 import br.com.rodrigo.onlinelibraryapi.entities.User;
 import br.com.rodrigo.onlinelibraryapi.exceptions.UniqueViolationException;
+import br.com.rodrigo.onlinelibraryapi.mapper.UserMapper;
 
 @Tag(name = "Users", description = "managing user-related operations in the Online Library API. Provides endpoints to create, retrieve, update, and delete users.")
 @RestController
@@ -34,6 +35,9 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private UserMapper userMapper;
+
     @SecurityRequirement(name = "")
     @Operation(summary = "Creates a new user", responses = {
             @ApiResponse(responseCode = "201", description = "Create a new user successfully.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ListUserDto.class))),
@@ -42,10 +46,10 @@ public class UserController {
     })
     @PostMapping
     public ResponseEntity<ListUserDto> create(@Valid @RequestBody CreateUserDto user, UriComponentsBuilder builder) {
-        ListUserDto createdUser = userService.save(user);
+        User createdUser = userService.save(user);
 
-        var uri = builder.path("/api/v1/user/{id}").buildAndExpand(createdUser.id()).toUri();
-        return ResponseEntity.created(uri).body(createdUser);
+        var uri = builder.path("/api/v1/user/{id}").buildAndExpand(createdUser.getId()).toUri();
+        return ResponseEntity.created(uri).body(userMapper.toListUserDTO(createdUser));
     }
 
     @Operation(summary = "Get all users", responses = {
@@ -57,7 +61,7 @@ public class UserController {
             @PathVariable(value = "lastName", required = false) String lastName,
             @PathVariable(value = "email", required = false) String email) {
 
-        return ResponseEntity.ok(userService.findAll(page, firstName, lastName, email));
+        return ResponseEntity.ok(userService.findAll(page, firstName, lastName, email).map(userMapper::toListUserDTO));
     }
 
     @Operation(summary = "Retrieves a user by id", responses = {
@@ -67,7 +71,7 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<ListUserDto> show(@PathVariable String id) {
         User user = userService.findById(id);
-        return ResponseEntity.ok().body(new ListUserDto(user));
+        return ResponseEntity.ok().body(userMapper.toListUserDTO(user));
     }
 
 }

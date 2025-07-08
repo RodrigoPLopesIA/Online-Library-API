@@ -33,7 +33,7 @@ public class UserService implements UserDetailsService {
     @Autowired
     private UserMapper userMapper;
 
-    public Page<ListUserDto> findAll(Pageable pageable, String firstName, String lastName, String email) {
+    public Page<User> findAll(Pageable pageable, String firstName, String lastName, String email) {
 
         Specification<User> spec = UsersSpecification.conjunction();
 
@@ -46,7 +46,7 @@ public class UserService implements UserDetailsService {
         if(email != null && !email.isBlank()) {
             spec = spec.and(UsersSpecification.emailContains(email));
         }
-        return userRepository.findAll(spec, pageable).map(ListUserDto::new);
+        return userRepository.findAll(spec, pageable);
     }
 
     public User findById(String id) {
@@ -56,7 +56,7 @@ public class UserService implements UserDetailsService {
         return user;
     }
 
-    public ListUserDto save(CreateUserDto data) {
+    public User save(CreateUserDto data) {
         try {
             User user = userMapper.toUser(data);
 
@@ -72,7 +72,7 @@ public class UserService implements UserDetailsService {
         }
     }
 
-    public ListUserDto update(String id, CreateUserDto userDetails) {
+    public User update(String id, CreateUserDto userDetails) {
         User user = this.userRepository.findById(id).orElseThrow(() -> {
             throw new EntityNotFoundException(String.format("User %s not found!", id));
         });
