@@ -138,8 +138,13 @@ public class BookService {
                 .orElseThrow(() -> new EntityNotFoundException("Book with ID " + id + " not found."));
     }
 
-    public void delete(UUID id) {
+    public void delete(UUID id, User data) {
+
+        User user = this.userService.findById(data.getId());
         Book book = this.show(id);
+        if (!book.getUser().getId().equals(user.getId())) {
+            throw new UnauthorizedException("You are not authorized to perform this action on this book");
+        }
         bookRepository.delete(book);
 
     }
