@@ -32,7 +32,7 @@ minio:
   url: ${MINIO_HOST:http://localhost:9000}
   access:
     name: ${MINIO_NAME:admin} 
-    secret: ${MINIO_SECRET:admin}
+    secret: ${MINIO_SECRET:adminadmin}
   bucket:
     name: ${BUCKET_NAME:onlinelibrary}
 

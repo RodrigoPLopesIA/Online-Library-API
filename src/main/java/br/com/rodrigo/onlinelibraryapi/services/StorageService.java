@@ -1,14 +1,17 @@
 package br.com.rodrigo.onlinelibraryapi.services;
 
 import java.io.InputStream;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import io.minio.BucketExistsArgs;
+import io.minio.GetPresignedObjectUrlArgs;
 import io.minio.MakeBucketArgs;
 import io.minio.MinioClient;
 import io.minio.PutObjectArgs;
+import io.minio.http.Method;
 
 @Service
 public class StorageService {
@@ -31,4 +34,18 @@ public class StorageService {
             throw new RuntimeException("Ocorreu um erro: " + e.getMessage());
         }
     }
+
+    public String getFileUrl(String objectName, String bucketName) {
+    try {
+        return minioClient.getPresignedObjectUrl(
+            GetPresignedObjectUrlArgs.builder()
+                .method(Method.GET)
+                .bucket(bucketName)
+                .object(objectName)
+                .expiry(7, TimeUnit.DAYS)
+                .build());
+    } catch (Exception e) {
+        throw new RuntimeException("Erro ao gerar URL", e);
+    }
+}
 }
