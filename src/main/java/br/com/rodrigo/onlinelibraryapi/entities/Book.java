@@ -48,10 +48,9 @@ public class Book {
     private Author author;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable =  false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    
     @CreatedDate
     @Column(nullable = false, updatable = false, name = "created_at")
     private Instant createdAt;
@@ -59,8 +58,6 @@ public class Book {
     @LastModifiedDate
     @Column(nullable = false, name = "updated_at")
     private Instant updatedAt;
-
-
 
     public void update(Book data) {
         this.isbn = data.getIsbn();
@@ -76,7 +73,88 @@ public class Book {
         this.publicationDate = data.publicationDate();
         this.genre = data.genre();
         this.price = data.price();
+    }
 
+    // Builder implementation
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static class Builder {
+        private UUID id;
+        private String isbn;
+        private String title;
+        private LocalDate publicationDate;
+        private Genre genre;
+        private BigDecimal price;
+        private Author author;
+        private User user;
+        private Instant createdAt;
+        private Instant updatedAt;
+
+        public Builder id(UUID id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder isbn(String isbn) {
+            this.isbn = isbn;
+            return this;
+        }
+
+        public Builder title(String title) {
+            this.title = title;
+            return this;
+        }
+
+        public Builder publicationDate(LocalDate publicationDate) {
+            this.publicationDate = publicationDate;
+            return this;
+        }
+
+        public Builder genre(Genre genre) {
+            this.genre = genre;
+            return this;
+        }
+
+        public Builder price(BigDecimal price) {
+            this.price = price;
+            return this;
+        }
+
+        public Builder author(Author author) {
+            this.author = author;
+            return this;
+        }
+
+        public Builder user(User user) {
+            this.user = user;
+            return this;
+        }
+
+        public Builder createdAt(Instant createdAt) {
+            this.createdAt = createdAt;
+            return this;
+        }
+
+        public Builder updatedAt(Instant updatedAt) {
+            this.updatedAt = updatedAt;
+            return this;
+        }
+
+        public Book build() {
+            Book book = new Book();
+            book.id = this.id;
+            book.isbn = this.isbn;
+            book.title = this.title;
+            book.publicationDate = this.publicationDate;
+            book.genre = this.genre;
+            book.price = this.price;
+            book.author = this.author;
+            book.user = this.user;
+            book.createdAt = this.createdAt;
+            book.updatedAt = this.updatedAt;
+            return book;
+        }
     }
 }
-

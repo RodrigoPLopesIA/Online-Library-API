@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,7 @@ import br.com.rodrigo.onlinelibraryapi.dtos.books.CreateBookDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.books.ListBookDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.user.ListUserDto;
 import br.com.rodrigo.onlinelibraryapi.entities.Book;
+import br.com.rodrigo.onlinelibraryapi.entities.User;
 import br.com.rodrigo.onlinelibraryapi.enums.Genre;
 import br.com.rodrigo.onlinelibraryapi.exceptions.UniqueViolationException;
 import br.com.rodrigo.onlinelibraryapi.mapper.BookMapper;
@@ -84,8 +86,8 @@ public class BookController {
 
     })
     @PostMapping
-    public ResponseEntity<ListBookDTO> create(@Valid @RequestBody CreateBookDTO data, UriComponentsBuilder uri) {
-        Book book = bookService.create(mapper.toEntity(data));
+    public ResponseEntity<ListBookDTO> create(@Valid @RequestBody CreateBookDTO data, UriComponentsBuilder uri, @AuthenticationPrincipal User user) {
+        Book book = bookService.create(data, user);
 
         URI uriBuilder = uri.path("/books/{id}").buildAndExpand(book.getId()).toUri();
 
@@ -102,8 +104,8 @@ public class BookController {
 
     })
     @PutMapping("/{id}")
-    public ResponseEntity<ListBookDTO> update(@PathVariable String id, @Valid @RequestBody CreateBookDTO data) {
-        Book book = bookService.update(UUID.fromString(id), mapper.toEntity(data));
+    public ResponseEntity<ListBookDTO> update(@PathVariable String id, @Valid @RequestBody CreateBookDTO data, @AuthenticationPrincipal User user) {
+        Book book = bookService.update(UUID.fromString(id), mapper.toEntity(data), user);
         return ResponseEntity.ok().body(mapper.toDto(book));
     }
 

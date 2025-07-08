@@ -19,10 +19,19 @@ import jakarta.servlet.http.HttpServletRequest;
 public class ApiErrorHandler {
 
         @ExceptionHandler(IllegalFormatConversionException.class)
-        public ResponseEntity<ErrorMessage> illegalFormatConversionException(IllegalFormatConversionException ex, HttpServletRequest request) {
+        public ResponseEntity<ErrorMessage> illegalFormatConversionException(IllegalFormatConversionException ex,
+                        HttpServletRequest request) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .body(new ErrorMessage(request, HttpStatus.BAD_REQUEST, ex.getMessage()));
+        }
+
+        @ExceptionHandler(UnauthorizedException.class)
+        public ResponseEntity<ErrorMessage> unauthorizedException(UnauthorizedException ex,
+                        HttpServletRequest request) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .body(new ErrorMessage(request, HttpStatus.UNAUTHORIZED, ex.getMessage()));
         }
 
         @ExceptionHandler(BadCredentialsException.class)

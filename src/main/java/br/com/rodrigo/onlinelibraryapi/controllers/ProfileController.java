@@ -10,19 +10,12 @@ import br.com.rodrigo.onlinelibraryapi.dtos.profile.CreateProfileDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.profile.ListProfileDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.profile.UpdatePasswordDTO;
 import br.com.rodrigo.onlinelibraryapi.entities.User;
-import br.com.rodrigo.onlinelibraryapi.exceptions.UniqueViolationException;
 import br.com.rodrigo.onlinelibraryapi.services.ProfileService;
-import br.com.rodrigo.onlinelibraryapi.services.StorageService;
-import io.micrometer.core.ipc.http.HttpSender.Response;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
-
-import java.util.IllegalFormatConversionException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PutMapping;
