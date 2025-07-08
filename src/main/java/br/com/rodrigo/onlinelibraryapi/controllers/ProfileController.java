@@ -6,12 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.rodrigo.onlinelibraryapi.dtos.profile.CreateProfileDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.profile.ListProfileDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.profile.UpdatePasswordDTO;
-import br.com.rodrigo.onlinelibraryapi.dtos.user.CreateUserDto;
-import br.com.rodrigo.onlinelibraryapi.dtos.user.ListUserDto;
 import br.com.rodrigo.onlinelibraryapi.entities.User;
-import br.com.rodrigo.onlinelibraryapi.mapper.UserMapper;
 import br.com.rodrigo.onlinelibraryapi.services.ProfileService;
-import br.com.rodrigo.onlinelibraryapi.services.UserService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 

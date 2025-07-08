@@ -31,10 +31,8 @@ logging:
 minio:
   url: http://localhost:9000 
   access:
-    name: suaChaveDeAcesso 
-    secret: suaChaveSecreta 
-  bucket:
-    name: seuNomeDeBucket
+    name: admin 
+    secret: admin
   
 
 springdoc:
