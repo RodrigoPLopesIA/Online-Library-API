@@ -1,15 +1,15 @@
+server:
+  port: ${SERVER_PORT:8080}
 spring:
   profiles:
       active: ${SPRING_PROFILES_ACTIVE:dev}
   application:
     name: ${APP_NAME:onlinelibraryapi}
-
   datasource:
     url: ${DB_URL:jdbc:postgresql://localhost:5432/onlinelibrary?useSSL=false&usePublicKeyRetrieval=true}
     username: ${DB_USERNAME:postgres}
     password: ${DB_PASSWORD:postgres}
     driver-class-name: org.postgresql.Driver
-
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
@@ -21,16 +21,24 @@ spring:
   output:
     ansi:
       enabled: always
+  servlet: 
+    multipart:
+      max-request-size: 10MB
+      max-file-size: 10MB
 logging:
   file:
     name: ${LOG_FILE:app.log}
   
 
 
-server:
-  port: ${SERVER_PORT:8080}
 
-  
+minio:
+  url: ${MINIO_HOST:http://localhost:9000}
+  access:
+    name: ${MINIO_NAME:admin} 
+    secret: ${MINIO_SECRET:adminadmin}
+  bucket:
+    name: ${BUCKET_NAME:onlinelibrary}
 
 springdoc:
   swagger-ui:

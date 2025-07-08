@@ -1,5 +1,6 @@
 package br.com.rodrigo.onlinelibraryapi.services;
 
+import java.util.Arrays;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,15 +8,24 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import br.com.rodrigo.onlinelibraryapi.dtos.books.CreateBookDTO;
+import br.com.rodrigo.onlinelibraryapi.dtos.files.UploadFileDTO;
 import br.com.rodrigo.onlinelibraryapi.entities.Author;
 import br.com.rodrigo.onlinelibraryapi.entities.Book;
+import br.com.rodrigo.onlinelibraryapi.entities.User;
 import br.com.rodrigo.onlinelibraryapi.enums.Genre;
+import br.com.rodrigo.onlinelibraryapi.exceptions.UnauthorizedException;
+import br.com.rodrigo.onlinelibraryapi.exceptions.UniqueViolationException;
+import br.com.rodrigo.onlinelibraryapi.patterns.factory.BookFactory;
 import br.com.rodrigo.onlinelibraryapi.repositories.BookRepository;
 import br.com.rodrigo.onlinelibraryapi.repositories.specs.BookSpecification;
 import jakarta.persistence.EntityNotFoundException;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 public class BookService {
 
     @Autowired
@@ -24,7 +34,14 @@ public class BookService {
     @Autowired
     private AuthorService authorService;
 
-    public Page<Book> index(Pageable pageable, String title, String isbn, String authorName, Genre genre, String nationality) {
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    StorageService storageService;
+
+    public Page<Book> index(Pageable pageable, String title, String isbn, String authorName, Genre genre,
+            String nationality) {
 
         Specification<Book> spec = BookSpecification.conjunction();
 
@@ -44,35 +61,50 @@ public class BookService {
             spec = spec.and(BookSpecification.authorNameContains(authorName));
         }
 
-        if(nationality != null && !nationality.isBlank()) {
+        if (nationality != null && !nationality.isBlank()) {
             spec = spec.and(BookSpecification.authorNationalityLike(nationality));
         }
 
         return bookRepository.findAll(spec, pageable);
     }
 
-    public Book create(Book data) {
+    public Book create(CreateBookDTO data, User authUser) {
 
         // verify if book alread exists by isbn
-        if (this.existsByIsbn(data.getIsbn())) {
-            throw new IllegalArgumentException("Book with ISBN " + data.getIsbn() + " already exists.");
+        if (this.existsByIsbn(data.isbn())) {
+            throw new IllegalArgumentException("Book with ISBN " + data.isbn() + " already exists.");
         }
 
         // verify if book already exists by title
-        if (this.existsByTitle(data.getTitle())) {
-            throw new IllegalArgumentException("Book with title " + data.getTitle() + " already exists.");
+        if (this.existsByTitle(data.isbn())) {
+            throw new IllegalArgumentException("Book with title " + data.title() + " already exists.");
         }
 
         // verify if author exists by id
-        Author author = authorService.show(data.getAuthor().getId());
-        data.setAuthor(author);
+        Author author = authorService.show(data.authorId());
+        // verify if user exists by id
+        User user = this.userService.findById(authUser.getId());
 
-        return bookRepository.save(data);
+        Book book = BookFactory.createFrom(data);
+        book.setAuthor(author);
+        book.setUser(user);
+        
+        Book created = bookRepository.save(book);
+
+        author.setBooks(Arrays.asList(created));
+        user.setBooks(Arrays.asList(created));
+
+        return created;
     }
 
-    public Book update(UUID id, Book data) {
+    public Book update(UUID id, Book data, User authUser) {
         Book book = this.show(id);
+        log.error("book user {}", book.getUser().getId());
+        log.error("authUser user {}", authUser.getId());
 
+        if (!book.getUser().getId().equals(authUser.getId())) {
+            throw new UnauthorizedException("You are not authorized to perform this action on this book");
+        }
         // verify if book already exists by isbn
         if (!book.getIsbn().equals(data.getIsbn()) && this.existsByIsbn(data.getIsbn())) {
             throw new IllegalArgumentException("Book with ISBN " + data.getIsbn() + " already exists.");
@@ -85,11 +117,22 @@ public class BookService {
 
         // verify if author exists by id
         Author author = authorService.show(data.getAuthor().getId());
-
-        book.update(data);
         book.setAuthor(author);
 
-        return bookRepository.save(book);
+        // verify if user exists by id
+        User user = this.userService.findById(authUser.getId());
+        data.setUser(user);
+
+        book = BookFactory.createFrom(data);
+        book.setAuthor(author);
+        book.setUser(user);
+
+        Book updated = bookRepository.save(book);
+
+        author.setBooks(Arrays.asList(updated));
+        user.setBooks(Arrays.asList(updated));
+
+        return book;
     }
 
     public Book show(UUID id) {
@@ -97,8 +140,13 @@ public class BookService {
                 .orElseThrow(() -> new EntityNotFoundException("Book with ID " + id + " not found."));
     }
 
-    public void delete(UUID id) {
+    public void delete(UUID id, User data) {
+
+        User user = this.userService.findById(data.getId());
         Book book = this.show(id);
+        if (!book.getUser().getId().equals(user.getId())) {
+            throw new UnauthorizedException("You are not authorized to perform this action on this book");
+        }
         bookRepository.delete(book);
 
     }
@@ -111,4 +159,39 @@ public class BookService {
         return bookRepository.existsByTitle(title);
     }
 
+    public UploadFileDTO uploadBookFile(UUID bookId, User data, MultipartFile file) {
+        try {
+
+            User user = this.userService.findById(data.getId());
+            Book book = this.show(bookId);
+
+            if (!user.getId().equals(book.getUser().getId())) {
+                throw new UnauthorizedException("You are not authorized to perform this action on this book");
+            }
+
+            this.storageService.validateFile(file, true);
+
+            String bucketName = "book";
+            String objectName = this.storageService.generateFileName(
+                    user.getName().getFirst_name() + "_" + user.getName().getLast_name() + "_" + book.getTitle(),
+                    file.getOriginalFilename());
+            String contentType = file.getContentType();
+
+            storageService.uploadFile(
+                    bucketName,
+                    objectName,
+                    file.getInputStream(),
+                    contentType);
+            String url_image = storageService.getFileUrl(objectName, bucketName);
+
+            book.setBookFile(url_image);
+
+            this.bookRepository.save(book);
+
+            return new UploadFileDTO("Upload successfully!", url_image);
+
+        } catch (Exception e) {
+            throw new UniqueViolationException("Error: " + e.getMessage());
+        } 
+    }
 }
