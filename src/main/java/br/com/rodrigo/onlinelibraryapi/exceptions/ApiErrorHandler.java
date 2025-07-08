@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,6 +21,14 @@ public class ApiErrorHandler {
 
         @ExceptionHandler(IllegalFormatConversionException.class)
         public ResponseEntity<ErrorMessage> illegalFormatConversionException(IllegalFormatConversionException ex,
+                        HttpServletRequest request) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .body(new ErrorMessage(request, HttpStatus.BAD_REQUEST, ex.getMessage()));
+        }
+
+        @ExceptionHandler(MaxUploadSizeExceededException.class)
+        public ResponseEntity<ErrorMessage> maxUploadSizeExceededException(MaxUploadSizeExceededException ex,
                         HttpServletRequest request) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                                 .contentType(MediaType.APPLICATION_JSON)

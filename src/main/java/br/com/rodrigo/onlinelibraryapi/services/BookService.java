@@ -8,13 +8,16 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import br.com.rodrigo.onlinelibraryapi.dtos.books.CreateBookDTO;
+import br.com.rodrigo.onlinelibraryapi.dtos.files.UploadFileDTO;
 import br.com.rodrigo.onlinelibraryapi.entities.Author;
 import br.com.rodrigo.onlinelibraryapi.entities.Book;
 import br.com.rodrigo.onlinelibraryapi.entities.User;
 import br.com.rodrigo.onlinelibraryapi.enums.Genre;
 import br.com.rodrigo.onlinelibraryapi.exceptions.UnauthorizedException;
+import br.com.rodrigo.onlinelibraryapi.exceptions.UniqueViolationException;
 import br.com.rodrigo.onlinelibraryapi.repositories.BookRepository;
 import br.com.rodrigo.onlinelibraryapi.repositories.specs.BookSpecification;
 import jakarta.persistence.EntityNotFoundException;
@@ -32,6 +35,9 @@ public class BookService {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    StorageService storageService;
 
     public Page<Book> index(Pageable pageable, String title, String isbn, String authorName, Genre genre,
             String nationality) {
@@ -78,15 +84,14 @@ public class BookService {
         // verify if user exists by id
         User user = this.userService.findById(authUser.getId());
 
-
         Book book = Book.builder()
-        .title(data.title())
-        .isbn(data.isbn())
-        .genre(data.genre())
-        .author(author)
-        .user(user)
-        .publicationDate(data.publicationDate())
-        .build();
+                .title(data.title())
+                .isbn(data.isbn())
+                .genre(data.genre())
+                .author(author)
+                .user(user)
+                .publicationDate(data.publicationDate())
+                .build();
 
         Book created = bookRepository.save(book);
 
@@ -121,8 +126,7 @@ public class BookService {
         // verify if user exists by id
         User user = this.userService.findById(authUser.getId());
         data.setUser(user);
-        
-        
+
         book.update(data);
 
         Book updated = bookRepository.save(book);
@@ -157,4 +161,39 @@ public class BookService {
         return bookRepository.existsByTitle(title);
     }
 
+    public UploadFileDTO uploadBookFile(UUID bookId, User data, MultipartFile file) {
+        try {
+
+            User user = this.userService.findById(data.getId());
+            Book book = this.show(bookId);
+
+            if (!user.getId().equals(book.getId().toString())) {
+                throw new UnauthorizedException("You are not authorized to perform this action on this book");
+            }
+
+            this.storageService.validateFile(file, true);
+
+            String bucketName = "book";
+            String objectName = this.storageService.generateFileName(
+                    user.getName().getFirst_name() + "_" + user.getName().getLast_name() + "_" + book.getTitle(),
+                    file.getOriginalFilename());
+            String contentType = file.getContentType();
+
+            storageService.uploadFile(
+                    bucketName,
+                    objectName,
+                    file.getInputStream(),
+                    contentType);
+            String url_image = storageService.getFileUrl(objectName, bucketName);
+
+            book.setBookFile(url_image);
+
+            this.bookRepository.save(book);
+
+            return new UploadFileDTO("Upload succefully!", url_image);
+
+        } catch (Exception e) {
+            throw new UniqueViolationException("Error: " + e.getMessage());
+        } 
+    }
 }

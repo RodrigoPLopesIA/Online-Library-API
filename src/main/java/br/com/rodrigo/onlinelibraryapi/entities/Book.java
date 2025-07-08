@@ -43,6 +43,9 @@ public class Book {
     @Column(precision = 15, scale = 2)
     private BigDecimal price;
 
+    
+    private String bookFile;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_author", nullable = false)
     private Author author;
