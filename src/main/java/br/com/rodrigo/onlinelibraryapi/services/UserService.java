@@ -49,11 +49,11 @@ public class UserService implements UserDetailsService {
         return userRepository.findAll(spec, pageable).map(ListUserDto::new);
     }
 
-    public ListUserDto findById(String id) {
+    public User findById(String id) {
         User user = this.userRepository.findById(id).orElseThrow(() -> {
             throw new EntityNotFoundException(String.format("User %s not found!", id));
         });
-        return new ListUserDto(user);
+        return user;
     }
 
     public ListUserDto save(CreateUserDto data) {

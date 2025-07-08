@@ -23,6 +23,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.rodrigo.onlinelibraryapi.dtos.user.CreateUserDto;
 import br.com.rodrigo.onlinelibraryapi.dtos.user.ListUserDto;
+import br.com.rodrigo.onlinelibraryapi.entities.User;
 import br.com.rodrigo.onlinelibraryapi.exceptions.UniqueViolationException;
 
 @Tag(name = "Users", description = "managing user-related operations in the Online Library API. Provides endpoints to create, retrieve, update, and delete users.")
@@ -65,8 +66,8 @@ public class UserController {
     })
     @GetMapping("/{id}")
     public ResponseEntity<ListUserDto> show(@PathVariable String id) {
-        ListUserDto user = userService.findById(id);
-        return ResponseEntity.ok().body(user);
+        User user = userService.findById(id);
+        return ResponseEntity.ok().body(new ListUserDto(user));
     }
 
 }

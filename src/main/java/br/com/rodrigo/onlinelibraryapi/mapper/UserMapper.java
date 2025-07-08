@@ -3,6 +3,7 @@ package br.com.rodrigo.onlinelibraryapi.mapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import br.com.rodrigo.onlinelibraryapi.dtos.profile.ListProfileDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.user.CreateUserDto;
 import br.com.rodrigo.onlinelibraryapi.dtos.user.ListUserDto;
 import br.com.rodrigo.onlinelibraryapi.entities.User;

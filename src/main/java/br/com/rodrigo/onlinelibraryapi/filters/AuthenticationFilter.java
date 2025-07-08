@@ -30,11 +30,11 @@ public class AuthenticationFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
-        String token = this.recoverToken(request);
+        String token = this.recoverToken(request);  
+        
 
         if (token != null) {
             String username = JWTUtils.decode(token).getSubject();
-
             User user = this.userRepository.findByAuthenticationEmail(username);
 
             UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
