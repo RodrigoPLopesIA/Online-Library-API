@@ -1,5 +1,7 @@
 package br.com.rodrigo.onlinelibraryapi.exceptions;
 
+import java.util.IllegalFormatConversionException;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
@@ -16,45 +18,53 @@ import jakarta.servlet.http.HttpServletRequest;
 @RestControllerAdvice
 public class ApiErrorHandler {
 
-    @ExceptionHandler(BadCredentialsException.class)
-    public ResponseEntity<ErrorMessage> badCredentialsException(BadCredentialsException ex,
-            HttpServletRequest request) {
-        return ResponseEntity.status(HttpStatus.FORBIDDEN)
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(new ErrorMessage(request, HttpStatus.FORBIDDEN, ex.getMessage()));
-    }
+        @ExceptionHandler(IllegalFormatConversionException.class)
+        public ResponseEntity<ErrorMessage> illegalFormatConversionException(IllegalFormatConversionException ex, HttpServletRequest request) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .body(new ErrorMessage(request, HttpStatus.BAD_REQUEST, ex.getMessage()));
+        }
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ErrorMessage> methodArgumentNotValidException(MethodArgumentNotValidException ex,
-            HttpServletRequest request, BindingResult result) {
-        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(new ErrorMessage(request, HttpStatus.UNPROCESSABLE_ENTITY, "Invalid fields!", result));
-    }
+        @ExceptionHandler(BadCredentialsException.class)
+        public ResponseEntity<ErrorMessage> badCredentialsException(BadCredentialsException ex,
+                        HttpServletRequest request) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .body(new ErrorMessage(request, HttpStatus.FORBIDDEN, ex.getMessage()));
+        }
 
-    @ExceptionHandler(UniqueViolationException.class)
-    public ResponseEntity<ErrorMessage> dataIntegrityViolationException(UniqueViolationException ex,
-            HttpServletRequest request) {
+        @ExceptionHandler(MethodArgumentNotValidException.class)
+        public ResponseEntity<ErrorMessage> methodArgumentNotValidException(MethodArgumentNotValidException ex,
+                        HttpServletRequest request, BindingResult result) {
+                return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .body(new ErrorMessage(request, HttpStatus.UNPROCESSABLE_ENTITY, "Invalid fields!",
+                                                result));
+        }
 
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(new ErrorMessage(request, HttpStatus.CONFLICT, ex.getMessage()));
-    }
+        @ExceptionHandler(UniqueViolationException.class)
+        public ResponseEntity<ErrorMessage> dataIntegrityViolationException(UniqueViolationException ex,
+                        HttpServletRequest request) {
 
-    @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<ErrorMessage> illegalArgumentException(IllegalArgumentException ex,
-            HttpServletRequest request) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(new ErrorMessage(request, HttpStatus.BAD_REQUEST, ex.getMessage()));
-    }
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .body(new ErrorMessage(request, HttpStatus.CONFLICT, ex.getMessage()));
+        }
 
-    @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity<ErrorMessage> entityNotFoundException(EntityNotFoundException ex,
-            HttpServletRequest request) {
+        @ExceptionHandler(IllegalArgumentException.class)
+        public ResponseEntity<ErrorMessage> illegalArgumentException(IllegalArgumentException ex,
+                        HttpServletRequest request) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .body(new ErrorMessage(request, HttpStatus.BAD_REQUEST, ex.getMessage()));
+        }
 
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(new ErrorMessage(request, HttpStatus.NOT_FOUND, ex.getMessage()));
-    }
+        @ExceptionHandler(EntityNotFoundException.class)
+        public ResponseEntity<ErrorMessage> entityNotFoundException(EntityNotFoundException ex,
+                        HttpServletRequest request) {
+
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .body(new ErrorMessage(request, HttpStatus.NOT_FOUND, ex.getMessage()));
+        }
 }
