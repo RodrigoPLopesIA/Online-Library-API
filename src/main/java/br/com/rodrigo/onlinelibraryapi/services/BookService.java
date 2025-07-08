@@ -18,6 +18,7 @@ import br.com.rodrigo.onlinelibraryapi.entities.User;
 import br.com.rodrigo.onlinelibraryapi.enums.Genre;
 import br.com.rodrigo.onlinelibraryapi.exceptions.UnauthorizedException;
 import br.com.rodrigo.onlinelibraryapi.exceptions.UniqueViolationException;
+import br.com.rodrigo.onlinelibraryapi.patterns.factory.BookFactory;
 import br.com.rodrigo.onlinelibraryapi.repositories.BookRepository;
 import br.com.rodrigo.onlinelibraryapi.repositories.specs.BookSpecification;
 import jakarta.persistence.EntityNotFoundException;
@@ -84,15 +85,10 @@ public class BookService {
         // verify if user exists by id
         User user = this.userService.findById(authUser.getId());
 
-        Book book = Book.builder()
-                .title(data.title())
-                .isbn(data.isbn())
-                .genre(data.genre())
-                .author(author)
-                .user(user)
-                .publicationDate(data.publicationDate())
-                .build();
-
+        Book book = BookFactory.createFrom(data);
+        book.setAuthor(author);
+        book.setUser(user);
+        
         Book created = bookRepository.save(book);
 
         author.setBooks(Arrays.asList(created));
@@ -127,7 +123,9 @@ public class BookService {
         User user = this.userService.findById(authUser.getId());
         data.setUser(user);
 
-        book.update(data);
+        book = BookFactory.createFrom(data);
+        book.setAuthor(author);
+        book.setUser(user);
 
         Book updated = bookRepository.save(book);
 
@@ -167,7 +165,7 @@ public class BookService {
             User user = this.userService.findById(data.getId());
             Book book = this.show(bookId);
 
-            if (!user.getId().equals(book.getId().toString())) {
+            if (!user.getId().equals(book.getUser().getId())) {
                 throw new UnauthorizedException("You are not authorized to perform this action on this book");
             }
 

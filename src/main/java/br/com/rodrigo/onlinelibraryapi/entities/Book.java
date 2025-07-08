@@ -43,7 +43,7 @@ public class Book {
     @Column(precision = 15, scale = 2)
     private BigDecimal price;
 
-    
+    @Column(length = 512)
     private String bookFile;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -61,22 +61,6 @@ public class Book {
     @LastModifiedDate
     @Column(nullable = false, name = "updated_at")
     private Instant updatedAt;
-
-    public void update(Book data) {
-        this.isbn = data.getIsbn();
-        this.title = data.getTitle();
-        this.publicationDate = data.getPublicationDate();
-        this.genre = data.getGenre();
-        this.price = data.getPrice();
-    }
-
-    public Book(CreateBookDTO data) {
-        this.isbn = data.isbn();
-        this.title = data.title();
-        this.publicationDate = data.publicationDate();
-        this.genre = data.genre();
-        this.price = data.price();
-    }
 
     // Builder implementation
     public static Builder builder() {
