@@ -62,10 +62,16 @@ public class ProfileService {
         return user;
     }
 
-    public UploadFileDTO uploadProfileImage(User user, MultipartFile file) {
+    public UploadFileDTO uploadProfileImage(User data, MultipartFile file) {
         try {
+
+            User user = this.findById(data.getId());
+
+            this.storageService.validateFile(file, true);
+            
             String bucketName = "profile";
-            String objectName = user.getUsername() + "_" + file.getOriginalFilename();
+            String objectName = this.storageService.generateFileName(
+                    user.getName().getFirst_name() + "_" + user.getName().getLast_name(), file.getOriginalFilename());
             String contentType = file.getContentType();
 
             storageService.uploadFile(
@@ -75,7 +81,12 @@ public class ProfileService {
                     contentType);
             String url_image = storageService.getFileUrl(objectName, bucketName);
 
-        
+
+            
+            user.setProfileImage(url_image);
+
+            this.userRepository.save(user);
+
             return new UploadFileDTO("Upload succefully!", url_image);
 
         } catch (Exception e) {

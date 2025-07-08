@@ -54,6 +54,9 @@ public class User implements UserDetails {
     @Embedded
     private Address address;
 
+    @Column(nullable = true, length = 512)
+    private String profileImage;
+
 
     @OneToMany(mappedBy = "user")
     List<Book> books = new ArrayList<>();
