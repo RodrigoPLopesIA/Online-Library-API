@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Updated</title>
+</head>
+<body style="background-color: #f4f4f9; color: #22223B; font-family: Georgia, serif; padding: 20px;">
+  <div style="max-width: 600px; background-color: #ffffff; padding: 30px; border-radius: 12px; border: 1px solid #C9ADA7; margin: auto; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);">
+    <h2 style="color: #4A4E69;">Book Updated</h2>
+    <p style="font-size: 16px;">Hello <span th:text="${userName}">User</span>,</p>
+    <p style="font-size: 16px;">Your book "<strong th:text="${bookTitle}">Book Title</strong>" has been updated successfully.</p>
+    <a th:href="${bookUrl}" style="display: inline-block; background-color: #9A8C98; color: #ffffff; padding: 10px 20px; text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 20px;">View Updated Book</a>
+    <p style="margin-top: 30px; font-style: italic;">Thanks for keeping your content fresh,<br>The Online Library Team</p>
+  </div>
+</body>
+</html>

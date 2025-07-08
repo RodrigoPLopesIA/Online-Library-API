@@ -40,6 +40,7 @@ public class BookService {
     @Autowired
     StorageService storageService;
 
+
     public Page<Book> index(Pageable pageable, String title, String isbn, String authorName, Genre genre,
             String nationality) {
 
@@ -64,7 +65,7 @@ public class BookService {
         if (nationality != null && !nationality.isBlank()) {
             spec = spec.and(BookSpecification.authorNationalityLike(nationality));
         }
-
+        
         return bookRepository.findAll(spec, pageable);
     }
 
@@ -88,7 +89,7 @@ public class BookService {
         Book book = BookFactory.createFrom(data);
         book.setAuthor(author);
         book.setUser(user);
-        
+
         Book created = bookRepository.save(book);
 
         author.setBooks(Arrays.asList(created));
@@ -192,6 +193,6 @@ public class BookService {
 
         } catch (Exception e) {
             throw new UniqueViolationException("Error: " + e.getMessage());
-        } 
+        }
     }
 }

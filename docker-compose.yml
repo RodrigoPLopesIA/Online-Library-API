@@ -47,6 +47,12 @@ services:
       interval: 30s
       timeout: 20s
       retries: 3
+  mailhog:
+    image: mailhog/mailhog
+    container_name: mailhog
+    ports:
+      - "${MAILHOG_SMTP_PORT}:${MAILHOG_SMTP_PORT}"  
+      - "${MAILHOG_PORT_UI}:${MAILHOG_PORT_UI}"  
 
 networks:
   minionetwork:
