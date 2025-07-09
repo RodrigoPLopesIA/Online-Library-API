@@ -1,15 +1,11 @@
 package br.com.rodrigo.onlinelibraryapi.services;
 
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.context.IContext;
 import org.thymeleaf.context.Context;
 
 import jakarta.mail.MessagingException;
@@ -20,8 +16,10 @@ public class EmailService {
 
     @Autowired
     private JavaMailSender mailSender;
+
     @Autowired
     private TemplateEngine templateEngine;
+
     @Value("${mail.from}")
     private String MAIL_FROM;
 
