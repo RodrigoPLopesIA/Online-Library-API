@@ -9,13 +9,15 @@ import org.springframework.stereotype.Service;
 import br.com.rodrigo.onlinelibraryapi.dtos.authentication.CredentialsDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.token.TokenJWT;
 import br.com.rodrigo.onlinelibraryapi.entities.User;
-import br.com.rodrigo.onlinelibraryapi.utils.JWTUtils;
 
 @Service
 public class AuthenticationService {
 
     @Autowired
     private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private JWTService jwtService;
 
     public TokenJWT authenticate(CredentialsDTO input) {
 
@@ -26,7 +28,7 @@ public class AuthenticationService {
 
         User user =  (User) authenticate.getPrincipal();
 
-        TokenJWT token = JWTUtils.createToken(user.getUsername());
+        TokenJWT token = jwtService.createToken(user.getUsername());
 
         return new TokenJWT(token.token(), token.expiresIn());
 

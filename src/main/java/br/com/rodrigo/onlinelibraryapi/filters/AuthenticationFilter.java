@@ -13,7 +13,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 
 import br.com.rodrigo.onlinelibraryapi.entities.User;
 import br.com.rodrigo.onlinelibraryapi.repositories.UserRepository;
-import br.com.rodrigo.onlinelibraryapi.utils.JWTUtils;
+import br.com.rodrigo.onlinelibraryapi.services.JWTService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -27,6 +27,9 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private JWTService jwtService;
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
@@ -34,7 +37,7 @@ public class AuthenticationFilter extends OncePerRequestFilter {
         
 
         if (token != null) {
-            String username = JWTUtils.decode(token).getSubject();
+            String username = jwtService.decode(token).getSubject();
             User user = this.userRepository.findByAuthenticationEmail(username);
 
             UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
