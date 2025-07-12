@@ -108,7 +108,7 @@ public class BookController {
         })
         @PutMapping("/{id}")
         public ResponseEntity<ListBookDTO> update(@PathVariable String id, @Valid @RequestBody CreateBookDTO data,
-                        @AuthenticationPrincipal User user) {
+                        @AuthenticationPrincipal User user) throws MessagingException {
                 Book book = bookService.update(UUID.fromString(id), mapper.toEntity(data), user);
                 return ResponseEntity.ok().body(mapper.toDto(book));
         }

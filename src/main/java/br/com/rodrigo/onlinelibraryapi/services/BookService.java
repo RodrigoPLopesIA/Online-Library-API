@@ -100,11 +100,11 @@ public class BookService {
         author.setBooks(Arrays.asList(created));
         user.setBooks(Arrays.asList(created));
 
-        emailBookService.send(user.getAuthentication().getEmail(), "Book created!");
+        emailBookService.send(user.getAuthentication().getEmail(), "Book created!", book);
         return created;
     }
 
-    public Book update(UUID id, Book data, User authUser) {
+    public Book update(UUID id, Book data, User authUser) throws MessagingException {
         Book book = this.show(id);
         log.error("book user {}", book.getUser().getId());
         log.error("authUser user {}", authUser.getId());
@@ -138,7 +138,9 @@ public class BookService {
 
         author.setBooks(Arrays.asList(updated));
         user.setBooks(Arrays.asList(updated));
-
+        
+        emailBookService.send(user.getAuthentication().getEmail(), "Book updated!", book);
+       
         return book;
     }
 
