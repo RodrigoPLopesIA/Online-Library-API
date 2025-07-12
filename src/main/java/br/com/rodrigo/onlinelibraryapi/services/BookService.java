@@ -10,7 +10,6 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-
 import br.com.rodrigo.onlinelibraryapi.dtos.books.CreateBookDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.files.UploadFileDTO;
 import br.com.rodrigo.onlinelibraryapi.entities.Author;
@@ -45,7 +44,6 @@ public class BookService {
     @Autowired
     EmailBookService emailBookService;
 
-
     public Page<Book> index(Pageable pageable, String title, String isbn, String authorName, Genre genre,
             String nationality) {
 
@@ -70,7 +68,7 @@ public class BookService {
         if (nationality != null && !nationality.isBlank()) {
             spec = spec.and(BookSpecification.authorNationalityLike(nationality));
         }
-        
+
         return bookRepository.findAll(spec, pageable);
     }
 
@@ -100,7 +98,7 @@ public class BookService {
         author.setBooks(Arrays.asList(created));
         user.setBooks(Arrays.asList(created));
 
-        emailBookService.send(user.getAuthentication().getEmail(), "Book created!", book);
+        emailBookService.send(user.getAuthentication().getEmail(), "Book created!", "created", book);
         return created;
     }
 
@@ -138,9 +136,9 @@ public class BookService {
 
         author.setBooks(Arrays.asList(updated));
         user.setBooks(Arrays.asList(updated));
-        
-        emailBookService.send(user.getAuthentication().getEmail(), "Book updated!", book);
-       
+
+        emailBookService.send(user.getAuthentication().getEmail(), "Book updated!", "updated", book);
+
         return book;
     }
 
@@ -149,7 +147,7 @@ public class BookService {
                 .orElseThrow(() -> new EntityNotFoundException("Book with ID " + id + " not found."));
     }
 
-    public void delete(UUID id, User data) {
+    public void delete(UUID id, User data) throws MessagingException {
 
         User user = this.userService.findById(data.getId());
         Book book = this.show(id);
@@ -157,6 +155,7 @@ public class BookService {
             throw new UnauthorizedException("You are not authorized to perform this action on this book");
         }
         bookRepository.delete(book);
+        emailBookService.send(user.getAuthentication().getEmail(), "Book deleted!", "deleted", book);
 
     }
 

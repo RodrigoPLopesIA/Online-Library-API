@@ -118,7 +118,7 @@ public class BookController {
                         @ApiResponse(responseCode = "404", description = "book not found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = EntityNotFoundException.class))),
         })
         @DeleteMapping("/{id}")
-        public ResponseEntity<ListBookDTO> delete(@PathVariable String id, @AuthenticationPrincipal User user) {
+        public ResponseEntity<ListBookDTO> delete(@PathVariable String id, @AuthenticationPrincipal User user) throws MessagingException {
                 bookService.delete(UUID.fromString(id), user);
                 return ResponseEntity.noContent().build();
         }

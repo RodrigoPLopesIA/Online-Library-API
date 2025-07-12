@@ -2052,3 +2052,957 @@ java.lang.Error: Unresolved compilation problem:
 2025-07-12T16:52:59.748-03:00  WARN 435015 --- [onlinelibraryapi] [http-nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [java.lang.IllegalArgumentException: Book with title Harry Potter - e o prisioneiro de askaban 65 already exists.]
 2025-07-12T16:53:05.211-03:00 ERROR 435015 --- [onlinelibraryapi] [http-nio-8080-exec-7] b.c.r.o.services.BookService             : book user d0170521-af82-4256-a5b3-9489c38b4a0f
 2025-07-12T16:53:05.211-03:00 ERROR 435015 --- [onlinelibraryapi] [http-nio-8080-exec-7] b.c.r.o.services.BookService             : authUser user d0170521-af82-4256-a5b3-9489c38b4a0f
+2025-07-12T16:56:22.074-03:00  INFO 435015 --- [onlinelibraryapi] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 3 class path changes (0 additions, 0 deletions, 3 modifications)
+2025-07-12T16:56:22.075-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-62] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:56:22.075-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:56:22.075-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-62] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:56:22.076-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:56:22.076-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-62] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-07-12T16:56:22.078-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-62] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:56:22.078-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-62] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown initiated...
+2025-07-12T16:56:22.079-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-62] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown completed.
+2025-07-12T16:56:22.200-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Starting OnlinelibraryapiApplication using Java 21.0.7 with PID 435015 (/home/rodrigo/Documentos/projeto/Online-Library-API/target/classes started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-12T16:56:22.201-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : The following 1 profile is active: "dev"
+2025-07-12T16:56:22.300-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-12T16:56:22.307-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 3 JPA repository interfaces.
+2025-07-12T16:56:22.358-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-12T16:56:22.359-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:56:22.359-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:56:22.368-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:56:22.368-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 167 ms
+2025-07-12T16:56:22.380-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariConfig           : library-db-pool - idleTimeout is close to or more than maxLifetime, disabling it.
+2025-07-12T16:56:22.380-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Starting...
+2025-07-12T16:56:22.387-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : library-db-pool - Added connection org.postgresql.jdbc.PgConnection@7a3197f2
+2025-07-12T16:56:22.387-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Start completed.
+2025-07-12T16:56:22.395-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-12T16:56:22.396-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-12T16:56:22.398-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-12T16:56:22.401-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-12T16:56:22.402-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (library-db-pool)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-12T16:56:22.443-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-12T16:56:22.515-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:56:22.561-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2025-07-12T16:56:22.590-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : admin
+2025-07-12T16:56:22.590-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : http://localhost:9000
+2025-07-12T16:56:22.590-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : adminadmin
+2025-07-12T16:56:22.658-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-12T16:56:22.855-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/onlinelibrary?useSSL=false&usePublicKeyRetrieval=true'
+2025-07-12T16:56:22.860-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-12T16:56:22.879-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-12T16:56:22.925-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-07-12T16:56:22.926-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:56:22.926-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:56:22.941-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:56:22.941-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 59 ms
+2025-07-12T16:56:22.947-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoints beneath base path '/actuator'
+2025-07-12T16:56:22.978-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-07-12T16:56:22.983-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Started OnlinelibraryapiApplication in 0.796 seconds (process running for 1180.087)
+2025-07-12T16:56:22.986-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-07-12T16:56:24.264-03:00  INFO 435015 --- [onlinelibraryapi] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-07-12T16:56:24.266-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-66] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:56:24.267-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:56:24.268-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-66] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:56:24.269-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:56:24.270-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-66] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-07-12T16:56:24.276-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-66] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:56:24.276-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-66] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown initiated...
+2025-07-12T16:56:24.278-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-66] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown completed.
+2025-07-12T16:56:24.385-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Starting OnlinelibraryapiApplication using Java 21.0.7 with PID 435015 (/home/rodrigo/Documentos/projeto/Online-Library-API/target/classes started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-12T16:56:24.385-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : The following 1 profile is active: "dev"
+2025-07-12T16:56:24.487-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-12T16:56:24.492-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 3 JPA repository interfaces.
+2025-07-12T16:56:24.544-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-12T16:56:24.545-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:56:24.545-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:56:24.552-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:56:24.552-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 166 ms
+2025-07-12T16:56:24.564-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariConfig           : library-db-pool - idleTimeout is close to or more than maxLifetime, disabling it.
+2025-07-12T16:56:24.564-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Starting...
+2025-07-12T16:56:24.575-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : library-db-pool - Added connection org.postgresql.jdbc.PgConnection@7d454cfc
+2025-07-12T16:56:24.575-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Start completed.
+2025-07-12T16:56:24.582-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-12T16:56:24.583-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-12T16:56:24.586-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-12T16:56:24.589-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-12T16:56:24.591-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (library-db-pool)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-12T16:56:24.634-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-12T16:56:24.706-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:56:24.766-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2025-07-12T16:56:24.811-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : admin
+2025-07-12T16:56:24.811-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : http://localhost:9000
+2025-07-12T16:56:24.811-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : adminadmin
+2025-07-12T16:56:24.853-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-12T16:56:25.000-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/onlinelibrary?useSSL=false&usePublicKeyRetrieval=true'
+2025-07-12T16:56:25.003-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-12T16:56:25.015-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-12T16:56:25.046-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-07-12T16:56:25.046-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:56:25.046-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:56:25.057-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:56:25.057-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 41 ms
+2025-07-12T16:56:25.062-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoints beneath base path '/actuator'
+2025-07-12T16:56:25.083-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-07-12T16:56:25.088-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Started OnlinelibraryapiApplication in 0.713 seconds (process running for 1182.192)
+2025-07-12T16:56:25.091-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-07-12T16:56:40.437-03:00  INFO 435015 --- [onlinelibraryapi] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-07-12T16:56:40.439-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-70] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:56:40.439-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:56:40.440-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-70] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:56:40.440-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:56:40.441-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-70] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-07-12T16:56:40.443-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-70] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:56:40.443-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-70] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown initiated...
+2025-07-12T16:56:40.444-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-70] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown completed.
+2025-07-12T16:56:40.561-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Starting OnlinelibraryapiApplication using Java 21.0.7 with PID 435015 (/home/rodrigo/Documentos/projeto/Online-Library-API/target/classes started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-12T16:56:40.561-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : The following 1 profile is active: "dev"
+2025-07-12T16:56:40.680-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-12T16:56:40.687-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 3 JPA repository interfaces.
+2025-07-12T16:56:40.734-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-12T16:56:40.735-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:56:40.735-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:56:40.745-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:56:40.745-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 183 ms
+2025-07-12T16:56:40.765-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariConfig           : library-db-pool - idleTimeout is close to or more than maxLifetime, disabling it.
+2025-07-12T16:56:40.765-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Starting...
+2025-07-12T16:56:40.787-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : library-db-pool - Added connection org.postgresql.jdbc.PgConnection@d954170
+2025-07-12T16:56:40.787-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Start completed.
+2025-07-12T16:56:40.802-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-12T16:56:40.804-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-12T16:56:40.808-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-12T16:56:40.811-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-12T16:56:40.813-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (library-db-pool)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-12T16:56:40.860-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-12T16:56:40.932-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:56:40.962-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2025-07-12T16:56:40.995-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : admin
+2025-07-12T16:56:40.995-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : http://localhost:9000
+2025-07-12T16:56:40.995-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : adminadmin
+2025-07-12T16:56:41.025-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-12T16:56:41.180-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/onlinelibrary?useSSL=false&usePublicKeyRetrieval=true'
+2025-07-12T16:56:41.184-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-12T16:56:41.196-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-12T16:56:41.229-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-07-12T16:56:41.229-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:56:41.229-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:56:41.239-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:56:41.239-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 42 ms
+2025-07-12T16:56:41.245-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoints beneath base path '/actuator'
+2025-07-12T16:56:41.261-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-07-12T16:56:41.265-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Started OnlinelibraryapiApplication in 0.716 seconds (process running for 1198.369)
+2025-07-12T16:56:41.266-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-07-12T16:56:46.596-03:00  INFO 435015 --- [onlinelibraryapi] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-07-12T16:56:46.597-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-74] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:56:46.598-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:56:46.598-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-74] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:56:46.598-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:56:46.599-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-74] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-07-12T16:56:46.601-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-74] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:56:46.601-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-74] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown initiated...
+2025-07-12T16:56:46.601-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-74] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown completed.
+2025-07-12T16:56:46.729-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Starting OnlinelibraryapiApplication using Java 21.0.7 with PID 435015 (/home/rodrigo/Documentos/projeto/Online-Library-API/target/classes started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-12T16:56:46.729-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : The following 1 profile is active: "dev"
+2025-07-12T16:56:46.852-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-12T16:56:46.862-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 3 JPA repository interfaces.
+2025-07-12T16:56:46.961-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-12T16:56:46.962-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:56:46.962-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:56:46.975-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:56:46.975-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 245 ms
+2025-07-12T16:56:46.997-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariConfig           : library-db-pool - idleTimeout is close to or more than maxLifetime, disabling it.
+2025-07-12T16:56:46.997-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Starting...
+2025-07-12T16:56:47.010-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : library-db-pool - Added connection org.postgresql.jdbc.PgConnection@6a28062c
+2025-07-12T16:56:47.011-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Start completed.
+2025-07-12T16:56:47.018-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-12T16:56:47.019-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-12T16:56:47.023-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-12T16:56:47.027-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-12T16:56:47.028-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (library-db-pool)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-12T16:56:47.085-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-12T16:56:47.173-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:56:47.218-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2025-07-12T16:56:47.240-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : admin
+2025-07-12T16:56:47.240-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : http://localhost:9000
+2025-07-12T16:56:47.240-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : adminadmin
+2025-07-12T16:56:47.278-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-12T16:56:47.409-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/onlinelibrary?useSSL=false&usePublicKeyRetrieval=true'
+2025-07-12T16:56:47.413-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-12T16:56:47.425-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-12T16:56:47.462-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-07-12T16:56:47.463-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:56:47.463-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:56:47.473-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:56:47.473-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 46 ms
+2025-07-12T16:56:47.477-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoints beneath base path '/actuator'
+2025-07-12T16:56:47.491-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-07-12T16:56:47.494-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Started OnlinelibraryapiApplication in 0.779 seconds (process running for 1204.598)
+2025-07-12T16:56:47.495-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-07-12T16:56:52.825-03:00  INFO 435015 --- [onlinelibraryapi] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-07-12T16:56:52.827-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-78] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:56:52.829-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:56:52.829-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-78] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:56:52.830-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:56:52.832-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-78] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-07-12T16:56:52.837-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-78] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:56:52.838-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-78] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown initiated...
+2025-07-12T16:56:52.839-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-78] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown completed.
+2025-07-12T16:56:52.954-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Starting OnlinelibraryapiApplication using Java 21.0.7 with PID 435015 (/home/rodrigo/Documentos/projeto/Online-Library-API/target/classes started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-12T16:56:52.954-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : The following 1 profile is active: "dev"
+2025-07-12T16:56:53.084-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-12T16:56:53.089-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 3 JPA repository interfaces.
+2025-07-12T16:56:53.137-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-12T16:56:53.138-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:56:53.138-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:56:53.145-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:56:53.146-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 191 ms
+2025-07-12T16:56:53.157-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariConfig           : library-db-pool - idleTimeout is close to or more than maxLifetime, disabling it.
+2025-07-12T16:56:53.157-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Starting...
+2025-07-12T16:56:53.166-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : library-db-pool - Added connection org.postgresql.jdbc.PgConnection@3390bb0c
+2025-07-12T16:56:53.167-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Start completed.
+2025-07-12T16:56:53.175-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-12T16:56:53.176-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-12T16:56:53.178-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-12T16:56:53.182-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-12T16:56:53.183-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (library-db-pool)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-12T16:56:53.228-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-12T16:56:53.307-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:56:53.339-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2025-07-12T16:56:53.358-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : admin
+2025-07-12T16:56:53.358-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : http://localhost:9000
+2025-07-12T16:56:53.358-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : adminadmin
+2025-07-12T16:56:53.376-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-12T16:56:53.501-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/onlinelibrary?useSSL=false&usePublicKeyRetrieval=true'
+2025-07-12T16:56:53.505-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-12T16:56:53.515-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-12T16:56:53.574-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-07-12T16:56:53.575-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:56:53.575-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:56:53.587-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:56:53.587-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 61 ms
+2025-07-12T16:56:53.593-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoints beneath base path '/actuator'
+2025-07-12T16:56:53.603-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-07-12T16:56:53.607-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Started OnlinelibraryapiApplication in 0.664 seconds (process running for 1210.711)
+2025-07-12T16:56:53.609-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-07-12T16:57:21.966-03:00  INFO 435015 --- [onlinelibraryapi] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-07-12T16:57:21.968-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-82] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:57:21.969-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:57:21.970-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-82] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:57:21.971-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:57:21.972-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-82] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-07-12T16:57:21.979-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-82] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:57:21.980-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-82] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown initiated...
+2025-07-12T16:57:21.981-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-82] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown completed.
+2025-07-12T16:57:22.102-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Starting OnlinelibraryapiApplication using Java 21.0.7 with PID 435015 (/home/rodrigo/Documentos/projeto/Online-Library-API/target/classes started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-12T16:57:22.102-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : The following 1 profile is active: "dev"
+2025-07-12T16:57:22.223-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-12T16:57:22.231-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 3 JPA repository interfaces.
+2025-07-12T16:57:22.282-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-12T16:57:22.283-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:57:22.283-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:57:22.293-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:57:22.293-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 190 ms
+2025-07-12T16:57:22.306-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariConfig           : library-db-pool - idleTimeout is close to or more than maxLifetime, disabling it.
+2025-07-12T16:57:22.306-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Starting...
+2025-07-12T16:57:22.316-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : library-db-pool - Added connection org.postgresql.jdbc.PgConnection@3def163
+2025-07-12T16:57:22.316-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Start completed.
+2025-07-12T16:57:22.325-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-12T16:57:22.326-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-12T16:57:22.330-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-12T16:57:22.334-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-12T16:57:22.335-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (library-db-pool)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-12T16:57:22.391-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-12T16:57:22.486-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:57:22.519-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2025-07-12T16:57:22.533-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : admin
+2025-07-12T16:57:22.533-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : http://localhost:9000
+2025-07-12T16:57:22.533-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : adminadmin
+2025-07-12T16:57:22.552-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-12T16:57:22.666-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/onlinelibrary?useSSL=false&usePublicKeyRetrieval=true'
+2025-07-12T16:57:22.669-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-12T16:57:22.678-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-12T16:57:22.708-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-07-12T16:57:22.709-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:57:22.709-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:57:22.719-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:57:22.719-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 39 ms
+2025-07-12T16:57:22.724-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoints beneath base path '/actuator'
+2025-07-12T16:57:22.740-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-07-12T16:57:22.744-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Started OnlinelibraryapiApplication in 0.653 seconds (process running for 1239.848)
+2025-07-12T16:57:22.746-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-07-12T16:57:47.122-03:00  INFO 435015 --- [onlinelibraryapi] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-07-12T16:57:47.125-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-86] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:57:47.126-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:57:47.127-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-86] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:57:47.128-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:57:47.130-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-86] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-07-12T16:57:47.137-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-86] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:57:47.138-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-86] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown initiated...
+2025-07-12T16:57:47.139-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-86] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown completed.
+2025-07-12T16:57:47.257-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Starting OnlinelibraryapiApplication using Java 21.0.7 with PID 435015 (/home/rodrigo/Documentos/projeto/Online-Library-API/target/classes started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-12T16:57:47.257-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : The following 1 profile is active: "dev"
+2025-07-12T16:57:47.369-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-12T16:57:47.375-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 3 JPA repository interfaces.
+2025-07-12T16:57:47.436-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-12T16:57:47.437-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:57:47.437-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:57:47.446-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:57:47.446-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 188 ms
+2025-07-12T16:57:47.461-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariConfig           : library-db-pool - idleTimeout is close to or more than maxLifetime, disabling it.
+2025-07-12T16:57:47.461-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Starting...
+2025-07-12T16:57:47.474-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : library-db-pool - Added connection org.postgresql.jdbc.PgConnection@6c4c815f
+2025-07-12T16:57:47.475-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Start completed.
+2025-07-12T16:57:47.486-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-12T16:57:47.488-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-12T16:57:47.492-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-12T16:57:47.496-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-12T16:57:47.498-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (library-db-pool)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-12T16:57:47.553-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-12T16:57:47.626-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:57:47.657-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2025-07-12T16:57:47.671-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : admin
+2025-07-12T16:57:47.671-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : http://localhost:9000
+2025-07-12T16:57:47.671-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : adminadmin
+2025-07-12T16:57:47.686-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-12T16:57:47.852-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/onlinelibrary?useSSL=false&usePublicKeyRetrieval=true'
+2025-07-12T16:57:47.858-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-12T16:57:47.880-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-12T16:57:47.925-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-07-12T16:57:47.926-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:57:47.926-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:57:47.942-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:57:47.942-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 60 ms
+2025-07-12T16:57:47.948-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoints beneath base path '/actuator'
+2025-07-12T16:57:47.963-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-07-12T16:57:47.966-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Started OnlinelibraryapiApplication in 0.72 seconds (process running for 1265.07)
+2025-07-12T16:57:47.967-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-07-12T16:57:52.264-03:00  INFO 435015 --- [onlinelibraryapi] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-07-12T16:57:52.265-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-90] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:57:52.266-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:57:52.266-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-90] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:57:52.266-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:57:52.267-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-90] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-07-12T16:57:52.269-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-90] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:57:52.269-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-90] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown initiated...
+2025-07-12T16:57:52.270-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-90] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown completed.
+2025-07-12T16:57:52.403-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Starting OnlinelibraryapiApplication using Java 21.0.7 with PID 435015 (/home/rodrigo/Documentos/projeto/Online-Library-API/target/classes started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-12T16:57:52.403-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : The following 1 profile is active: "dev"
+2025-07-12T16:57:52.502-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-12T16:57:52.507-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 3 JPA repository interfaces.
+2025-07-12T16:57:52.556-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-12T16:57:52.556-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:57:52.557-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:57:52.564-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:57:52.564-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 160 ms
+2025-07-12T16:57:52.574-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariConfig           : library-db-pool - idleTimeout is close to or more than maxLifetime, disabling it.
+2025-07-12T16:57:52.574-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Starting...
+2025-07-12T16:57:52.582-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : library-db-pool - Added connection org.postgresql.jdbc.PgConnection@53d94cb9
+2025-07-12T16:57:52.582-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Start completed.
+2025-07-12T16:57:52.589-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-12T16:57:52.590-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-12T16:57:52.592-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-12T16:57:52.596-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-12T16:57:52.598-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (library-db-pool)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-12T16:57:52.638-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-12T16:57:52.706-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:57:52.736-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2025-07-12T16:57:52.750-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : admin
+2025-07-12T16:57:52.750-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : http://localhost:9000
+2025-07-12T16:57:52.750-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : adminadmin
+2025-07-12T16:57:52.766-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-12T16:57:52.872-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/onlinelibrary?useSSL=false&usePublicKeyRetrieval=true'
+2025-07-12T16:57:52.877-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-12T16:57:52.891-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-12T16:57:52.946-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-07-12T16:57:52.947-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:57:52.947-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:57:52.963-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:57:52.963-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 70 ms
+2025-07-12T16:57:52.971-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoints beneath base path '/actuator'
+2025-07-12T16:57:53.000-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-07-12T16:57:53.007-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Started OnlinelibraryapiApplication in 0.615 seconds (process running for 1270.111)
+2025-07-12T16:57:53.010-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-07-12T16:58:03.296-03:00  INFO 435015 --- [onlinelibraryapi] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-07-12T16:58:03.297-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-94] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:58:03.297-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:58:03.298-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-94] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:58:03.298-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:58:03.299-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-94] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-07-12T16:58:03.301-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-94] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:58:03.301-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-94] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown initiated...
+2025-07-12T16:58:03.301-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-94] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown completed.
+2025-07-12T16:58:03.459-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Starting OnlinelibraryapiApplication using Java 21.0.7 with PID 435015 (/home/rodrigo/Documentos/projeto/Online-Library-API/target/classes started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-12T16:58:03.460-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : The following 1 profile is active: "dev"
+2025-07-12T16:58:03.600-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-12T16:58:03.608-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 3 JPA repository interfaces.
+2025-07-12T16:58:03.673-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-12T16:58:03.674-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:58:03.674-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:58:03.685-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:58:03.685-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 224 ms
+2025-07-12T16:58:03.701-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariConfig           : library-db-pool - idleTimeout is close to or more than maxLifetime, disabling it.
+2025-07-12T16:58:03.701-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Starting...
+2025-07-12T16:58:03.714-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : library-db-pool - Added connection org.postgresql.jdbc.PgConnection@3b40a9bd
+2025-07-12T16:58:03.714-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Start completed.
+2025-07-12T16:58:03.723-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-12T16:58:03.725-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-12T16:58:03.728-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-12T16:58:03.731-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-12T16:58:03.733-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (library-db-pool)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-12T16:58:03.828-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-12T16:58:03.909-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:58:03.943-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2025-07-12T16:58:03.961-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : admin
+2025-07-12T16:58:03.961-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : http://localhost:9000
+2025-07-12T16:58:03.961-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : adminadmin
+2025-07-12T16:58:03.980-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-12T16:58:04.081-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/onlinelibrary?useSSL=false&usePublicKeyRetrieval=true'
+2025-07-12T16:58:04.084-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-12T16:58:04.092-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-12T16:58:04.127-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-07-12T16:58:04.128-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:58:04.128-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:58:04.140-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:58:04.140-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 46 ms
+2025-07-12T16:58:04.145-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoints beneath base path '/actuator'
+2025-07-12T16:58:04.155-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-07-12T16:58:04.160-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Started OnlinelibraryapiApplication in 0.714 seconds (process running for 1281.263)
+2025-07-12T16:58:04.161-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-07-12T16:58:12.505-03:00  INFO 435015 --- [onlinelibraryapi] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-07-12T16:58:12.508-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-98] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:58:12.509-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:58:12.510-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-98] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:58:12.511-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:58:12.513-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-98] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-07-12T16:58:12.517-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-98] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:58:12.518-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-98] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown initiated...
+2025-07-12T16:58:12.524-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-98] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown completed.
+2025-07-12T16:58:12.667-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Starting OnlinelibraryapiApplication using Java 21.0.7 with PID 435015 (/home/rodrigo/Documentos/projeto/Online-Library-API/target/classes started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-12T16:58:12.667-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : The following 1 profile is active: "dev"
+2025-07-12T16:58:12.782-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-12T16:58:12.787-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 3 JPA repository interfaces.
+2025-07-12T16:58:12.845-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-12T16:58:12.845-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:58:12.845-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:58:12.857-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:58:12.857-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 189 ms
+2025-07-12T16:58:12.873-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariConfig           : library-db-pool - idleTimeout is close to or more than maxLifetime, disabling it.
+2025-07-12T16:58:12.873-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Starting...
+2025-07-12T16:58:12.885-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : library-db-pool - Added connection org.postgresql.jdbc.PgConnection@26996e91
+2025-07-12T16:58:12.885-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Start completed.
+2025-07-12T16:58:12.897-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-12T16:58:12.899-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-12T16:58:12.903-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-12T16:58:12.908-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-12T16:58:12.910-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (library-db-pool)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-12T16:58:12.966-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-12T16:58:13.081-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:58:13.128-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2025-07-12T16:58:13.153-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : admin
+2025-07-12T16:58:13.153-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : http://localhost:9000
+2025-07-12T16:58:13.153-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : adminadmin
+2025-07-12T16:58:13.177-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-12T16:58:13.284-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/onlinelibrary?useSSL=false&usePublicKeyRetrieval=true'
+2025-07-12T16:58:13.285-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-12T16:58:13.293-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-12T16:58:13.317-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-07-12T16:58:13.317-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:58:13.317-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:58:13.325-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:58:13.326-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 32 ms
+2025-07-12T16:58:13.329-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoints beneath base path '/actuator'
+2025-07-12T16:58:13.341-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-07-12T16:58:13.345-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Started OnlinelibraryapiApplication in 0.691 seconds (process running for 1290.449)
+2025-07-12T16:58:13.346-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-07-12T16:58:15.693-03:00  INFO 435015 --- [onlinelibraryapi] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-07-12T16:58:15.695-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-102] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:58:15.697-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:58:15.698-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-102] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:58:15.699-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:58:15.700-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-102] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-07-12T16:58:15.703-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-102] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:58:15.703-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-102] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown initiated...
+2025-07-12T16:58:15.704-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-102] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown completed.
+2025-07-12T16:58:15.864-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Starting OnlinelibraryapiApplication using Java 21.0.7 with PID 435015 (/home/rodrigo/Documentos/projeto/Online-Library-API/target/classes started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-12T16:58:15.864-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : The following 1 profile is active: "dev"
+2025-07-12T16:58:15.976-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-12T16:58:15.982-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 3 JPA repository interfaces.
+2025-07-12T16:58:16.039-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-12T16:58:16.040-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:58:16.040-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:58:16.049-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:58:16.049-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 184 ms
+2025-07-12T16:58:16.063-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariConfig           : library-db-pool - idleTimeout is close to or more than maxLifetime, disabling it.
+2025-07-12T16:58:16.063-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Starting...
+2025-07-12T16:58:16.073-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : library-db-pool - Added connection org.postgresql.jdbc.PgConnection@3fa54811
+2025-07-12T16:58:16.074-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Start completed.
+2025-07-12T16:58:16.084-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-12T16:58:16.085-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-12T16:58:16.092-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-12T16:58:16.095-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-12T16:58:16.097-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (library-db-pool)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-12T16:58:16.144-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-12T16:58:16.233-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:58:16.267-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2025-07-12T16:58:16.283-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : admin
+2025-07-12T16:58:16.283-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : http://localhost:9000
+2025-07-12T16:58:16.283-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : adminadmin
+2025-07-12T16:58:16.302-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-12T16:58:16.387-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/onlinelibrary?useSSL=false&usePublicKeyRetrieval=true'
+2025-07-12T16:58:16.389-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-12T16:58:16.397-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-12T16:58:16.426-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-07-12T16:58:16.426-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:58:16.427-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:58:16.434-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:58:16.435-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 37 ms
+2025-07-12T16:58:16.441-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoints beneath base path '/actuator'
+2025-07-12T16:58:16.453-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-07-12T16:58:16.457-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Started OnlinelibraryapiApplication in 0.608 seconds (process running for 1293.561)
+2025-07-12T16:58:16.460-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-07-12T16:58:17.794-03:00  INFO 435015 --- [onlinelibraryapi] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-07-12T16:58:17.796-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-106] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:58:17.798-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:58:17.798-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-106] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:58:17.799-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:58:17.801-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-106] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-07-12T16:58:17.806-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-106] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:58:17.807-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-106] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown initiated...
+2025-07-12T16:58:17.808-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-106] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown completed.
+2025-07-12T16:58:17.944-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Starting OnlinelibraryapiApplication using Java 21.0.7 with PID 435015 (/home/rodrigo/Documentos/projeto/Online-Library-API/target/classes started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-12T16:58:17.944-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : The following 1 profile is active: "dev"
+2025-07-12T16:58:18.091-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-12T16:58:18.098-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 3 JPA repository interfaces.
+2025-07-12T16:58:18.154-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-12T16:58:18.155-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:58:18.155-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:58:18.163-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:58:18.163-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 218 ms
+2025-07-12T16:58:18.175-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariConfig           : library-db-pool - idleTimeout is close to or more than maxLifetime, disabling it.
+2025-07-12T16:58:18.175-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Starting...
+2025-07-12T16:58:18.185-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : library-db-pool - Added connection org.postgresql.jdbc.PgConnection@3ef58fe9
+2025-07-12T16:58:18.185-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Start completed.
+2025-07-12T16:58:18.192-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-12T16:58:18.193-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-12T16:58:18.196-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-12T16:58:18.200-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-12T16:58:18.201-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (library-db-pool)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-12T16:58:18.243-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-12T16:58:18.316-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:58:18.349-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2025-07-12T16:58:18.364-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : admin
+2025-07-12T16:58:18.364-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : http://localhost:9000
+2025-07-12T16:58:18.364-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : adminadmin
+2025-07-12T16:58:18.383-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-12T16:58:18.475-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/onlinelibrary?useSSL=false&usePublicKeyRetrieval=true'
+2025-07-12T16:58:18.477-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-12T16:58:18.484-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-12T16:58:18.508-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-07-12T16:58:18.508-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:58:18.508-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:58:18.515-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:58:18.515-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 30 ms
+2025-07-12T16:58:18.518-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoints beneath base path '/actuator'
+2025-07-12T16:58:18.528-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-07-12T16:58:18.531-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Started OnlinelibraryapiApplication in 0.6 seconds (process running for 1295.635)
+2025-07-12T16:58:18.532-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-07-12T16:58:35.923-03:00  INFO 435015 --- [onlinelibraryapi] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-07-12T16:58:35.925-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-110] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:58:35.925-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:58:35.926-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-110] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:58:35.926-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:58:35.927-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-110] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-07-12T16:58:35.929-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-110] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:58:35.929-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-110] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown initiated...
+2025-07-12T16:58:35.930-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-110] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown completed.
+2025-07-12T16:58:36.151-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Starting OnlinelibraryapiApplication using Java 21.0.7 with PID 435015 (/home/rodrigo/Documentos/projeto/Online-Library-API/target/classes started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-12T16:58:36.151-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : The following 1 profile is active: "dev"
+2025-07-12T16:58:36.365-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-12T16:58:36.377-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 3 JPA repository interfaces.
+2025-07-12T16:58:36.467-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-12T16:58:36.467-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:58:36.467-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:58:36.480-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:58:36.480-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 328 ms
+2025-07-12T16:58:36.498-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariConfig           : library-db-pool - idleTimeout is close to or more than maxLifetime, disabling it.
+2025-07-12T16:58:36.498-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Starting...
+2025-07-12T16:58:36.520-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : library-db-pool - Added connection org.postgresql.jdbc.PgConnection@8df5f20
+2025-07-12T16:58:36.520-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Start completed.
+2025-07-12T16:58:36.548-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-12T16:58:36.549-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-12T16:58:36.553-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-12T16:58:36.557-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-12T16:58:36.559-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (library-db-pool)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-12T16:58:36.617-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-12T16:58:36.724-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:58:36.770-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2025-07-12T16:58:36.787-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : admin
+2025-07-12T16:58:36.787-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : http://localhost:9000
+2025-07-12T16:58:36.787-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : adminadmin
+2025-07-12T16:58:36.807-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-12T16:58:36.932-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/onlinelibrary?useSSL=false&usePublicKeyRetrieval=true'
+2025-07-12T16:58:36.937-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-12T16:58:36.958-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-12T16:58:36.998-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-07-12T16:58:36.998-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:58:36.999-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:58:37.007-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:58:37.007-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 47 ms
+2025-07-12T16:58:37.012-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoints beneath base path '/actuator'
+2025-07-12T16:58:37.028-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-07-12T16:58:37.032-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Started OnlinelibraryapiApplication in 0.897 seconds (process running for 1314.136)
+2025-07-12T16:58:37.034-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-07-12T16:58:38.343-03:00  INFO 435015 --- [onlinelibraryapi] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-07-12T16:58:38.345-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-114] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:58:38.346-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:58:38.347-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-114] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:58:38.348-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:58:38.349-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-114] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-07-12T16:58:38.353-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-114] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:58:38.354-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-114] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown initiated...
+2025-07-12T16:58:38.355-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-114] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown completed.
+2025-07-12T16:58:38.515-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Starting OnlinelibraryapiApplication using Java 21.0.7 with PID 435015 (/home/rodrigo/Documentos/projeto/Online-Library-API/target/classes started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-12T16:58:38.516-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : The following 1 profile is active: "dev"
+2025-07-12T16:58:38.642-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-12T16:58:38.649-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 3 JPA repository interfaces.
+2025-07-12T16:58:38.704-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-12T16:58:38.705-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:58:38.705-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:58:38.714-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:58:38.714-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 198 ms
+2025-07-12T16:58:38.727-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariConfig           : library-db-pool - idleTimeout is close to or more than maxLifetime, disabling it.
+2025-07-12T16:58:38.727-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Starting...
+2025-07-12T16:58:38.735-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : library-db-pool - Added connection org.postgresql.jdbc.PgConnection@61c03c38
+2025-07-12T16:58:38.735-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Start completed.
+2025-07-12T16:58:38.744-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-12T16:58:38.745-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-12T16:58:38.749-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-12T16:58:38.752-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-12T16:58:38.755-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (library-db-pool)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-12T16:58:38.797-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-12T16:58:38.867-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:58:38.909-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2025-07-12T16:58:38.934-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : admin
+2025-07-12T16:58:38.934-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : http://localhost:9000
+2025-07-12T16:58:38.934-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : adminadmin
+2025-07-12T16:58:38.966-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-12T16:58:39.105-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/onlinelibrary?useSSL=false&usePublicKeyRetrieval=true'
+2025-07-12T16:58:39.109-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-12T16:58:39.117-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-12T16:58:39.145-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-07-12T16:58:39.146-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:58:39.146-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:58:39.154-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:58:39.154-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 36 ms
+2025-07-12T16:58:39.159-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoints beneath base path '/actuator'
+2025-07-12T16:58:39.174-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-07-12T16:58:39.178-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Started OnlinelibraryapiApplication in 0.673 seconds (process running for 1316.282)
+2025-07-12T16:58:39.180-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-07-12T16:59:05.564-03:00  INFO 435015 --- [onlinelibraryapi] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-07-12T16:59:05.567-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-118] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:59:05.568-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:59:05.569-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-118] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:59:05.570-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:59:05.572-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-118] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-07-12T16:59:05.575-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-118] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:59:05.576-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-118] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown initiated...
+2025-07-12T16:59:05.577-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-118] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown completed.
+2025-07-12T16:59:05.764-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Starting OnlinelibraryapiApplication using Java 21.0.7 with PID 435015 (/home/rodrigo/Documentos/projeto/Online-Library-API/target/classes started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-12T16:59:05.764-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : The following 1 profile is active: "dev"
+2025-07-12T16:59:05.860-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-12T16:59:05.868-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 3 JPA repository interfaces.
+2025-07-12T16:59:05.935-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-12T16:59:05.936-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:59:05.936-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:59:05.948-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:59:05.948-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 183 ms
+2025-07-12T16:59:05.964-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariConfig           : library-db-pool - idleTimeout is close to or more than maxLifetime, disabling it.
+2025-07-12T16:59:05.965-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Starting...
+2025-07-12T16:59:05.975-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : library-db-pool - Added connection org.postgresql.jdbc.PgConnection@7a6f8934
+2025-07-12T16:59:05.976-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Start completed.
+2025-07-12T16:59:05.983-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-12T16:59:05.984-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-12T16:59:05.989-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-12T16:59:05.993-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-12T16:59:05.995-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (library-db-pool)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-12T16:59:06.042-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-12T16:59:06.193-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:59:06.241-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2025-07-12T16:59:06.261-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : admin
+2025-07-12T16:59:06.261-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : http://localhost:9000
+2025-07-12T16:59:06.261-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : adminadmin
+2025-07-12T16:59:06.279-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-12T16:59:06.381-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/onlinelibrary?useSSL=false&usePublicKeyRetrieval=true'
+2025-07-12T16:59:06.383-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-12T16:59:06.392-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-12T16:59:06.423-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-07-12T16:59:06.424-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:59:06.424-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:59:06.432-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:59:06.432-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 37 ms
+2025-07-12T16:59:06.435-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoints beneath base path '/actuator'
+2025-07-12T16:59:06.453-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-07-12T16:59:06.458-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Started OnlinelibraryapiApplication in 0.707 seconds (process running for 1343.562)
+2025-07-12T16:59:06.459-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-07-12T16:59:07.787-03:00  INFO 435015 --- [onlinelibraryapi] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-07-12T16:59:07.788-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-122] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:59:07.789-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:59:07.789-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-122] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:59:07.789-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:59:07.790-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-122] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-07-12T16:59:07.792-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-122] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:59:07.792-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-122] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown initiated...
+2025-07-12T16:59:07.792-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-122] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown completed.
+2025-07-12T16:59:07.932-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Starting OnlinelibraryapiApplication using Java 21.0.7 with PID 435015 (/home/rodrigo/Documentos/projeto/Online-Library-API/target/classes started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-12T16:59:07.932-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : The following 1 profile is active: "dev"
+2025-07-12T16:59:08.046-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-12T16:59:08.053-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 3 JPA repository interfaces.
+2025-07-12T16:59:08.131-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-12T16:59:08.132-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:59:08.132-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:59:08.144-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:59:08.144-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 211 ms
+2025-07-12T16:59:08.161-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariConfig           : library-db-pool - idleTimeout is close to or more than maxLifetime, disabling it.
+2025-07-12T16:59:08.161-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Starting...
+2025-07-12T16:59:08.175-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : library-db-pool - Added connection org.postgresql.jdbc.PgConnection@1030a9
+2025-07-12T16:59:08.175-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Start completed.
+2025-07-12T16:59:08.184-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-12T16:59:08.185-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-12T16:59:08.188-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-12T16:59:08.192-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-12T16:59:08.193-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (library-db-pool)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-12T16:59:08.229-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-12T16:59:08.301-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:59:08.336-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2025-07-12T16:59:08.353-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : admin
+2025-07-12T16:59:08.353-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : http://localhost:9000
+2025-07-12T16:59:08.353-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : adminadmin
+2025-07-12T16:59:08.377-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-12T16:59:08.457-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/onlinelibrary?useSSL=false&usePublicKeyRetrieval=true'
+2025-07-12T16:59:08.459-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-12T16:59:08.467-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-12T16:59:08.492-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-07-12T16:59:08.493-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:59:08.493-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:59:08.501-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:59:08.501-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 33 ms
+2025-07-12T16:59:08.505-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoints beneath base path '/actuator'
+2025-07-12T16:59:08.524-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-07-12T16:59:08.531-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Started OnlinelibraryapiApplication in 0.608 seconds (process running for 1345.635)
+2025-07-12T16:59:08.533-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-07-12T16:59:12.872-03:00  INFO 435015 --- [onlinelibraryapi] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 2 class path changes (0 additions, 0 deletions, 2 modifications)
+2025-07-12T16:59:12.874-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-126] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:59:12.876-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:59:12.876-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-126] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:59:12.877-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:59:12.879-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-126] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-07-12T16:59:12.884-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-126] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:59:12.885-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-126] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown initiated...
+2025-07-12T16:59:12.886-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-126] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown completed.
+2025-07-12T16:59:13.053-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Starting OnlinelibraryapiApplication using Java 21.0.7 with PID 435015 (/home/rodrigo/Documentos/projeto/Online-Library-API/target/classes started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-12T16:59:13.053-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : The following 1 profile is active: "dev"
+2025-07-12T16:59:13.186-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-12T16:59:13.193-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 3 JPA repository interfaces.
+2025-07-12T16:59:13.242-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-12T16:59:13.242-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:59:13.243-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:59:13.252-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:59:13.252-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 198 ms
+2025-07-12T16:59:13.264-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariConfig           : library-db-pool - idleTimeout is close to or more than maxLifetime, disabling it.
+2025-07-12T16:59:13.264-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Starting...
+2025-07-12T16:59:13.272-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : library-db-pool - Added connection org.postgresql.jdbc.PgConnection@c471256
+2025-07-12T16:59:13.273-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Start completed.
+2025-07-12T16:59:13.281-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-12T16:59:13.282-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-12T16:59:13.286-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-12T16:59:13.289-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-12T16:59:13.291-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (library-db-pool)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-12T16:59:13.331-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-12T16:59:13.407-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:59:13.441-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2025-07-12T16:59:13.457-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : admin
+2025-07-12T16:59:13.457-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : http://localhost:9000
+2025-07-12T16:59:13.457-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : adminadmin
+2025-07-12T16:59:13.477-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-12T16:59:13.572-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/onlinelibrary?useSSL=false&usePublicKeyRetrieval=true'
+2025-07-12T16:59:13.574-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-12T16:59:13.582-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-12T16:59:13.607-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-07-12T16:59:13.608-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:59:13.608-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:59:13.616-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:59:13.616-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 33 ms
+2025-07-12T16:59:13.621-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoints beneath base path '/actuator'
+2025-07-12T16:59:13.636-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-07-12T16:59:13.642-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Started OnlinelibraryapiApplication in 0.6 seconds (process running for 1350.746)
+2025-07-12T16:59:13.644-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-07-12T16:59:22.998-03:00  INFO 435015 --- [onlinelibraryapi] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-07-12T16:59:22.999-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-130] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:59:23.000-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:59:23.000-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-130] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-12T16:59:23.000-03:00  INFO 435015 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-12T16:59:23.001-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-130] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-07-12T16:59:23.004-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-130] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:59:23.006-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-130] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown initiated...
+2025-07-12T16:59:23.008-03:00  INFO 435015 --- [onlinelibraryapi] [Thread-130] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown completed.
+2025-07-12T16:59:23.208-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Starting OnlinelibraryapiApplication using Java 21.0.7 with PID 435015 (/home/rodrigo/Documentos/projeto/Online-Library-API/target/classes started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-12T16:59:23.208-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : The following 1 profile is active: "dev"
+2025-07-12T16:59:23.312-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-12T16:59:23.317-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 3 JPA repository interfaces.
+2025-07-12T16:59:23.369-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-12T16:59:23.370-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:59:23.370-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:59:23.378-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:59:23.378-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 169 ms
+2025-07-12T16:59:23.390-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariConfig           : library-db-pool - idleTimeout is close to or more than maxLifetime, disabling it.
+2025-07-12T16:59:23.391-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Starting...
+2025-07-12T16:59:23.402-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : library-db-pool - Added connection org.postgresql.jdbc.PgConnection@1bd38c78
+2025-07-12T16:59:23.403-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Start completed.
+2025-07-12T16:59:23.411-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-12T16:59:23.412-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-12T16:59:23.415-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-12T16:59:23.417-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-12T16:59:23.419-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (library-db-pool)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-12T16:59:23.465-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-12T16:59:23.536-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T16:59:23.577-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2025-07-12T16:59:23.593-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : admin
+2025-07-12T16:59:23.593-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : http://localhost:9000
+2025-07-12T16:59:23.593-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : adminadmin
+2025-07-12T16:59:23.615-03:00  WARN 435015 --- [onlinelibraryapi] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-12T16:59:23.700-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/onlinelibrary?useSSL=false&usePublicKeyRetrieval=true'
+2025-07-12T16:59:23.703-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-12T16:59:23.714-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-12T16:59:23.736-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-07-12T16:59:23.737-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-12T16:59:23.737-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-12T16:59:23.747-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-12T16:59:23.747-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 33 ms
+2025-07-12T16:59:23.751-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoints beneath base path '/actuator'
+2025-07-12T16:59:23.766-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-07-12T16:59:23.770-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Started OnlinelibraryapiApplication in 0.578 seconds (process running for 1360.874)
+2025-07-12T16:59:23.773-03:00  INFO 435015 --- [onlinelibraryapi] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
