@@ -6,6 +6,9 @@ import lombok.extern.slf4j.Slf4j;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
+
+import org.springframework.stereotype.Service;
+
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -15,6 +18,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 
 @Slf4j
 @NoArgsConstructor
+@Service
 public class JWTService{
 
     private static final String JWT_SECRET_KEY = "123456789012345678901234567890";
