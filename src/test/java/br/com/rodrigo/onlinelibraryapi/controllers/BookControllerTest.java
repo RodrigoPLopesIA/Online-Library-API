@@ -20,8 +20,6 @@ import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.assertj.MockMvcTester.MockMvcRequestBuilder;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -31,7 +29,6 @@ import br.com.rodrigo.onlinelibraryapi.config.SpringSercurityConfig;
 import br.com.rodrigo.onlinelibraryapi.dtos.books.CreateBookDTO;
 import br.com.rodrigo.onlinelibraryapi.entities.Author;
 import br.com.rodrigo.onlinelibraryapi.entities.Book;
-import br.com.rodrigo.onlinelibraryapi.entities.User;
 import br.com.rodrigo.onlinelibraryapi.enums.Genre;
 import br.com.rodrigo.onlinelibraryapi.mapper.AuthorMapper;
 import br.com.rodrigo.onlinelibraryapi.mapper.BookMapper;

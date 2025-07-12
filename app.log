@@ -8000,3 +8000,23 @@ Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No q
 2025-07-11T22:21:47.687-03:00  INFO 940948 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
 2025-07-11T22:21:47.689-03:00  INFO 940948 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
 2025-07-11T22:21:47.713-03:00  INFO 940948 --- [onlinelibraryapi] [main] b.c.r.o.controllers.BookControllerTest   : Started BookControllerTest in 2.739 seconds (process running for 3.473)
+2025-07-11T22:25:32.756-03:00  INFO 944546 --- [onlinelibraryapi] [main] b.c.r.o.controllers.BookControllerTest   : Starting BookControllerTest using Java 21.0.7 with PID 944546 (started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-11T22:25:32.758-03:00  INFO 944546 --- [onlinelibraryapi] [main] b.c.r.o.controllers.BookControllerTest   : The following 1 profile is active: "dev"
+2025-07-11T22:25:34.920-03:00  WARN 944546 --- [onlinelibraryapi] [main] r$InitializeUserDetailsManagerConfigurer : Found 2 UserDetailsService beans, with names [inMemoryUserDetailsManager, br.com.rodrigo.onlinelibraryapi.services.UserService#0]. Global Authentication Manager will not use a UserDetailsService for username/password login. Consider publishing a single UserDetailsService bean.
+2025-07-11T22:25:34.994-03:00  WARN 944546 --- [onlinelibraryapi] [main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: abe7f039-f22d-4f11-8ea0-dddfb9bbde3a
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-07-11T22:25:35.035-03:00  INFO 944546 --- [onlinelibraryapi] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-07-11T22:25:35.035-03:00  INFO 944546 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-07-11T22:25:35.037-03:00  INFO 944546 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-07-11T22:25:35.067-03:00  INFO 944546 --- [onlinelibraryapi] [main] b.c.r.o.controllers.BookControllerTest   : Started BookControllerTest in 2.709 seconds (process running for 3.465)
+2025-07-11T22:25:45.447-03:00  INFO 944793 --- [onlinelibraryapi] [main] b.c.r.o.controllers.BookControllerTest   : Starting BookControllerTest using Java 21.0.7 with PID 944793 (started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-11T22:25:45.449-03:00  INFO 944793 --- [onlinelibraryapi] [main] b.c.r.o.controllers.BookControllerTest   : The following 1 profile is active: "dev"
+2025-07-11T22:25:47.790-03:00  INFO 944793 --- [onlinelibraryapi] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name br.com.rodrigo.onlinelibraryapi.services.UserService#0
+2025-07-11T22:25:48.092-03:00  INFO 944793 --- [onlinelibraryapi] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-07-11T22:25:48.092-03:00  INFO 944793 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-07-11T22:25:48.094-03:00  INFO 944793 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-07-11T22:25:48.127-03:00  INFO 944793 --- [onlinelibraryapi] [main] b.c.r.o.controllers.BookControllerTest   : Started BookControllerTest in 3.058 seconds (process running for 3.852)
