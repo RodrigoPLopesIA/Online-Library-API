@@ -48,3 +48,52 @@
 2025-07-12T10:05:47.299-03:00  INFO 9660 --- [onlinelibraryapi] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
 2025-07-12T10:05:47.718-03:00  INFO 9660 --- [onlinelibraryapi] [main] b.c.r.o.repositories.UserRepositoryTest  : Started UserRepositoryTest in 3.013 seconds (process running for 3.78)
 2025-07-12T10:05:48.234-03:00  INFO 9660 --- [onlinelibraryapi] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-12T10:24:01.079-03:00  INFO 21351 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Starting UserControllerTest using Java 21.0.7 with PID 21351 (started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-12T10:24:01.080-03:00  INFO 21351 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : The following 1 profile is active: "dev"
+2025-07-12T10:24:03.294-03:00  INFO 21351 --- [onlinelibraryapi] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name br.com.rodrigo.onlinelibraryapi.services.UserService#0
+2025-07-12T10:24:03.597-03:00  INFO 21351 --- [onlinelibraryapi] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-07-12T10:24:03.598-03:00  INFO 21351 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-07-12T10:24:03.600-03:00  INFO 21351 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2025-07-12T10:24:03.637-03:00  INFO 21351 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Started UserControllerTest in 2.954 seconds (process running for 3.683)
+2025-07-12T10:24:10.614-03:00  INFO 21517 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Starting UserControllerTest using Java 21.0.7 with PID 21517 (started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-12T10:24:10.615-03:00  INFO 21517 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : The following 1 profile is active: "dev"
+2025-07-12T10:24:12.706-03:00  INFO 21517 --- [onlinelibraryapi] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name br.com.rodrigo.onlinelibraryapi.services.UserService#0
+2025-07-12T10:24:12.962-03:00  INFO 21517 --- [onlinelibraryapi] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-07-12T10:24:12.962-03:00  INFO 21517 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-07-12T10:24:12.964-03:00  INFO 21517 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2025-07-12T10:24:12.997-03:00  INFO 21517 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Started UserControllerTest in 2.766 seconds (process running for 3.542)
+2025-07-12T10:30:10.556-03:00  INFO 26566 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Starting UserControllerTest using Java 21.0.7 with PID 26566 (started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-12T10:30:10.558-03:00  INFO 26566 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : The following 1 profile is active: "dev"
+2025-07-12T10:30:12.592-03:00  INFO 26566 --- [onlinelibraryapi] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name br.com.rodrigo.onlinelibraryapi.services.UserService#0
+2025-07-12T10:30:12.898-03:00  INFO 26566 --- [onlinelibraryapi] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-07-12T10:30:12.898-03:00  INFO 26566 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-07-12T10:30:12.900-03:00  INFO 26566 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-07-12T10:30:12.932-03:00  INFO 26566 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Started UserControllerTest in 2.771 seconds (process running for 3.542)
+2025-07-12T10:31:57.301-03:00  INFO 28839 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Starting UserControllerTest using Java 21.0.7 with PID 28839 (started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-12T10:31:57.303-03:00  INFO 28839 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : The following 1 profile is active: "dev"
+2025-07-12T10:31:59.353-03:00  INFO 28839 --- [onlinelibraryapi] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name br.com.rodrigo.onlinelibraryapi.services.UserService#0
+2025-07-12T10:31:59.630-03:00  INFO 28839 --- [onlinelibraryapi] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-07-12T10:31:59.630-03:00  INFO 28839 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-07-12T10:31:59.631-03:00  INFO 28839 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-07-12T10:31:59.665-03:00  INFO 28839 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Started UserControllerTest in 2.771 seconds (process running for 3.491)
+2025-07-12T10:33:15.580-03:00  INFO 30733 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Starting UserControllerTest using Java 21.0.7 with PID 30733 (started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-12T10:33:15.582-03:00  INFO 30733 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : The following 1 profile is active: "dev"
+2025-07-12T10:33:17.194-03:00  INFO 30733 --- [onlinelibraryapi] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name br.com.rodrigo.onlinelibraryapi.services.UserService#0
+2025-07-12T10:33:17.374-03:00  INFO 30733 --- [onlinelibraryapi] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-07-12T10:33:17.374-03:00  INFO 30733 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-07-12T10:33:17.376-03:00  INFO 30733 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-07-12T10:33:17.395-03:00  INFO 30733 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Started UserControllerTest in 2.121 seconds (process running for 2.873)
+2025-07-12T10:33:38.656-03:00  INFO 31233 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Starting UserControllerTest using Java 21.0.7 with PID 31233 (started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-12T10:33:38.658-03:00  INFO 31233 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : The following 1 profile is active: "dev"
+2025-07-12T10:33:40.719-03:00  INFO 31233 --- [onlinelibraryapi] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name br.com.rodrigo.onlinelibraryapi.services.UserService#0
+2025-07-12T10:33:41.034-03:00  INFO 31233 --- [onlinelibraryapi] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-07-12T10:33:41.034-03:00  INFO 31233 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-07-12T10:33:41.036-03:00  INFO 31233 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2025-07-12T10:33:41.065-03:00  INFO 31233 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Started UserControllerTest in 2.791 seconds (process running for 3.538)
+2025-07-12T10:34:36.441-03:00  INFO 32479 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Starting UserControllerTest using Java 21.0.7 with PID 32479 (started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-12T10:34:36.442-03:00  INFO 32479 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : The following 1 profile is active: "dev"
+2025-07-12T10:34:38.349-03:00  INFO 32479 --- [onlinelibraryapi] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name br.com.rodrigo.onlinelibraryapi.services.UserService#0
+2025-07-12T10:34:38.650-03:00  INFO 32479 --- [onlinelibraryapi] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-07-12T10:34:38.651-03:00  INFO 32479 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-07-12T10:34:38.652-03:00  INFO 32479 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-07-12T10:34:38.684-03:00  INFO 32479 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Started UserControllerTest in 2.638 seconds (process running for 3.381)
