@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import br.com.rodrigo.onlinelibraryapi.exceptions.UnauthorizedException;
+import br.com.rodrigo.onlinelibraryapi.services.EmailBookService;
 import br.com.rodrigo.onlinelibraryapi.services.EmailService;
 
 import javax.naming.NameNotFoundException;
@@ -20,12 +21,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class EmailController {
     
     @Autowired
-    private EmailService emailService;
+    private EmailBookService emailService;
 
     @PostMapping
     public ResponseEntity postMethodName() {
         try {
-            emailService.sendHtmlEmailWithTemplate("user@localhost", "Test Email", "mail/welcome-email");
+            emailService.send("user@localhost", "test");
             return ResponseEntity.ok().build();
             
         } catch (Exception e) {

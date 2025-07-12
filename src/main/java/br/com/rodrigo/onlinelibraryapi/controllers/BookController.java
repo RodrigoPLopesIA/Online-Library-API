@@ -39,6 +39,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 import org.springframework.web.bind.annotation.RequestBody;
 
+import jakarta.mail.MessagingException;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 
@@ -88,7 +89,7 @@ public class BookController {
         })
         @PostMapping
         public ResponseEntity<ListBookDTO> create(@Valid @RequestBody CreateBookDTO data, UriComponentsBuilder uri,
-                        @AuthenticationPrincipal User user) {
+                        @AuthenticationPrincipal User user) throws MessagingException {
                 Book book = bookService.create(data, user);
 
                 URI uriBuilder = uri.path("/books/{id}").buildAndExpand(book.getId()).toUri();

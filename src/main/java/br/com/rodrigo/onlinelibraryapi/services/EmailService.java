@@ -7,12 +7,14 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
+import org.thymeleaf.context.IContext;
 
+import br.com.rodrigo.onlinelibraryapi.interfaces.ISendEmail;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 
 @Service
-public class EmailService {
+public class EmailService implements ISendEmail {
 
     @Autowired
     private JavaMailSender mailSender;
@@ -23,13 +25,11 @@ public class EmailService {
     @Value("${mail.from}")
     private String MAIL_FROM;
 
-    public void sendHtmlEmailWithTemplate(String to, String subject, String templateName) throws MessagingException {
-
+    @Override
+    public void send(String to, String subject, String templateName, IContext context) throws MessagingException {
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
-        
-        Context context = new Context();
-        context.setVariable("userName", "João Silva"); 
+
 
         String htmlContent = templateEngine.process(templateName, context);
 

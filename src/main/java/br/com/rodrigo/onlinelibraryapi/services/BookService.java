@@ -22,6 +22,7 @@ import br.com.rodrigo.onlinelibraryapi.exceptions.UniqueViolationException;
 import br.com.rodrigo.onlinelibraryapi.patterns.factory.BookFactory;
 import br.com.rodrigo.onlinelibraryapi.repositories.BookRepository;
 import br.com.rodrigo.onlinelibraryapi.repositories.specs.BookSpecification;
+import jakarta.mail.MessagingException;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 
@@ -40,6 +41,9 @@ public class BookService {
 
     @Autowired
     StorageService storageService;
+
+    @Autowired
+    EmailBookService emailBookService;
 
 
     public Page<Book> index(Pageable pageable, String title, String isbn, String authorName, Genre genre,
@@ -70,7 +74,7 @@ public class BookService {
         return bookRepository.findAll(spec, pageable);
     }
 
-    public Book create(CreateBookDTO data, User authUser) {
+    public Book create(CreateBookDTO data, User authUser) throws MessagingException {
 
         // verify if book alread exists by isbn
         if (this.existsByIsbn(data.isbn())) {
@@ -96,6 +100,7 @@ public class BookService {
         author.setBooks(Arrays.asList(created));
         user.setBooks(Arrays.asList(created));
 
+        emailBookService.send(user.getAuthentication().getEmail(), "Book created!");
         return created;
     }
 
