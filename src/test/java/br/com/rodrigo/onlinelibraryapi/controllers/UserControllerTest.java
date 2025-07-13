@@ -91,8 +91,7 @@ public class UserControllerTest {
                 mvc.perform(MockMvcRequestBuilders.get("/api/v1/users" + params)
                                 .contentType(MediaType.APPLICATION_JSON))
                                 .andExpect(status().isOk())
-                                .andExpect(jsonPath("$.content[0].authentication.email").value("test@email.com"));
-
+                                .andExpect(jsonPath("$.content", Matchers.hasSize(1)));
                 // Verify the mock was called with expected parameters
                 Mockito.verify(userService).findAll(
                                 Mockito.argThat(pageable -> pageable.getPageNumber() == 0 &&

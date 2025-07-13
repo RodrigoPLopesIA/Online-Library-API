@@ -4714,3 +4714,113 @@ Hints:
 	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
 	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
 
+2025-07-13T10:55:25.722-03:00  INFO 994067 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Starting UserControllerTest using Java 21.0.7 with PID 994067 (started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-13T10:55:25.724-03:00  INFO 994067 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : The following 1 profile is active: "dev"
+2025-07-13T10:55:27.549-03:00  INFO 994067 --- [onlinelibraryapi] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name br.com.rodrigo.onlinelibraryapi.services.UserService#0
+2025-07-13T10:55:27.764-03:00  INFO 994067 --- [onlinelibraryapi] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-07-13T10:55:27.764-03:00  INFO 994067 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-07-13T10:55:27.765-03:00  INFO 994067 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-07-13T10:55:27.787-03:00  INFO 994067 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Started UserControllerTest in 2.406 seconds (process running for 3.126)
+2025-07-13T10:55:27.903-03:00  WARN 994067 --- [onlinelibraryapi] [main] ration$PageModule$WarningLoggingModifier : Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2025-07-13T10:56:37.427-03:00  INFO 995149 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Starting UserControllerTest using Java 21.0.7 with PID 995149 (started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-13T10:56:37.429-03:00  INFO 995149 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : The following 1 profile is active: "dev"
+2025-07-13T10:56:39.415-03:00  INFO 995149 --- [onlinelibraryapi] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name br.com.rodrigo.onlinelibraryapi.services.UserService#0
+2025-07-13T10:56:39.752-03:00  INFO 995149 --- [onlinelibraryapi] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-07-13T10:56:39.752-03:00  INFO 995149 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-07-13T10:56:39.754-03:00  INFO 995149 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-07-13T10:56:39.797-03:00  INFO 995149 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Started UserControllerTest in 2.796 seconds (process running for 3.492)
+2025-07-13T10:56:39.932-03:00  WARN 995149 --- [onlinelibraryapi] [main] ration$PageModule$WarningLoggingModifier : Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2025-07-13T10:56:47.116-03:00  INFO 995356 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Starting UserControllerTest using Java 21.0.7 with PID 995356 (started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-13T10:56:47.118-03:00  INFO 995356 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : The following 1 profile is active: "dev"
+2025-07-13T10:56:49.108-03:00  INFO 995356 --- [onlinelibraryapi] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name br.com.rodrigo.onlinelibraryapi.services.UserService#0
+2025-07-13T10:56:49.419-03:00  INFO 995356 --- [onlinelibraryapi] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-07-13T10:56:49.420-03:00  INFO 995356 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-07-13T10:56:49.421-03:00  INFO 995356 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-07-13T10:56:49.459-03:00  INFO 995356 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Started UserControllerTest in 2.707 seconds (process running for 3.441)
+2025-07-13T10:56:49.605-03:00  WARN 995356 --- [onlinelibraryapi] [main] ration$PageModule$WarningLoggingModifier : Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2025-07-13T10:57:59.097-03:00  INFO 996524 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Starting UserControllerTest using Java 21.0.7 with PID 996524 (started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-13T10:57:59.098-03:00  INFO 996524 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : The following 1 profile is active: "dev"
+2025-07-13T10:58:00.873-03:00  INFO 996524 --- [onlinelibraryapi] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name br.com.rodrigo.onlinelibraryapi.services.UserService#0
+2025-07-13T10:58:01.081-03:00  INFO 996524 --- [onlinelibraryapi] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-07-13T10:58:01.081-03:00  INFO 996524 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-07-13T10:58:01.082-03:00  INFO 996524 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-07-13T10:58:01.105-03:00  INFO 996524 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Started UserControllerTest in 2.366 seconds (process running for 3.069)
+2025-07-13T10:58:01.219-03:00  WARN 996524 --- [onlinelibraryapi] [main] ration$PageModule$WarningLoggingModifier : Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2025-07-13T11:06:56.839-03:00  INFO 1004644 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Starting UserControllerTest using Java 21.0.7 with PID 1004644 (started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-13T11:06:56.840-03:00  INFO 1004644 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : The following 1 profile is active: "dev"
+2025-07-13T11:06:58.574-03:00  INFO 1004644 --- [onlinelibraryapi] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name br.com.rodrigo.onlinelibraryapi.services.UserService#0
+2025-07-13T11:06:58.755-03:00  INFO 1004644 --- [onlinelibraryapi] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-07-13T11:06:58.756-03:00  INFO 1004644 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-07-13T11:06:58.757-03:00  INFO 1004644 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-07-13T11:06:58.783-03:00  INFO 1004644 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Started UserControllerTest in 2.312 seconds (process running for 2.997)
+2025-07-13T11:06:58.918-03:00  WARN 1004644 --- [onlinelibraryapi] [main] ration$PageModule$WarningLoggingModifier : Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2025-07-13T11:11:00.746-03:00  INFO 1008165 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Starting UserControllerTest using Java 21.0.7 with PID 1008165 (started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-13T11:11:00.748-03:00  INFO 1008165 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : The following 1 profile is active: "dev"
+2025-07-13T11:11:02.678-03:00  INFO 1008165 --- [onlinelibraryapi] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name br.com.rodrigo.onlinelibraryapi.services.UserService#0
+2025-07-13T11:11:02.976-03:00  INFO 1008165 --- [onlinelibraryapi] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-07-13T11:11:02.976-03:00  INFO 1008165 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-07-13T11:11:02.978-03:00  INFO 1008165 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2025-07-13T11:11:03.004-03:00  INFO 1008165 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Started UserControllerTest in 2.637 seconds (process running for 3.305)
+2025-07-13T11:11:03.212-03:00  WARN 1008165 --- [onlinelibraryapi] [main] ration$PageModule$WarningLoggingModifier : Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2025-07-13T11:12:26.387-03:00  INFO 1009533 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Starting UserControllerTest using Java 21.0.7 with PID 1009533 (started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-13T11:12:26.389-03:00  INFO 1009533 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : The following 1 profile is active: "dev"
+2025-07-13T11:12:28.229-03:00  INFO 1009533 --- [onlinelibraryapi] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name br.com.rodrigo.onlinelibraryapi.services.UserService#0
+2025-07-13T11:12:28.463-03:00  INFO 1009533 --- [onlinelibraryapi] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-07-13T11:12:28.464-03:00  INFO 1009533 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-07-13T11:12:28.466-03:00  INFO 1009533 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2025-07-13T11:12:28.493-03:00  INFO 1009533 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Started UserControllerTest in 2.479 seconds (process running for 3.232)
+2025-07-13T11:12:28.610-03:00  WARN 1009533 --- [onlinelibraryapi] [main] ration$PageModule$WarningLoggingModifier : Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2025-07-13T11:12:42.641-03:00  INFO 1009818 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Starting UserControllerTest using Java 21.0.7 with PID 1009818 (started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-13T11:12:42.643-03:00  INFO 1009818 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : The following 1 profile is active: "dev"
+2025-07-13T11:12:44.675-03:00  INFO 1009818 --- [onlinelibraryapi] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name br.com.rodrigo.onlinelibraryapi.services.UserService#0
+2025-07-13T11:12:44.986-03:00  INFO 1009818 --- [onlinelibraryapi] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-07-13T11:12:44.986-03:00  INFO 1009818 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-07-13T11:12:44.988-03:00  INFO 1009818 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2025-07-13T11:12:45.020-03:00  INFO 1009818 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Started UserControllerTest in 2.777 seconds (process running for 3.515)
+2025-07-13T11:12:45.141-03:00  WARN 1009818 --- [onlinelibraryapi] [main] ration$PageModule$WarningLoggingModifier : Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2025-07-13T11:12:50.986-03:00  INFO 1010018 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Starting UserControllerTest using Java 21.0.7 with PID 1010018 (started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-13T11:12:50.988-03:00  INFO 1010018 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : The following 1 profile is active: "dev"
+2025-07-13T11:12:52.922-03:00  INFO 1010018 --- [onlinelibraryapi] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name br.com.rodrigo.onlinelibraryapi.services.UserService#0
+2025-07-13T11:12:53.225-03:00  INFO 1010018 --- [onlinelibraryapi] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-07-13T11:12:53.225-03:00  INFO 1010018 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-07-13T11:12:53.227-03:00  INFO 1010018 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2025-07-13T11:12:53.251-03:00  INFO 1010018 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Started UserControllerTest in 2.729 seconds (process running for 3.69)
+2025-07-13T11:12:53.390-03:00  WARN 1010018 --- [onlinelibraryapi] [main] ration$PageModule$WarningLoggingModifier : Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2025-07-13T11:13:16.883-03:00  INFO 1010464 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Starting UserControllerTest using Java 21.0.7 with PID 1010464 (started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-13T11:13:16.884-03:00  INFO 1010464 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : The following 1 profile is active: "dev"
+2025-07-13T11:13:18.718-03:00  INFO 1010464 --- [onlinelibraryapi] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name br.com.rodrigo.onlinelibraryapi.services.UserService#0
+2025-07-13T11:13:18.959-03:00  INFO 1010464 --- [onlinelibraryapi] [main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-07-13T11:13:18.959-03:00  INFO 1010464 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-07-13T11:13:18.961-03:00  INFO 1010464 --- [onlinelibraryapi] [main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 2 ms
+2025-07-13T11:13:18.989-03:00  INFO 1010464 --- [onlinelibraryapi] [main] b.c.r.o.controllers.UserControllerTest   : Started UserControllerTest in 2.481 seconds (process running for 3.201)
+2025-07-13T11:13:19.121-03:00  WARN 1010464 --- [onlinelibraryapi] [main] ration$PageModule$WarningLoggingModifier : Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
