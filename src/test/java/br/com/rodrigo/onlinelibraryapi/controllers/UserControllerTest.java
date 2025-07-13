@@ -4,6 +4,8 @@ import br.com.rodrigo.onlinelibraryapi.config.SpringSercurityConfig;
 import br.com.rodrigo.onlinelibraryapi.dtos.user.CreateUserDto;
 import br.com.rodrigo.onlinelibraryapi.dtos.user.ListUserDto;
 import br.com.rodrigo.onlinelibraryapi.entities.User;
+import br.com.rodrigo.onlinelibraryapi.entities.embedded.Authentication;
+import br.com.rodrigo.onlinelibraryapi.entities.embedded.Name;
 import br.com.rodrigo.onlinelibraryapi.mapper.UserMapper;
 import br.com.rodrigo.onlinelibraryapi.repositories.UserRepository;
 import br.com.rodrigo.onlinelibraryapi.services.JWTService;
@@ -13,21 +15,31 @@ import lombok.extern.slf4j.Slf4j;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.BDDMockito;
+import org.mockito.Mockito;
+import org.springframework.data.domain.Pageable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import java.util.List;
+
+import org.assertj.core.util.Arrays;
 import org.hamcrest.Matchers;
 
 @WebMvcTest(UserController.class)
@@ -36,97 +48,130 @@ import org.hamcrest.Matchers;
 @Slf4j
 public class UserControllerTest {
 
-    @Autowired
-    private MockMvc mvc;
+        @Autowired
+        private MockMvc mvc;
 
-    @MockBean
-    private UserService userService;
+        @MockBean
+        private UserService userService;
 
-    @MockBean
-    private UserMapper userMapper;
+        @MockBean
+        private UserMapper userMapper;
 
-    @MockBean
-    private UserRepository userRepository;
+        @MockBean
+        private UserRepository userRepository;
 
-    @MockBean
-    private JWTService jwtService;
+        @MockBean
+        private JWTService jwtService;
 
-    @Autowired
-    private ObjectMapper objectMapper;
+        @Autowired
+        private ObjectMapper objectMapper;
 
-    @Test
-    @DisplayName("POST /api/v1/users - should create a new user")
-    public void shouldCreateNewUser() throws Exception {
-        // Arrange
-        CreateUserDto data = new CreateUserDto(
-                "Rodrigo",
-                "Lopes",
-                "rodrigo@email.com",
-                "12341234",
-                "12341234",
-                "google",
-                "rua inga",
-                "4",
-                "casa 1",
-                "carmari",
-                "Nova iguaçu",
-                "RJ",
-                "26023140");
+        @Test
+        @WithMockUser(username = "testUser")
+        @DisplayName("GET /api/v1/users - should return all users")
+        public void shouldReturnAllUsers() throws Exception {
+                User user = User.builder()
+                                .name(new Name("test", "test"))
+                                .authentication(new Authentication("test@email.com"))
+                                .build();
 
-        User user = new User(data);
-        user.setId("123456123456");
-        ListUserDto listUserDto = new ListUserDto(user);
+                Page<User> userPage = new PageImpl<>(List.of(user), PageRequest.of(0, 100), 1);
 
-        given(userMapper.toUser(any(CreateUserDto.class))).willReturn(user);
-        given(userMapper.toListUserDTO(any(User.class))).willReturn(listUserDto);
-        given(userService.save(any(CreateUserDto.class))).willReturn(user);
+                // Verify the mock is set up correctly
+                BDDMockito.given(userService.findAll(
+                                Mockito.any(Pageable.class),
+                                Mockito.anyString(),
+                                Mockito.anyString(),
+                                Mockito.anyString()))
+                                .willReturn(userPage);
 
-        MockHttpServletRequestBuilder content = post("/api/v1/users")
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(data));
-        // Act & Assert
+                var params = "?page=0&size=100&firstName=test&lastName=test&email=test@email.com";
 
-        mvc.perform(content).andExpect(status().isCreated())
-                .andExpect(jsonPath("first_name").value("Rodrigo"));
+                // Perform the request and add more assertions
+                mvc.perform(MockMvcRequestBuilders.get("/api/v1/users" + params)
+                                .contentType(MediaType.APPLICATION_JSON))
+                                .andExpect(status().isOk())
+                                .andExpect(jsonPath("$.content[0].authentication.email").value("test@email.com"));
 
-    }
+                // Verify the mock was called with expected parameters
+                Mockito.verify(userService).findAll(
+                                Mockito.argThat(pageable -> pageable.getPageNumber() == 0 &&
+                                                pageable.getPageSize() == 100),
+                                Mockito.eq("test"),
+                                Mockito.eq("test"),
+                                Mockito.eq("test@email.com"));
+        }
 
-    @Test
-    @DisplayName("Should return invalid argument exception")
-    public void shouldReturnInvalidArgumentException() throws Exception {
+        @Test
+        @DisplayName("POST /api/v1/users - should create a new user")
+        public void shouldCreateNewUser() throws Exception {
+                // Arrange
+                CreateUserDto data = new CreateUserDto(
+                                "Rodrigo",
+                                "Lopes",
+                                "rodrigo@email.com",
+                                "12341234",
+                                "12341234",
+                                "google",
+                                "rua inga",
+                                "4",
+                                "casa 1",
+                                "carmari",
+                                "Nova iguaçu",
+                                "RJ",
+                                "26023140");
 
-        CreateUserDto data = new CreateUserDto(
-                null,
-                null,
-                null,
-                null,
-                null,
-                "google",
-                "rua inga",
-                "4",
-                "casa 1",
-                "carmari",
-                "Nova iguaçu",
-                "RJ",
-                "26023140");
+                User user = new User(data);
+                user.setId("123456123456");
+                ListUserDto listUserDto = new ListUserDto(user);
 
-        User user = new User(data);
-        user.setId("123456123456");
-        ListUserDto listUserDto = new ListUserDto(user);
+                given(userMapper.toUser(any(CreateUserDto.class))).willReturn(user);
+                given(userMapper.toListUserDTO(any(User.class))).willReturn(listUserDto);
+                given(userService.save(any(CreateUserDto.class))).willReturn(user);
 
+                MockHttpServletRequestBuilder content = post("/api/v1/users")
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .accept(MediaType.APPLICATION_JSON)
+                                .content(objectMapper.writeValueAsString(data));
+                // Act & Assert
 
-        MockHttpServletRequestBuilder request = post("/api/v1/users")
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(data));
+                mvc.perform(content).andExpect(status().isCreated())
+                                .andExpect(jsonPath("first_name").value("Rodrigo"));
 
-        
+        }
 
-        mvc.perform(request).andExpect(status().isUnprocessableEntity());
-        mvc.perform(request).andExpect(jsonPath("$.path").value(Matchers.any(String.class)));
-        mvc.perform(request).andExpect(jsonPath("$.message").value(Matchers.any(String.class)));
+        @Test
+        @DisplayName("Should return invalid argument exception")
+        public void shouldReturnInvalidArgumentException() throws Exception {
 
-    }
+                CreateUserDto data = new CreateUserDto(
+                                null,
+                                null,
+                                null,
+                                null,
+                                null,
+                                "google",
+                                "rua inga",
+                                "4",
+                                "casa 1",
+                                "carmari",
+                                "Nova iguaçu",
+                                "RJ",
+                                "26023140");
+
+                User user = new User(data);
+                user.setId("123456123456");
+                ListUserDto listUserDto = new ListUserDto(user);
+
+                MockHttpServletRequestBuilder request = post("/api/v1/users")
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .accept(MediaType.APPLICATION_JSON)
+                                .content(objectMapper.writeValueAsString(data));
+
+                mvc.perform(request).andExpect(status().isUnprocessableEntity());
+                mvc.perform(request).andExpect(jsonPath("$.path").value(Matchers.any(String.class)));
+                mvc.perform(request).andExpect(jsonPath("$.message").value(Matchers.any(String.class)));
+
+        }
 
 }

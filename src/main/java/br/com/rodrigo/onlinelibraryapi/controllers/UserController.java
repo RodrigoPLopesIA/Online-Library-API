@@ -58,9 +58,9 @@ public class UserController {
     })
     @GetMapping
     public ResponseEntity<Page<ListUserDto>> index(Pageable page,
-            @PathVariable(value = "firstName", required = false) String firstName,
-            @PathVariable(value = "lastName", required = false) String lastName,
-            @PathVariable(value = "email", required = false) String email) {
+            @RequestParam(value = "firstName", required = false) String firstName,
+            @RequestParam(value = "lastName", required = false) String lastName,
+            @RequestParam(value = "email", required = false) String email) {
 
         return ResponseEntity.ok(userService.findAll(page, firstName, lastName, email).map(userMapper::toListUserDTO));
     }
