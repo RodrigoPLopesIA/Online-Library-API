@@ -19,6 +19,7 @@ import br.com.rodrigo.onlinelibraryapi.enums.Genre;
 import br.com.rodrigo.onlinelibraryapi.exceptions.UnauthorizedException;
 import br.com.rodrigo.onlinelibraryapi.exceptions.UniqueViolationException;
 import br.com.rodrigo.onlinelibraryapi.patterns.factory.BookFactory;
+import br.com.rodrigo.onlinelibraryapi.patterns.strategy.BookEmailContextStrategy;
 import br.com.rodrigo.onlinelibraryapi.patterns.strategy.DocumentValidationStrategy;
 import br.com.rodrigo.onlinelibraryapi.repositories.BookRepository;
 import br.com.rodrigo.onlinelibraryapi.repositories.specs.BookSpecification;
@@ -43,7 +44,7 @@ public class BookService {
     StorageService storageService;
 
     @Autowired
-    EmailBookService emailBookService;
+    EmailService emailService;
 
     public Page<Book> index(Pageable pageable, String title, String isbn, String authorName, Genre genre,
             String nationality) {
@@ -99,7 +100,7 @@ public class BookService {
         author.setBooks(Arrays.asList(created));
         user.setBooks(Arrays.asList(created));
 
-        emailBookService.send(user.getAuthentication().getEmail(), "Book created!", "created", book);
+        emailService.send(user.getAuthentication().getEmail(), "Book created!", "mail/book-created", new BookEmailContextStrategy(book));
         return created;
     }
 
@@ -138,7 +139,7 @@ public class BookService {
         author.setBooks(Arrays.asList(updated));
         user.setBooks(Arrays.asList(updated));
 
-        emailBookService.send(user.getAuthentication().getEmail(), "Book updated!", "updated", book);
+        emailService.send(user.getAuthentication().getEmail(), "Book updated!", "mail/book-updated", new BookEmailContextStrategy(book));
 
         return book;
     }
@@ -156,7 +157,7 @@ public class BookService {
             throw new UnauthorizedException("You are not authorized to perform this action on this book");
         }
         bookRepository.delete(book);
-        emailBookService.send(user.getAuthentication().getEmail(), "Book deleted!", "deleted", book);
+        emailService.send(user.getAuthentication().getEmail(), "Book deleted!", "mail/book-deleted", new BookEmailContextStrategy(book));
 
     }
 

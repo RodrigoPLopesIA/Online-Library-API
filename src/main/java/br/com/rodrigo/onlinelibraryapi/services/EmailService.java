@@ -9,12 +9,13 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.context.IContext;
 
-import br.com.rodrigo.onlinelibraryapi.interfaces.ISendEmail;
+import br.com.rodrigo.onlinelibraryapi.entities.User;
+import br.com.rodrigo.onlinelibraryapi.patterns.strategy.EmailContextStrategy;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 
 @Service
-public class EmailService implements ISendEmail {
+public class EmailService {
 
     @Autowired
     private JavaMailSender mailSender;
@@ -25,11 +26,11 @@ public class EmailService implements ISendEmail {
     @Value("${mail.from}")
     private String MAIL_FROM;
 
-    @Override
-    public void send(String to, String subject, String templateName, IContext context) throws MessagingException {
+    public void send(String to, String subject, String templateName, EmailContextStrategy contextStrategy) throws MessagingException {
+        Context context = contextStrategy.buildContext();
+
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
-
 
         String htmlContent = templateEngine.process(templateName, context);
 
@@ -41,3 +42,4 @@ public class EmailService implements ISendEmail {
         mailSender.send(mimeMessage);
     }
 }
+
