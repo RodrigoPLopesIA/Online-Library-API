@@ -21,6 +21,7 @@ import br.com.rodrigo.onlinelibraryapi.entities.embedded.Name;
 import br.com.rodrigo.onlinelibraryapi.exceptions.UniqueViolationException;
 import br.com.rodrigo.onlinelibraryapi.mapper.UserMapper;
 import br.com.rodrigo.onlinelibraryapi.repositories.UserRepository;
+import jakarta.mail.MessagingException;
 
 @ExtendWith(MockitoExtension.class)
 public class UserServiceTest {
@@ -59,7 +60,7 @@ public class UserServiceTest {
 
     @Test
     @DisplayName("User Service -> should create a new user")
-    public void shouldCreateNewUser() {
+    public void shouldCreateNewUser() throws MessagingException {
         User user = new User();
         Mockito.when(userMapper.toUser(userDto)).thenReturn(user);
         user.setAuthentication(new Authentication());

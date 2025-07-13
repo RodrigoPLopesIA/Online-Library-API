@@ -19,6 +19,7 @@ import br.com.rodrigo.onlinelibraryapi.enums.Genre;
 import br.com.rodrigo.onlinelibraryapi.exceptions.UnauthorizedException;
 import br.com.rodrigo.onlinelibraryapi.exceptions.UniqueViolationException;
 import br.com.rodrigo.onlinelibraryapi.patterns.factory.BookFactory;
+import br.com.rodrigo.onlinelibraryapi.patterns.strategy.DocumentValidationStrategy;
 import br.com.rodrigo.onlinelibraryapi.repositories.BookRepository;
 import br.com.rodrigo.onlinelibraryapi.repositories.specs.BookSpecification;
 import jakarta.mail.MessagingException;
@@ -177,7 +178,7 @@ public class BookService {
                 throw new UnauthorizedException("You are not authorized to perform this action on this book");
             }
 
-            this.storageService.validateFile(file, true);
+            this.storageService.validateFile(file, new DocumentValidationStrategy());
 
             String bucketName = "book";
             String objectName = this.storageService.generateFileName(
