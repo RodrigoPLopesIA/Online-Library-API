@@ -2,6 +2,7 @@ package br.com.rodrigo.onlinelibraryapi.services;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.nullable;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,6 +21,7 @@ import br.com.rodrigo.onlinelibraryapi.entities.embedded.Authentication;
 import br.com.rodrigo.onlinelibraryapi.entities.embedded.Name;
 import br.com.rodrigo.onlinelibraryapi.exceptions.UniqueViolationException;
 import br.com.rodrigo.onlinelibraryapi.mapper.UserMapper;
+import br.com.rodrigo.onlinelibraryapi.patterns.strategy.EmailContextStrategy;
 import br.com.rodrigo.onlinelibraryapi.repositories.UserRepository;
 import jakarta.mail.MessagingException;
 
@@ -37,6 +39,9 @@ public class UserServiceTest {
 
     @InjectMocks
     private UserService userService;
+
+    @Mock
+    private EmailService emailService;
 
     CreateUserDto userDto;
 
@@ -69,6 +74,11 @@ public class UserServiceTest {
         Mockito.when(passwordEncoder.encode(anyString())).thenReturn("encodedPassword");
 
         Mockito.when(userRepository.save(any(User.class))).thenReturn(user);
+        Mockito.doNothing().when(emailService).send(
+                nullable(String.class), // permite `null`
+                anyString(),
+                anyString(),
+                any(EmailContextStrategy.class));
 
         var result = userService.save(userDto);
 
