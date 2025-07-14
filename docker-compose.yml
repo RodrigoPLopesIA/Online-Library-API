@@ -1,15 +1,63 @@
+version: '3.8'
+
 services:
-  onlinelibrary:
-    image: postgres:latest
-    container_name: onlinelibrary_db
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: onlinelibrary
+  onlinelibrary_api:
+    container_name: online_library_api
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "5432:5432"
+      - "${SERVER_PORT}:${SERVER_PORT}"
+      - "${MANAGEMENT_PORT}:${MANAGEMENT_PORT}"
+    environment:
+      SPRING_DATASOURCE_URL: ${DB_URL}
+      SPRING_DATASOURCE_USERNAME: ${DB_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+      SERVER_PORT: ${SERVER_PORT}
+      MANAGEMENT_PORT: ${MANAGEMENT_PORT}
+    depends_on:
+      - onlinelibrary_db
+
+  onlinelibrary_db:
+    container_name: onlinelibrary_db
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "${DB_PORT}:${DB_PORT}"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+  minio:
+    image: quay.io/minio/minio:latest
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+    environment:
+      - MINIO_ROOT_USER=${MINIO_NAME}
+      - MINIO_ROOT_PASSWORD=${MINIO_SECRET}
+      - MINIO_DEFAULT_BUCKETS=${BUCKET_NAME}
+      - MINIO_SCHEME=http
+    command: server /data --console-address ":9001"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+  mailhog:
+    image: mailhog/mailhog
+    container_name: mailhog
+    ports:
+      - "${MAILHOG_SMTP_PORT}:${MAILHOG_SMTP_PORT}"  
+      - "${MAILHOG_PORT_UI}:${MAILHOG_PORT_UI}"  
 
+networks:
+  minionetwork:
+    driver: bridge
 volumes:
   postgres_data:
+  minio_data:
+    driver: local

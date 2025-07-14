@@ -1,0 +1,488 @@
+2025-07-14T12:36:00.473-03:00  INFO 1756469 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Starting OnlinelibraryapiApplication using Java 21.0.7 with PID 1756469 (/home/rodrigo/Documentos/projeto/Online-Library-API/target/classes started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-14T12:36:00.478-03:00  INFO 1756469 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : The following 1 profile is active: "dev"
+2025-07-14T12:36:00.529-03:00  INFO 1756469 --- [onlinelibraryapi] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-07-14T12:36:00.529-03:00  INFO 1756469 --- [onlinelibraryapi] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-07-14T12:36:02.013-03:00  INFO 1756469 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-14T12:36:02.075-03:00  INFO 1756469 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 54 ms. Found 3 JPA repository interfaces.
+2025-07-14T12:36:02.822-03:00  INFO 1756469 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-14T12:36:02.831-03:00  INFO 1756469 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-14T12:36:02.832-03:00  INFO 1756469 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-14T12:36:02.867-03:00  INFO 1756469 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-07-14T12:36:02.868-03:00  INFO 1756469 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2338 ms
+2025-07-14T12:36:02.967-03:00  WARN 1756469 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariConfig           : library-db-pool - idleTimeout is close to or more than maxLifetime, disabling it.
+2025-07-14T12:36:02.973-03:00  INFO 1756469 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Starting...
+2025-07-14T12:36:03.162-03:00  INFO 1756469 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : library-db-pool - Added connection org.postgresql.jdbc.PgConnection@54cf9aa3
+2025-07-14T12:36:03.164-03:00  INFO 1756469 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Start completed.
+2025-07-14T12:36:03.254-03:00  INFO 1756469 --- [onlinelibraryapi] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-14T12:36:03.308-03:00  INFO 1756469 --- [onlinelibraryapi] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.18.Final
+2025-07-14T12:36:03.344-03:00  INFO 1756469 --- [onlinelibraryapi] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-14T12:36:03.624-03:00  INFO 1756469 --- [onlinelibraryapi] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-14T12:36:03.677-03:00  WARN 1756469 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-14T12:36:03.696-03:00  INFO 1756469 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (library-db-pool)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-14T12:36:04.361-03:00  INFO 1756469 --- [onlinelibraryapi] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-14T12:36:04.500-03:00  INFO 1756469 --- [onlinelibraryapi] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-14T12:36:04.843-03:00  INFO 1756469 --- [onlinelibraryapi] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2025-07-14T12:36:04.894-03:00  INFO 1756469 --- [onlinelibraryapi] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-07-14T12:36:05.251-03:00  INFO 1756469 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : admin
+2025-07-14T12:36:05.251-03:00  INFO 1756469 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : http://localhost:9000
+2025-07-14T12:36:05.252-03:00  INFO 1756469 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : adminadmin
+2025-07-14T12:36:05.411-03:00  WARN 1756469 --- [onlinelibraryapi] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'stripeListner': Unsatisfied dependency expressed through field 'stripeService': No qualifying bean of type 'br.com.rodrigo.onlinelibraryapi.services.StripeService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2025-07-14T12:36:05.413-03:00  INFO 1756469 --- [onlinelibraryapi] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-14T12:36:05.414-03:00  INFO 1756469 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown initiated...
+2025-07-14T12:36:05.417-03:00  INFO 1756469 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown completed.
+2025-07-14T12:36:05.421-03:00  INFO 1756469 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-07-14T12:36:05.440-03:00  INFO 1756469 --- [onlinelibraryapi] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-07-14T12:36:05.461-03:00 ERROR 1756469 --- [onlinelibraryapi] [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field stripeService in br.com.rodrigo.onlinelibraryapi.listners.StripeListner required a bean of type 'br.com.rodrigo.onlinelibraryapi.services.StripeService' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'br.com.rodrigo.onlinelibraryapi.services.StripeService' in your configuration.
+
+2025-07-14T12:36:40.959-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Starting OnlinelibraryapiApplication using Java 21.0.7 with PID 1757089 (/home/rodrigo/Documentos/projeto/Online-Library-API/target/classes started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-14T12:36:40.962-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : The following 1 profile is active: "dev"
+2025-07-14T12:36:41.016-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-07-14T12:36:41.017-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-07-14T12:36:42.296-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-14T12:36:42.373-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 67 ms. Found 3 JPA repository interfaces.
+2025-07-14T12:36:43.272-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-14T12:36:43.287-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-14T12:36:43.288-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-14T12:36:43.331-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-07-14T12:36:43.332-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2314 ms
+2025-07-14T12:36:43.467-03:00  WARN 1757089 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariConfig           : library-db-pool - idleTimeout is close to or more than maxLifetime, disabling it.
+2025-07-14T12:36:43.476-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Starting...
+2025-07-14T12:36:43.738-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : library-db-pool - Added connection org.postgresql.jdbc.PgConnection@6890abce
+2025-07-14T12:36:43.739-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Start completed.
+2025-07-14T12:36:43.828-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-14T12:36:43.861-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.18.Final
+2025-07-14T12:36:43.881-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-14T12:36:44.108-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-14T12:36:44.155-03:00  WARN 1757089 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-14T12:36:44.174-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (library-db-pool)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-14T12:36:44.858-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-14T12:36:44.958-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-14T12:36:45.333-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2025-07-14T12:36:45.398-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-07-14T12:36:45.758-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : admin
+2025-07-14T12:36:45.759-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : http://localhost:9000
+2025-07-14T12:36:45.759-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : adminadmin
+2025-07-14T12:36:45.993-03:00  WARN 1757089 --- [onlinelibraryapi] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-14T12:36:46.760-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/onlinelibrary?useSSL=false&usePublicKeyRetrieval=true'
+2025-07-14T12:36:46.797-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-14T12:36:46.914-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-14T12:36:46.988-03:00  INFO 1757089 --- [onlinelibraryapi] [RMI TCP Connection(2)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-07-14T12:36:46.989-03:00  INFO 1757089 --- [onlinelibraryapi] [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-07-14T12:36:46.991-03:00  INFO 1757089 --- [onlinelibraryapi] [RMI TCP Connection(2)-127.0.0.1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-07-14T12:36:47.041-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-07-14T12:36:47.042-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-14T12:36:47.042-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-14T12:36:47.059-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-14T12:36:47.060-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 138 ms
+2025-07-14T12:36:47.081-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoints beneath base path '/actuator'
+2025-07-14T12:36:47.157-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-07-14T12:36:47.163-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Started OnlinelibraryapiApplication in 6.683 seconds (process running for 7.214)
+2025-07-14T12:36:53.792-03:00  WARN 1757089 --- [onlinelibraryapi] [http-nio-8080-exec-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23505
+2025-07-14T12:36:53.792-03:00 ERROR 1757089 --- [onlinelibraryapi] [http-nio-8080-exec-1] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: duplicate key value violates unique constraint "uk6dotkott2kjsp8vw4d0m25fb7"
+  Detalhe: Key (email)=(john.doe123@example.com) already exists.
+2025-07-14T12:36:53.812-03:00  WARN 1757089 --- [onlinelibraryapi] [http-nio-8080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [br.com.rodrigo.onlinelibraryapi.exceptions.UniqueViolationException: user john.doe123@example.com already registered]
+2025-07-14T13:53:47.257-03:00  INFO 1757089 --- [onlinelibraryapi] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 3 class path changes (0 additions, 1 deletion, 2 modifications)
+2025-07-14T13:53:47.261-03:00  INFO 1757089 --- [onlinelibraryapi] [Thread-5] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-14T13:53:47.264-03:00  INFO 1757089 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-14T13:53:47.264-03:00  INFO 1757089 --- [onlinelibraryapi] [Thread-5] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-14T13:53:47.265-03:00  INFO 1757089 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-14T13:53:47.267-03:00  INFO 1757089 --- [onlinelibraryapi] [Thread-5] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-07-14T13:53:47.275-03:00  INFO 1757089 --- [onlinelibraryapi] [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-14T13:53:47.277-03:00  INFO 1757089 --- [onlinelibraryapi] [Thread-5] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown initiated...
+2025-07-14T13:53:47.278-03:00  INFO 1757089 --- [onlinelibraryapi] [Thread-5] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown completed.
+2025-07-14T13:53:47.383-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Starting OnlinelibraryapiApplication using Java 21.0.7 with PID 1757089 (/home/rodrigo/Documentos/projeto/Online-Library-API/target/classes started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-14T13:53:47.383-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : The following 1 profile is active: "dev"
+2025-07-14T13:53:47.719-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-14T13:53:47.737-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16 ms. Found 3 JPA repository interfaces.
+2025-07-14T13:53:47.952-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-14T13:53:47.958-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-14T13:53:47.959-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-14T13:53:47.981-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-07-14T13:53:47.982-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 596 ms
+2025-07-14T13:53:48.059-03:00  WARN 1757089 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariConfig           : library-db-pool - idleTimeout is close to or more than maxLifetime, disabling it.
+2025-07-14T13:53:48.062-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Starting...
+2025-07-14T13:53:48.117-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : library-db-pool - Added connection org.postgresql.jdbc.PgConnection@112c7572
+2025-07-14T13:53:48.119-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Start completed.
+2025-07-14T13:53:48.170-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-14T13:53:48.175-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-14T13:53:48.189-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-14T13:53:48.206-03:00  WARN 1757089 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-14T13:53:48.217-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (library-db-pool)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-14T13:53:48.407-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-14T13:53:48.531-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-14T13:53:48.640-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2025-07-14T13:53:48.705-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : admin
+2025-07-14T13:53:48.705-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : http://localhost:9000
+2025-07-14T13:53:48.705-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : adminadmin
+2025-07-14T13:53:48.740-03:00  WARN 1757089 --- [onlinelibraryapi] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'stripeListner': Lookup method resolution failed
+2025-07-14T13:53:48.741-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-14T13:53:48.741-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown initiated...
+2025-07-14T13:53:48.742-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown completed.
+2025-07-14T13:53:48.743-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-07-14T13:53:48.756-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-07-14T13:53:48.771-03:00 ERROR 1757089 --- [onlinelibraryapi] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'stripeListner': Lookup method resolution failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:498) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:368) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1334) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1229) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1222) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1188) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1123) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.5.3.jar:3.5.3]
+	at br.com.rodrigo.onlinelibraryapi.OnlinelibraryapiApplication.main(OnlinelibraryapiApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.5.3.jar:3.5.3]
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [br.com.rodrigo.onlinelibraryapi.listners.StripeListner] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@498f0de2]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:483) ~[spring-core-6.2.8.jar:6.2.8]
+	at org.springframework.util.ReflectionUtils.doWithLocalMethods(ReflectionUtils.java:320) ~[spring-core-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:476) ~[spring-beans-6.2.8.jar:6.2.8]
+	... 24 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: UserEvent
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3578) ~[na:na]
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2676) ~[na:na]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:465) ~[spring-core-6.2.8.jar:6.2.8]
+	... 26 common frames omitted
+Caused by: java.lang.ClassNotFoundException: UserEvent
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[na:na]
+	at java.base/java.lang.Class.forName0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:534) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:513) ~[na:na]
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121) ~[spring-boot-devtools-3.5.3.jar:3.5.3]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[na:na]
+	... 30 common frames omitted
+
+2025-07-14T13:53:50.208-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Starting OnlinelibraryapiApplication using Java 21.0.7 with PID 1757089 (/home/rodrigo/Documentos/projeto/Online-Library-API/target/classes started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-14T13:53:50.208-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : The following 1 profile is active: "dev"
+2025-07-14T13:53:50.444-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-14T13:53:50.457-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 11 ms. Found 3 JPA repository interfaces.
+2025-07-14T13:53:50.543-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-14T13:53:50.544-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-14T13:53:50.544-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-14T13:53:50.556-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-14T13:53:50.556-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 347 ms
+2025-07-14T13:53:50.573-03:00  WARN 1757089 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariConfig           : library-db-pool - idleTimeout is close to or more than maxLifetime, disabling it.
+2025-07-14T13:53:50.574-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Starting...
+2025-07-14T13:53:50.586-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : library-db-pool - Added connection org.postgresql.jdbc.PgConnection@1272bfb2
+2025-07-14T13:53:50.586-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Start completed.
+2025-07-14T13:53:50.599-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-14T13:53:50.601-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-14T13:53:50.607-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-14T13:53:50.612-03:00  WARN 1757089 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-14T13:53:50.615-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (library-db-pool)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-14T13:53:50.715-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-14T13:53:50.793-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-14T13:53:50.877-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2025-07-14T13:53:50.921-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : admin
+2025-07-14T13:53:50.922-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : http://localhost:9000
+2025-07-14T13:53:50.922-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : adminadmin
+2025-07-14T13:53:50.946-03:00  WARN 1757089 --- [onlinelibraryapi] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'stripeListner': Lookup method resolution failed
+2025-07-14T13:53:50.948-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-14T13:53:50.948-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown initiated...
+2025-07-14T13:53:50.951-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown completed.
+2025-07-14T13:53:50.952-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-07-14T13:53:50.963-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-07-14T13:53:50.965-03:00 ERROR 1757089 --- [onlinelibraryapi] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'stripeListner': Lookup method resolution failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:498) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:368) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1334) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1229) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1222) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1188) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1123) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.5.3.jar:3.5.3]
+	at br.com.rodrigo.onlinelibraryapi.OnlinelibraryapiApplication.main(OnlinelibraryapiApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.5.3.jar:3.5.3]
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [br.com.rodrigo.onlinelibraryapi.listners.StripeListner] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@5e471733]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:483) ~[spring-core-6.2.8.jar:6.2.8]
+	at org.springframework.util.ReflectionUtils.doWithLocalMethods(ReflectionUtils.java:320) ~[spring-core-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:476) ~[spring-beans-6.2.8.jar:6.2.8]
+	... 24 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: UserEvent
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3578) ~[na:na]
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2676) ~[na:na]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:465) ~[spring-core-6.2.8.jar:6.2.8]
+	... 26 common frames omitted
+Caused by: java.lang.ClassNotFoundException: UserEvent
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[na:na]
+	at java.base/java.lang.Class.forName0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:534) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:513) ~[na:na]
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121) ~[spring-boot-devtools-3.5.3.jar:3.5.3]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[na:na]
+	... 30 common frames omitted
+
+2025-07-14T13:53:56.431-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Starting OnlinelibraryapiApplication using Java 21.0.7 with PID 1757089 (/home/rodrigo/Documentos/projeto/Online-Library-API/target/classes started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-14T13:53:56.432-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : The following 1 profile is active: "dev"
+2025-07-14T13:53:56.662-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-14T13:53:56.677-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 13 ms. Found 3 JPA repository interfaces.
+2025-07-14T13:53:56.802-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-14T13:53:56.802-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-14T13:53:56.803-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-14T13:53:56.817-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-14T13:53:56.817-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 382 ms
+2025-07-14T13:53:56.837-03:00  WARN 1757089 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariConfig           : library-db-pool - idleTimeout is close to or more than maxLifetime, disabling it.
+2025-07-14T13:53:56.837-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Starting...
+2025-07-14T13:53:56.851-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : library-db-pool - Added connection org.postgresql.jdbc.PgConnection@4010b1d6
+2025-07-14T13:53:56.852-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Start completed.
+2025-07-14T13:53:56.865-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-14T13:53:56.868-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-14T13:53:56.875-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-14T13:53:56.878-03:00  WARN 1757089 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-14T13:53:56.882-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (library-db-pool)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-14T13:53:56.978-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-14T13:53:57.058-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-14T13:53:57.139-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2025-07-14T13:53:57.169-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : admin
+2025-07-14T13:53:57.169-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : http://localhost:9000
+2025-07-14T13:53:57.169-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : adminadmin
+2025-07-14T13:53:57.172-03:00  WARN 1757089 --- [onlinelibraryapi] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'stripeListner': Lookup method resolution failed
+2025-07-14T13:53:57.173-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-14T13:53:57.173-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown initiated...
+2025-07-14T13:53:57.174-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown completed.
+2025-07-14T13:53:57.174-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-07-14T13:53:57.181-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-07-14T13:53:57.183-03:00 ERROR 1757089 --- [onlinelibraryapi] [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'stripeListner': Lookup method resolution failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:498) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:368) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1334) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1229) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1222) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1188) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1123) ~[spring-beans-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627) ~[spring-context-6.2.8.jar:6.2.8]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361) ~[spring-boot-3.5.3.jar:3.5.3]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350) ~[spring-boot-3.5.3.jar:3.5.3]
+	at br.com.rodrigo.onlinelibraryapi.OnlinelibraryapiApplication.main(OnlinelibraryapiApplication.java:10) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.5.3.jar:3.5.3]
+Caused by: java.lang.IllegalStateException: Failed to introspect Class [br.com.rodrigo.onlinelibraryapi.listners.StripeListner] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@520765bb]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:483) ~[spring-core-6.2.8.jar:6.2.8]
+	at org.springframework.util.ReflectionUtils.doWithLocalMethods(ReflectionUtils.java:320) ~[spring-core-6.2.8.jar:6.2.8]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.checkLookupMethods(AutowiredAnnotationBeanPostProcessor.java:476) ~[spring-beans-6.2.8.jar:6.2.8]
+	... 24 common frames omitted
+Caused by: java.lang.NoClassDefFoundError: UserEvent
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3578) ~[na:na]
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2676) ~[na:na]
+	at org.springframework.util.ReflectionUtils.getDeclaredMethods(ReflectionUtils.java:465) ~[spring-core-6.2.8.jar:6.2.8]
+	... 26 common frames omitted
+Caused by: java.lang.ClassNotFoundException: UserEvent
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[na:na]
+	at java.base/java.lang.Class.forName0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:534) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:513) ~[na:na]
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121) ~[spring-boot-devtools-3.5.3.jar:3.5.3]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526) ~[na:na]
+	... 30 common frames omitted
+
+2025-07-14T13:53:59.619-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Starting OnlinelibraryapiApplication using Java 21.0.7 with PID 1757089 (/home/rodrigo/Documentos/projeto/Online-Library-API/target/classes started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-14T13:53:59.619-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : The following 1 profile is active: "dev"
+2025-07-14T13:53:59.853-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-14T13:53:59.864-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 9 ms. Found 3 JPA repository interfaces.
+2025-07-14T13:53:59.966-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-14T13:53:59.968-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-14T13:53:59.968-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-14T13:53:59.978-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-3].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-14T13:53:59.978-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 357 ms
+2025-07-14T13:53:59.996-03:00  WARN 1757089 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariConfig           : library-db-pool - idleTimeout is close to or more than maxLifetime, disabling it.
+2025-07-14T13:53:59.997-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Starting...
+2025-07-14T13:54:00.009-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : library-db-pool - Added connection org.postgresql.jdbc.PgConnection@4f9a40cb
+2025-07-14T13:54:00.009-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Start completed.
+2025-07-14T13:54:00.021-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-14T13:54:00.022-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-14T13:54:00.026-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-14T13:54:00.030-03:00  WARN 1757089 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-14T13:54:00.034-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (library-db-pool)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-14T13:54:00.127-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-14T13:54:00.213-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-14T13:54:00.272-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2025-07-14T13:54:00.295-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : admin
+2025-07-14T13:54:00.295-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : http://localhost:9000
+2025-07-14T13:54:00.295-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : adminadmin
+2025-07-14T13:54:00.322-03:00  WARN 1757089 --- [onlinelibraryapi] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-14T13:54:00.596-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/onlinelibrary?useSSL=false&usePublicKeyRetrieval=true'
+2025-07-14T13:54:00.604-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-14T13:54:00.624-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-14T13:54:00.669-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-07-14T13:54:00.670-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-14T13:54:00.670-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-14T13:54:00.683-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-4].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-14T13:54:00.683-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 58 ms
+2025-07-14T13:54:00.691-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoints beneath base path '/actuator'
+2025-07-14T13:54:00.726-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-07-14T13:54:00.733-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Started OnlinelibraryapiApplication in 1.136 seconds (process running for 4640.785)
+2025-07-14T13:54:00.737-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-07-14T13:54:09.023-03:00  INFO 1757089 --- [onlinelibraryapi] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 2 class path changes (0 additions, 0 deletions, 2 modifications)
+2025-07-14T13:54:09.024-03:00  INFO 1757089 --- [onlinelibraryapi] [Thread-7] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-14T13:54:09.025-03:00  INFO 1757089 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-14T13:54:09.025-03:00  INFO 1757089 --- [onlinelibraryapi] [Thread-7] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-07-14T13:54:09.026-03:00  INFO 1757089 --- [onlinelibraryapi] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-07-14T13:54:09.027-03:00  INFO 1757089 --- [onlinelibraryapi] [Thread-7] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2025-07-14T13:54:09.031-03:00  INFO 1757089 --- [onlinelibraryapi] [Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-14T13:54:09.032-03:00  INFO 1757089 --- [onlinelibraryapi] [Thread-7] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown initiated...
+2025-07-14T13:54:09.032-03:00  INFO 1757089 --- [onlinelibraryapi] [Thread-7] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Shutdown completed.
+2025-07-14T13:54:09.115-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Starting OnlinelibraryapiApplication using Java 21.0.7 with PID 1757089 (/home/rodrigo/Documentos/projeto/Online-Library-API/target/classes started by rodrigo in /home/rodrigo/Documentos/projeto/Online-Library-API)
+2025-07-14T13:54:09.116-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : The following 1 profile is active: "dev"
+2025-07-14T13:54:09.272-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-14T13:54:09.281-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 8 ms. Found 3 JPA repository interfaces.
+2025-07-14T13:54:09.351-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-14T13:54:09.352-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-14T13:54:09.352-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-14T13:54:09.361-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-3].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-14T13:54:09.362-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 245 ms
+2025-07-14T13:54:09.383-03:00  WARN 1757089 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariConfig           : library-db-pool - idleTimeout is close to or more than maxLifetime, disabling it.
+2025-07-14T13:54:09.383-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Starting...
+2025-07-14T13:54:09.396-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : library-db-pool - Added connection org.postgresql.jdbc.PgConnection@13ce1a7b
+2025-07-14T13:54:09.396-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] com.zaxxer.hikari.HikariDataSource       : library-db-pool - Start completed.
+2025-07-14T13:54:09.407-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-14T13:54:09.409-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-07-14T13:54:09.420-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-14T13:54:09.424-03:00  WARN 1757089 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-14T13:54:09.426-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (library-db-pool)']
+	Database driver: undefined/unknown
+	Database version: 17.5
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-07-14T13:54:09.487-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-14T13:54:09.561-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-14T13:54:09.609-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userService
+2025-07-14T13:54:09.630-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : admin
+2025-07-14T13:54:09.630-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : http://localhost:9000
+2025-07-14T13:54:09.630-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.config.MinioConfig               : adminadmin
+2025-07-14T13:54:09.650-03:00  WARN 1757089 --- [onlinelibraryapi] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-14T13:54:09.798-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:postgresql://localhost:5432/onlinelibrary?useSSL=false&usePublicKeyRetrieval=true'
+2025-07-14T13:54:09.805-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-07-14T13:54:09.841-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-14T13:54:09.906-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 9090 (http)
+2025-07-14T13:54:09.907-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-14T13:54:09.907-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-14T13:54:09.921-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.a.c.c.C.[Tomcat-4].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2025-07-14T13:54:09.921-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 75 ms
+2025-07-14T13:54:09.927-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoints beneath base path '/actuator'
+2025-07-14T13:54:09.951-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 9090 (http) with context path '/'
+2025-07-14T13:54:09.957-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] b.c.r.o.OnlinelibraryapiApplication      : Started OnlinelibraryapiApplication in 0.857 seconds (process running for 4650.008)
+2025-07-14T13:54:09.960-03:00  INFO 1757089 --- [onlinelibraryapi] [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged

@@ -1,11 +1,17 @@
 package br.com.rodrigo.onlinelibraryapi.entities;
 
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import br.com.rodrigo.onlinelibraryapi.dtos.profile.CreateProfileDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.user.CreateUserDto;
 import br.com.rodrigo.onlinelibraryapi.entities.embedded.Address;
 import br.com.rodrigo.onlinelibraryapi.entities.embedded.Authentication;
@@ -17,8 +23,10 @@ import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,7 +40,8 @@ import lombok.Setter;
 @Setter
 @EqualsAndHashCode(of = "id")
 @EntityListeners(AuditingEntityListener.class)
-public class User {
+@Builder
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -47,6 +56,13 @@ public class User {
     @Embedded
     private Address address;
 
+    @Column(nullable = true, length = 512)
+    private String profileImage;
+
+
+    @OneToMany(mappedBy = "user")
+    List<Book> books = new ArrayList<>();
+    
     @CreatedDate
     @Column(nullable = false, updatable = false)
     private Instant createdAt;
@@ -61,9 +77,31 @@ public class User {
 
     public void update(CreateUserDto user) {
         this.setName(new Name(user.first_name(), user.last_name()));
-        this.setAuthentication(new Authentication(user.email(), user.password()));
+        this.setAuthentication(new Authentication(user.email(), user.provider()));
         this.setAddress(new Address(user.street(), user.number(), user.complement(), user.neighborhood(), user.city(),
                 user.state(), user.zipCode()));
+    }
+    public void update(CreateProfileDTO user) {
+        this.setName(new Name(user.first_name(), user.last_name()));
+        this.setAuthentication(new Authentication(user.email(), ""));
+        this.setAddress(new Address(user.street(), user.number(), user.complement(), user.neighborhood(), user.city(),
+                user.state(), user.zipCode()));
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        // Assuming no specific roles or authorities are defined for this user
+        return null; // or Collections.emptyList() if you prefer
+    }
+
+    @Override
+    public String getPassword() {
+        return this.authentication.getPassword();
+    }
+
+    @Override
+    public String getUsername() {
+        return this.authentication.getEmail();
     }
 
 }
