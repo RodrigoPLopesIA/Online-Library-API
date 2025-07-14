@@ -14,8 +14,10 @@ import br.com.rodrigo.onlinelibraryapi.dtos.user.CreateUserDto;
 import br.com.rodrigo.onlinelibraryapi.entities.User;
 import br.com.rodrigo.onlinelibraryapi.exceptions.UniqueViolationException;
 import br.com.rodrigo.onlinelibraryapi.mapper.UserMapper;
+import br.com.rodrigo.onlinelibraryapi.patterns.strategy.UserEmailContextStrategy;
 import br.com.rodrigo.onlinelibraryapi.repositories.UserRepository;
 import br.com.rodrigo.onlinelibraryapi.repositories.specs.UsersSpecification;
+import jakarta.mail.MessagingException;
 import jakarta.persistence.EntityNotFoundException;
 
 @Service
@@ -30,17 +32,20 @@ public class UserService implements UserDetailsService {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private EmailService emailService;
+
     public Page<User> findAll(Pageable pageable, String firstName, String lastName, String email) {
 
         Specification<User> spec = UsersSpecification.conjunction();
 
-        if(firstName != null && !firstName.isBlank()) {
+        if (firstName != null && !firstName.isBlank()) {
             spec = spec.and(UsersSpecification.firstNameContains(firstName));
         }
-        if(lastName != null && !lastName.isBlank()) {
+        if (lastName != null && !lastName.isBlank()) {
             spec = spec.and(UsersSpecification.lastNameContains(lastName));
         }
-        if(email != null && !email.isBlank()) {
+        if (email != null && !email.isBlank()) {
             spec = spec.and(UsersSpecification.emailContains(email));
         }
         return userRepository.findAll(spec, pageable);
@@ -53,7 +58,7 @@ public class UserService implements UserDetailsService {
         return user;
     }
 
-    public User save(CreateUserDto data) {
+    public User save(CreateUserDto data) throws MessagingException {
         try {
             User user = userMapper.toUser(data);
 
@@ -63,6 +68,8 @@ public class UserService implements UserDetailsService {
             user.getAuthentication().setPassword(passwordEncoder.encode(data.password()));
 
             User newUser = userRepository.save(user);
+            emailService.send(newUser.getUsername(), "User created with success!", "mail/welcome-email",
+                    new UserEmailContextStrategy(newUser));
             return newUser;
         } catch (DataIntegrityViolationException e) {
             throw new UniqueViolationException(String.format("user %s already registered", data.email()));

@@ -11,6 +11,7 @@ import br.com.rodrigo.onlinelibraryapi.dtos.profile.CreateProfileDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.profile.UpdatePasswordDTO;
 import br.com.rodrigo.onlinelibraryapi.entities.User;
 import br.com.rodrigo.onlinelibraryapi.exceptions.UniqueViolationException;
+import br.com.rodrigo.onlinelibraryapi.patterns.strategy.ImageValidationStrategy;
 import br.com.rodrigo.onlinelibraryapi.repositories.UserRepository;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -67,8 +68,8 @@ public class ProfileService {
 
             User user = this.findById(data.getId());
 
-            this.storageService.validateFile(file, true);
-            
+            storageService.validateFile(file, new ImageValidationStrategy());
+
             String bucketName = "profile";
             String objectName = this.storageService.generateFileName(
                     user.getName().getFirst_name() + "_" + user.getName().getLast_name(), file.getOriginalFilename());
@@ -81,8 +82,6 @@ public class ProfileService {
                     contentType);
             String url_image = storageService.getFileUrl(objectName, bucketName);
 
-
-            
             user.setProfileImage(url_image);
 
             this.userRepository.save(user);

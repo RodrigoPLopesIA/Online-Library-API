@@ -26,6 +26,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -39,6 +40,7 @@ import lombok.Setter;
 @Setter
 @EqualsAndHashCode(of = "id")
 @EntityListeners(AuditingEntityListener.class)
+@Builder
 public class User implements UserDetails {
 
     @Id

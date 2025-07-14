@@ -1,4 +1,4 @@
-package br.com.rodrigo.onlinelibraryapi.utils;
+package br.com.rodrigo.onlinelibraryapi.services;
 
 import br.com.rodrigo.onlinelibraryapi.dtos.token.TokenJWT;
 import lombok.NoArgsConstructor;
@@ -6,6 +6,9 @@ import lombok.extern.slf4j.Slf4j;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
+
+import org.springframework.stereotype.Service;
+
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -15,14 +18,15 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 
 @Slf4j
 @NoArgsConstructor
-public class JWTUtils {
+@Service
+public class JWTService{
 
     private static final String JWT_SECRET_KEY = "123456789012345678901234567890";
     private static final Long JWT_EXPIRATION_DAY = 0L;
     private static final Long JWT_EXPIRATION_HOUR = 0L;
     private static final Long JWT_EXPIRATION_MINUTES = 2L;
 
-    public static Date expiresDate(Date start) {
+    public Date expiresDate(Date start) {
         LocalDateTime dateTime = start.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
         LocalDateTime end = dateTime.plusDays(JWT_EXPIRATION_DAY)
                 .plusHours(JWT_EXPIRATION_HOUR)
@@ -30,7 +34,7 @@ public class JWTUtils {
         return Date.from(end.atZone(ZoneId.systemDefault()).toInstant());
     }
 
-    public static TokenJWT createToken(String username) {
+    public TokenJWT createToken(String username) {
         try {
             Date expiresDate = expiresDate(new Date());
             Algorithm algorithm = Algorithm.HMAC256(JWT_SECRET_KEY);
@@ -45,7 +49,7 @@ public class JWTUtils {
         }
         return null;
     }
-    public static boolean isValidToken(String token) {
+    public boolean isValidToken(String token) {
         try {
             Algorithm algorithm = Algorithm.HMAC256(JWT_SECRET_KEY);
             JWTVerifier verifier = JWT.require(algorithm)
@@ -58,7 +62,7 @@ public class JWTUtils {
             return false;
         }
     }
-    public static DecodedJWT decode(String token) {
+    public DecodedJWT decode(String token) {
         try {
             Algorithm algorithm = Algorithm.HMAC256(JWT_SECRET_KEY);
             JWTVerifier verifier = JWT.require(algorithm)

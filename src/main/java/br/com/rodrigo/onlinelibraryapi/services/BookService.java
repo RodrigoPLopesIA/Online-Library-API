@@ -19,8 +19,11 @@ import br.com.rodrigo.onlinelibraryapi.enums.Genre;
 import br.com.rodrigo.onlinelibraryapi.exceptions.UnauthorizedException;
 import br.com.rodrigo.onlinelibraryapi.exceptions.UniqueViolationException;
 import br.com.rodrigo.onlinelibraryapi.patterns.factory.BookFactory;
+import br.com.rodrigo.onlinelibraryapi.patterns.strategy.BookEmailContextStrategy;
+import br.com.rodrigo.onlinelibraryapi.patterns.strategy.DocumentValidationStrategy;
 import br.com.rodrigo.onlinelibraryapi.repositories.BookRepository;
 import br.com.rodrigo.onlinelibraryapi.repositories.specs.BookSpecification;
+import jakarta.mail.MessagingException;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 
@@ -39,6 +42,9 @@ public class BookService {
 
     @Autowired
     StorageService storageService;
+
+    @Autowired
+    EmailService emailService;
 
     public Page<Book> index(Pageable pageable, String title, String isbn, String authorName, Genre genre,
             String nationality) {
@@ -68,7 +74,7 @@ public class BookService {
         return bookRepository.findAll(spec, pageable);
     }
 
-    public Book create(CreateBookDTO data, User authUser) {
+    public Book create(CreateBookDTO data, User authUser) throws MessagingException {
 
         // verify if book alread exists by isbn
         if (this.existsByIsbn(data.isbn())) {
@@ -88,16 +94,17 @@ public class BookService {
         Book book = BookFactory.createFrom(data);
         book.setAuthor(author);
         book.setUser(user);
-        
+
         Book created = bookRepository.save(book);
 
         author.setBooks(Arrays.asList(created));
         user.setBooks(Arrays.asList(created));
 
+        emailService.send(user.getAuthentication().getEmail(), "Book created!", "mail/book-created", new BookEmailContextStrategy(book));
         return created;
     }
 
-    public Book update(UUID id, Book data, User authUser) {
+    public Book update(UUID id, Book data, User authUser) throws MessagingException {
         Book book = this.show(id);
         log.error("book user {}", book.getUser().getId());
         log.error("authUser user {}", authUser.getId());
@@ -132,6 +139,8 @@ public class BookService {
         author.setBooks(Arrays.asList(updated));
         user.setBooks(Arrays.asList(updated));
 
+        emailService.send(user.getAuthentication().getEmail(), "Book updated!", "mail/book-updated", new BookEmailContextStrategy(book));
+
         return book;
     }
 
@@ -140,7 +149,7 @@ public class BookService {
                 .orElseThrow(() -> new EntityNotFoundException("Book with ID " + id + " not found."));
     }
 
-    public void delete(UUID id, User data) {
+    public void delete(UUID id, User data) throws MessagingException {
 
         User user = this.userService.findById(data.getId());
         Book book = this.show(id);
@@ -148,6 +157,7 @@ public class BookService {
             throw new UnauthorizedException("You are not authorized to perform this action on this book");
         }
         bookRepository.delete(book);
+        emailService.send(user.getAuthentication().getEmail(), "Book deleted!", "mail/book-deleted", new BookEmailContextStrategy(book));
 
     }
 
@@ -169,7 +179,7 @@ public class BookService {
                 throw new UnauthorizedException("You are not authorized to perform this action on this book");
             }
 
-            this.storageService.validateFile(file, true);
+            this.storageService.validateFile(file, new DocumentValidationStrategy());
 
             String bucketName = "book";
             String objectName = this.storageService.generateFileName(
@@ -192,6 +202,6 @@ public class BookService {
 
         } catch (Exception e) {
             throw new UniqueViolationException("Error: " + e.getMessage());
-        } 
+        }
     }
 }

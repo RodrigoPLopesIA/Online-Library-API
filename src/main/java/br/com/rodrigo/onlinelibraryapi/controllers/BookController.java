@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,7 +24,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 import br.com.rodrigo.onlinelibraryapi.dtos.books.CreateBookDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.books.ListBookDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.files.UploadFileDTO;
-import br.com.rodrigo.onlinelibraryapi.dtos.user.ListUserDto;
 import br.com.rodrigo.onlinelibraryapi.entities.Book;
 import br.com.rodrigo.onlinelibraryapi.entities.User;
 import br.com.rodrigo.onlinelibraryapi.enums.Genre;
@@ -41,6 +39,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 import org.springframework.web.bind.annotation.RequestBody;
 
+import jakarta.mail.MessagingException;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 
@@ -90,7 +89,7 @@ public class BookController {
         })
         @PostMapping
         public ResponseEntity<ListBookDTO> create(@Valid @RequestBody CreateBookDTO data, UriComponentsBuilder uri,
-                        @AuthenticationPrincipal User user) {
+                        @AuthenticationPrincipal User user) throws MessagingException {
                 Book book = bookService.create(data, user);
 
                 URI uriBuilder = uri.path("/books/{id}").buildAndExpand(book.getId()).toUri();
@@ -109,7 +108,7 @@ public class BookController {
         })
         @PutMapping("/{id}")
         public ResponseEntity<ListBookDTO> update(@PathVariable String id, @Valid @RequestBody CreateBookDTO data,
-                        @AuthenticationPrincipal User user) {
+                        @AuthenticationPrincipal User user) throws MessagingException {
                 Book book = bookService.update(UUID.fromString(id), mapper.toEntity(data), user);
                 return ResponseEntity.ok().body(mapper.toDto(book));
         }
@@ -119,7 +118,7 @@ public class BookController {
                         @ApiResponse(responseCode = "404", description = "book not found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = EntityNotFoundException.class))),
         })
         @DeleteMapping("/{id}")
-        public ResponseEntity<ListBookDTO> delete(@PathVariable String id, @AuthenticationPrincipal User user) {
+        public ResponseEntity<ListBookDTO> delete(@PathVariable String id, @AuthenticationPrincipal User user) throws MessagingException {
                 bookService.delete(UUID.fromString(id), user);
                 return ResponseEntity.noContent().build();
         }

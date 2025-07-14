@@ -12,6 +12,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.mail.MessagingException;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 
@@ -45,7 +46,7 @@ public class UserController {
             @ApiResponse(responseCode = "422", description = "Recurso não processado", content = @Content(mediaType = "application/json", schema = @Schema(implementation = MethodArgumentNotValidException.class))),
     })
     @PostMapping
-    public ResponseEntity<ListUserDto> create(@Valid @RequestBody CreateUserDto user, UriComponentsBuilder builder) {
+    public ResponseEntity<ListUserDto> create(@Valid @RequestBody CreateUserDto user, UriComponentsBuilder builder) throws MessagingException {
         User createdUser = userService.save(user);
 
         var uri = builder.path("/api/v1/user/{id}").buildAndExpand(createdUser.getId()).toUri();
@@ -57,9 +58,9 @@ public class UserController {
     })
     @GetMapping
     public ResponseEntity<Page<ListUserDto>> index(Pageable page,
-            @PathVariable(value = "firstName", required = false) String firstName,
-            @PathVariable(value = "lastName", required = false) String lastName,
-            @PathVariable(value = "email", required = false) String email) {
+            @RequestParam(value = "firstName", required = false) String firstName,
+            @RequestParam(value = "lastName", required = false) String lastName,
+            @RequestParam(value = "email", required = false) String email) {
 
         return ResponseEntity.ok(userService.findAll(page, firstName, lastName, email).map(userMapper::toListUserDTO));
     }
