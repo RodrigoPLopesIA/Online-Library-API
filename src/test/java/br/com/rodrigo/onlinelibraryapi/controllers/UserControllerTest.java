@@ -38,8 +38,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import java.util.List;
-
-import org.assertj.core.util.Arrays;
 import org.hamcrest.Matchers;
 
 @WebMvcTest(UserController.class)
