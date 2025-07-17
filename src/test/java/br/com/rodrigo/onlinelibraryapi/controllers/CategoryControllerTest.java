@@ -87,8 +87,9 @@ public class CategoryControllerTest {
     @WithMockUser(username = "userTest")
     @DisplayName("Should return all book categories")
     public void shouldReturnAllBookCategories() throws Exception {
+        var params = "?name=Horror";
 
-        var request = get("/api/v1/categories")
+        var request = get("/api/v1/categories".concat(params))
                 .accept(MediaType.APPLICATION_JSON);
 
         Category category = Category.builder().name("HORROR").id(UUID.randomUUID().toString()).build();
