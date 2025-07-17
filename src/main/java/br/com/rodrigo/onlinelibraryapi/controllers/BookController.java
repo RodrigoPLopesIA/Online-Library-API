@@ -27,6 +27,7 @@ import br.com.rodrigo.onlinelibraryapi.dtos.files.UploadFileDTO;
 import br.com.rodrigo.onlinelibraryapi.entities.Book;
 import br.com.rodrigo.onlinelibraryapi.entities.User;
 import br.com.rodrigo.onlinelibraryapi.enums.Genre;
+import br.com.rodrigo.onlinelibraryapi.exceptions.UnauthorizedException;
 import br.com.rodrigo.onlinelibraryapi.exceptions.UniqueViolationException;
 import br.com.rodrigo.onlinelibraryapi.mapper.BookMapper;
 import br.com.rodrigo.onlinelibraryapi.services.BookService;
@@ -123,6 +124,11 @@ public class BookController {
                 return ResponseEntity.noContent().build();
         }
 
+        @Operation(summary = "upload book file", responses = {
+                        @ApiResponse(responseCode = "200", description = "upload the book file successfully.", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UploadFileDTO.class))),
+                        @ApiResponse(responseCode = "404", description = "book not found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = EntityNotFoundException.class))),
+                        @ApiResponse(responseCode = "403", description = "You are not authorized to perform this action on this book", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UnauthorizedException.class))),
+        })
         @PatchMapping("/{id}/upload")
         public ResponseEntity<UploadFileDTO> upload(@AuthenticationPrincipal User user, @PathVariable String id,
                         @RequestBody MultipartFile file) {

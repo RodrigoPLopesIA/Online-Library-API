@@ -40,9 +40,9 @@ spring:
 
 mail:
   from: ${MAIL_FROM:suport@onlinelibrary.com}
-logging:
-  file:
-    name: ${LOG_FILE:app.log}
+# logging:
+#   file:
+#     name: ${LOG_FILE:app.log}
   
 
 
