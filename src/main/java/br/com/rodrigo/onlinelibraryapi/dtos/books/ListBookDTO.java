@@ -10,10 +10,10 @@ import br.com.rodrigo.onlinelibraryapi.entities.Book;
 import br.com.rodrigo.onlinelibraryapi.enums.Genre;
 
 public record ListBookDTO(UUID id, String title, String isbn, LocalDate publicationDate, Genre genre, BigDecimal price,
-        ListAuthorDTO author, Instant createdAt, Instant updatedAt) {
+        ListAuthorDTO author, String bookFile, Instant createdAt, Instant updatedAt) {
 
     public ListBookDTO(Book book) {
         this(book.getId(), book.getTitle(), book.getIsbn(), book.getPublicationDate(), book.getGenre(), book.getPrice(),
-                new ListAuthorDTO(book.getAuthor()), book.getCreatedAt(), book.getUpdatedAt());
+                new ListAuthorDTO(book.getAuthor()), book.getBookFile(), book.getCreatedAt(), book.getUpdatedAt());
     }
 }
