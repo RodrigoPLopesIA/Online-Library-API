@@ -1,5 +1,6 @@
 package br.com.rodrigo.onlinelibraryapi.controllers;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +9,11 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import static org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
+import org.hamcrest.Matchers;
 
 import br.com.rodrigo.onlinelibraryapi.config.SpringSercurityConfig;
 import br.com.rodrigo.onlinelibraryapi.mapper.AuthorMapper;
@@ -20,6 +23,7 @@ import br.com.rodrigo.onlinelibraryapi.repositories.UserRepository;
 import br.com.rodrigo.onlinelibraryapi.services.AuthenticationService;
 import br.com.rodrigo.onlinelibraryapi.services.AuthorService;
 import br.com.rodrigo.onlinelibraryapi.services.BookService;
+import br.com.rodrigo.onlinelibraryapi.services.CategoryService;
 import br.com.rodrigo.onlinelibraryapi.services.JWTService;
 import br.com.rodrigo.onlinelibraryapi.services.ProfileService;
 import br.com.rodrigo.onlinelibraryapi.services.UserService;
@@ -36,7 +40,10 @@ public class CategoryControllerTest {
     private MockMvc mvc;
 
     @MockBean
+    private CategoryService categoryService;
+    @MockBean
     private AuthenticationService authenticationService;
+
 
     @MockBean
     private AuthorService authorService;
@@ -64,15 +71,22 @@ public class CategoryControllerTest {
     @MockBean
     private JWTService jwtService;
 
+    @BeforeEach
+    public void beforeEach() {
+
+    }
+
     @Test
     @WithMockUser(username = "userTest")
     @DisplayName("Should return all book categories")
     public void shouldReturnAllBookCategories() throws Exception {
 
-        MockHttpServletRequestBuilder request = MockMvcRequestBuilders
-                .get("/api/v1/categories")
-                .accept(MediaType.APPLICATION_JSON);
+        var request = get("/api/v1/categories")
+                        .accept(MediaType.APPLICATION_JSON);
 
-        mvc.perform(request).andExpect(MockMvcResultMatchers.status().isOk());
+        
+
+        mvc.perform(request).andExpect(status().isOk());
+        mvc.perform(request).andExpect(jsonPath("$.content", Matchers.hasSize(0)));
     }
 }
