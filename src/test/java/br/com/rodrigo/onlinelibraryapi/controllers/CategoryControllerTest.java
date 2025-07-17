@@ -97,7 +97,7 @@ public class CategoryControllerTest {
         
         Page<ListCategoryDTO> categoryPage = new PageImpl<>(List.of(listCategoryDTO), PageRequest.of(0, 100), 1);
 
-        BDDMockito.given(categoryService.index(Mockito.any(Pageable.class))).willReturn(categoryPage);
+        BDDMockito.given(categoryService.index(Mockito.any(Pageable.class), Mockito.anyString())).willReturn(categoryPage);
 
         mvc.perform(request).andExpect(status().isOk());
         mvc.perform(request).andExpect(jsonPath("$.content", Matchers.hasSize(1)));
