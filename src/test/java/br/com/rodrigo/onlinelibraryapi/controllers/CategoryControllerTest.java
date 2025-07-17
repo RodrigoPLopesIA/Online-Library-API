@@ -15,6 +15,8 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.web.servlet.MockMvc;
+
+import static org.mockito.Mockito.times;
 import static org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -97,6 +99,7 @@ public class CategoryControllerTest {
         BDDMockito.given(categoryService.index(Mockito.any(Pageable.class))).willReturn(categoryPage);
 
         mvc.perform(request).andExpect(status().isOk());
-        mvc.perform(request).andExpect(jsonPath("$.content", Matchers.hasSize(0)));
+        mvc.perform(request).andExpect(jsonPath("$.content", Matchers.hasSize(1)));
+
     }
 }
