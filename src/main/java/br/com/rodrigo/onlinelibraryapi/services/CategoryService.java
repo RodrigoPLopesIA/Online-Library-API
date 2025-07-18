@@ -41,7 +41,7 @@ public class CategoryService {
         if (categoryRepository.existsByName(dto.name())) {
             throw new IllegalArgumentException("this category already exists");
         }
-        return  new ListCategoryDTO(this.categoryRepository.save(entity));
+        return new ListCategoryDTO(this.categoryRepository.save(entity));
 
     }
 }

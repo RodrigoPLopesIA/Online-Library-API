@@ -112,17 +112,25 @@ public class CategoryControllerTest {
     @Test
     @WithMockUser(username = "userTest")
     @DisplayName("Should create a new category")
-    public void shouldCreateANewCategory() throws Exception{
+    public void shouldCreateANewCategory() throws Exception {
+        CreateCategoryDTO createCategoryDTO = new CreateCategoryDTO("TEST");
+        String json = new ObjectMapper().writeValueAsString(createCategoryDTO);
 
-     CreateCategoryDTO createCategoryDTO = new CreateCategoryDTO("TEST");
-
-     String json = new ObjectMapper().writeValueAsString(createCategoryDTO);;
+        BDDMockito.given(categoryService.save(Mockito.any(CreateCategoryDTO.class)))
+                .willReturn(new ListCategoryDTO(UUID.randomUUID().toString(), "TEST"));
 
         var request = post("/api/v1/categories")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(json);
 
-        mvc.perform(request).andExpect(status().isCreated());
+        mvc.perform(request)
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.id", Matchers.notNullValue()))
+                .andExpect(jsonPath("$.name", Matchers.notNullValue()))
+                .andExpect(header().exists("Location"));
+
+        Mockito.verify(categoryService, times(1)).save(Mockito.any(CreateCategoryDTO.class));
     }
+
 }

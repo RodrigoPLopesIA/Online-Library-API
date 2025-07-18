@@ -30,6 +30,6 @@ public class Category {
 
 
     @ManyToOne()
-    @JoinColumn(name = "book_id", nullable =  false)
+    @JoinColumn(name = "book_id")
     private Book book;
 }
