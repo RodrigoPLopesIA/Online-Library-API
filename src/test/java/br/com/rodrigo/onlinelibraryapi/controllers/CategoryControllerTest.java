@@ -104,8 +104,10 @@ public class CategoryControllerTest {
         BDDMockito.given(categoryService.index(Mockito.any(Pageable.class), Mockito.anyString()))
                 .willReturn(categoryPage);
 
-        mvc.perform(request).andExpect(status().isOk());
-        mvc.perform(request).andExpect(jsonPath("$.content", Matchers.hasSize(1)));
+        mvc.perform(request).andExpect(status().isOk())
+                .andExpect(jsonPath("$.content", Matchers.hasSize(1)));
+
+        Mockito.verify(categoryService, times(1)).index(Mockito.any(Pageable.class), Mockito.anyString());
 
     }
 
