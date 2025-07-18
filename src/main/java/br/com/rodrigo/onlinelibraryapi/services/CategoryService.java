@@ -35,8 +35,9 @@ public class CategoryService {
 
     }
 
-    public Object save(CreateCategoryDTO dto) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
+    public ListCategoryDTO save(CreateCategoryDTO dto) {
+        var entity = Category.builder().name(dto.name()).build();
+        return  new ListCategoryDTO(this.categoryRepository.save(entity));
+
     }
 }

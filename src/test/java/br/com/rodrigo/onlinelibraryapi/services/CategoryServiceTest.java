@@ -65,6 +65,9 @@ public class CategoryServiceTest {
     @DisplayName("Should create new category")
     public void shouldCreateNewCategory(){
         CreateCategoryDTO dto = new CreateCategoryDTO("TEST");
+        Category category = Category.builder().name(dto.name()).id(UUID.randomUUID().toString()).build();
+
+        Mockito.when(categoryRepository.save(Mockito.any(Category.class))).thenReturn(category);
 
         var result = categoryService.save(dto);
 
