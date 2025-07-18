@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.mockito.Mockito.times;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -73,5 +75,9 @@ public class CategoryServiceTest {
 
 
         assertThat(result).isNotNull();
+        assertThat(result.id()).isEqualTo(category.getId());
+        assertThat(result.name()).isEqualTo(category.getName());
+
+        Mockito.verify(categoryRepository, times(1)).save(Mockito.any(Category.class));
     }
 }
