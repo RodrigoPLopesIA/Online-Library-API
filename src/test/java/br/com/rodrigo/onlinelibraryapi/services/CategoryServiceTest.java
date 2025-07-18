@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 
 import org.junit.jupiter.api.DisplayName;
@@ -65,7 +67,7 @@ public class CategoryServiceTest {
 
     @Test
     @DisplayName("Should create new category")
-    public void shouldCreateNewCategory(){
+    public void shouldCreateNewCategory() {
         CreateCategoryDTO dto = new CreateCategoryDTO("TEST");
         Category category = Category.builder().name(dto.name()).id(UUID.randomUUID().toString()).build();
 
@@ -74,11 +76,29 @@ public class CategoryServiceTest {
 
         var result = categoryService.save(dto);
 
-
         assertThat(result).isNotNull();
         assertThat(result.id()).isEqualTo(category.getId());
         assertThat(result.name()).isEqualTo(category.getName());
 
+        Mockito.verify(categoryRepository, times(1)).existsByName(Mockito.anyString());
         Mockito.verify(categoryRepository, times(1)).save(Mockito.any(Category.class));
+    }
+
+    @Test
+    @DisplayName("Should return a error when try to create a new category")
+    public void shouldReturnErrorWhenCreateACategoryAlreadyExists() {
+
+        CreateCategoryDTO dto = new CreateCategoryDTO("TEST");
+        Category category = Category.builder().name(dto.name()).id(UUID.randomUUID().toString()).build();
+
+        Mockito.when(categoryRepository.existsByName(Mockito.anyString())).thenReturn(true);
+
+        var result = assertThrows(IllegalArgumentException.class, () -> categoryService.save(dto));
+
+        assertThat(result).isInstanceOf(IllegalArgumentException.class);
+        assertThat(result.getMessage()).isEqualTo("this category already exists");
+
+        Mockito.verify(categoryRepository, times(1)).existsByName(Mockito.anyString());
+        Mockito.verify(categoryRepository, never()).save(Mockito.any(Category.class));
     }
 }
