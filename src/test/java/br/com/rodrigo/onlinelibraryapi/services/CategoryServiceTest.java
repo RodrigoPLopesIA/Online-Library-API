@@ -19,6 +19,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.ExampleMatcher.StringMatcher;
 
+import br.com.rodrigo.onlinelibraryapi.dtos.category.CreateCategoryDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.category.ListCategoryDTO;
 import br.com.rodrigo.onlinelibraryapi.entities.Category;
 import br.com.rodrigo.onlinelibraryapi.repositories.CategoryRepository;
@@ -58,5 +59,16 @@ public class CategoryServiceTest {
 
         // Assert
         assertThat(result).isEqualTo(categoryPageDTO);
+    }
+
+    @Test
+    @DisplayName("Should create new category")
+    public void shouldCreateNewCategory(){
+        CreateCategoryDTO dto = new CreateCategoryDTO("TEST");
+
+        var result = categoryService.save(dto);
+
+
+        assertThat(result).isNotNull();
     }
 }
