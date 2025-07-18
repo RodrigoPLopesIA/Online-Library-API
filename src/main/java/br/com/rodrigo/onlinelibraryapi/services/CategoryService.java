@@ -30,7 +30,7 @@ public class CategoryService {
 
         Example<Category> example = Example.of(category, matcher);
 
-        return this.categoryRepository.findAll(page, example).map(ListCategoryDTO::new);
+        return this.categoryRepository.findAll(example, page).map(ListCategoryDTO::new);
 
     }
 }
