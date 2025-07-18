@@ -19,6 +19,7 @@ import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilde
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -133,6 +134,26 @@ public class CategoryControllerTest {
                 .andExpect(header().exists("Location"));
 
         Mockito.verify(categoryService, times(1)).save(Mockito.any(CreateCategoryDTO.class));
+    }
+
+    @Test
+    @WithMockUser(username = "userTest")
+    @DisplayName("Should return a throw error when try to create a new category")
+    public void shouldReturnAThrowErrorWhenTryToCreateANewCategory() throws Exception {
+        CreateCategoryDTO createCategoryDTO = new CreateCategoryDTO("");
+        String json = new ObjectMapper().writeValueAsString(createCategoryDTO);
+
+        var request = post("/api/v1/categories")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json);
+
+        mvc.perform(request)
+                .andExpect(status().isUnprocessableEntity())
+                .andExpect(jsonPath("$.path").value(Matchers.any(String.class)))
+                .andExpect(jsonPath("$.message").value(Matchers.any(String.class)));
+
+        Mockito.verify(categoryService, never()).save(Mockito.any(CreateCategoryDTO.class));
     }
 
 }
