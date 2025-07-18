@@ -37,6 +37,10 @@ public class CategoryService {
 
     public ListCategoryDTO save(CreateCategoryDTO dto) {
         var entity = Category.builder().name(dto.name()).build();
+
+        if (categoryRepository.existsByName(dto.name())) {
+            throw new IllegalArgumentException("this category already exists");
+        }
         return  new ListCategoryDTO(this.categoryRepository.save(entity));
 
     }
