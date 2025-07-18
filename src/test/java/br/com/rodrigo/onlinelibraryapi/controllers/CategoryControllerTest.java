@@ -15,6 +15,9 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import static org.mockito.Mockito.times;
 import static org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder.*;
@@ -27,6 +30,7 @@ import java.util.UUID;
 import org.hamcrest.Matchers;
 
 import br.com.rodrigo.onlinelibraryapi.config.SpringSercurityConfig;
+import br.com.rodrigo.onlinelibraryapi.dtos.category.CreateCategoryDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.category.ListCategoryDTO;
 import br.com.rodrigo.onlinelibraryapi.entities.Category;
 import br.com.rodrigo.onlinelibraryapi.mapper.AuthorMapper;
@@ -94,13 +98,31 @@ public class CategoryControllerTest {
 
         Category category = Category.builder().name("HORROR").id(UUID.randomUUID().toString()).build();
         ListCategoryDTO listCategoryDTO = new ListCategoryDTO(category);
-        
+
         Page<ListCategoryDTO> categoryPage = new PageImpl<>(List.of(listCategoryDTO), PageRequest.of(0, 100), 1);
 
-        BDDMockito.given(categoryService.index(Mockito.any(Pageable.class), Mockito.anyString())).willReturn(categoryPage);
+        BDDMockito.given(categoryService.index(Mockito.any(Pageable.class), Mockito.anyString()))
+                .willReturn(categoryPage);
 
         mvc.perform(request).andExpect(status().isOk());
         mvc.perform(request).andExpect(jsonPath("$.content", Matchers.hasSize(1)));
 
+    }
+
+    @Test
+    @WithMockUser(username = "userTest")
+    @DisplayName("Should create a new category")
+    public void shouldCreateANewCategory() throws Exception{
+
+     CreateCategoryDTO createCategoryDTO = new CreateCategoryDTO("TEST");
+
+     String json = new ObjectMapper().writeValueAsString(createCategoryDTO);;
+
+        var request = post("/api/v1/categories")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json);
+
+        mvc.perform(request).andExpect(status().isCreated());
     }
 }
