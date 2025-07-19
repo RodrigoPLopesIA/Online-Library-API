@@ -2,6 +2,7 @@ package br.com.rodrigo.onlinelibraryapi.repositories;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +16,18 @@ public class CategoryRepositoryTest {
 
     @Autowired
     private CategoryRepository categoryRepository;
-
+    private String name;
+    @BeforeEach
+    public void setup(){
+        name = "Test";
+    }
     @Test
     @DisplayName("test given category object when exists by name then return a true")
     public void testGivenCategoryObjectWhenExistsByNameThenReturnTrue(){
 
-        //arrang
-        String name = "Test";
-        this.categoryRepository.save(Category.builder().name("Test").build());
+        //arrange
+        this.categoryRepository.save(Category.builder().name(name).build());
+        
         //act
         var result = this.categoryRepository.existsByName(name);
 
@@ -34,9 +39,7 @@ public class CategoryRepositoryTest {
     @DisplayName("test given category object when exists by name then return a false")
     public void testGivenCategoryObjectWhenExistsByNameThenReturnFalse(){
 
-        //arrang
-        String name = "Test";
-        //act
+        //arrange & act
         var result = this.categoryRepository.existsByName(name);
 
         //assert
