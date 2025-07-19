@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,13 +16,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.domain.ExampleMatcher.StringMatcher;
 
 import br.com.rodrigo.onlinelibraryapi.dtos.category.CreateCategoryDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.category.ListCategoryDTO;
@@ -38,22 +37,38 @@ public class CategoryServiceTest {
     @InjectMocks
     private CategoryService categoryService;
 
+    private Category category;
+
+    private CreateCategoryDTO createDto;
+
+    private ListCategoryDTO listDto;
+
+    private Page<Category> categoryPage;
+
+    private Page<ListCategoryDTO> categoryPageDTO;
+
+    private Pageable pageable;
+
+    @BeforeEach
+    public void setup(){
+        category = Category.builder()
+                .name("test")
+                .id(UUID.randomUUID().toString())
+                .build();
+        createDto = new CreateCategoryDTO(category.getName());
+
+        listDto = new ListCategoryDTO(category);
+
+        categoryPage = new PageImpl<>(List.of(category), PageRequest.of(0, 100), 1);
+        categoryPageDTO = new PageImpl<>(List.of(listDto), PageRequest.of(0, 100), 1);
+        pageable = PageRequest.of(0, 100, Sort.unsorted());
+    }
+
     @Test
     @DisplayName("should return all categories")
     public void shouldReturnAllCategories() {
         // Arrange
-        Category category = Category.builder()
-                .name("test")
-                .id(UUID.randomUUID().toString())
-                .build();
-
-        ListCategoryDTO categoryDTO = new ListCategoryDTO(category);
-
-        Page<Category> categoryPage = new PageImpl<>(List.of(category), PageRequest.of(0, 100), 1);
-        Page<ListCategoryDTO> categoryPageDTO = new PageImpl<>(List.of(categoryDTO), PageRequest.of(0, 100), 1);
-
-        Pageable pageable = PageRequest.of(0, 100, Sort.unsorted());
-        String search = "test";
+        String search = createDto.name();
 
         Mockito.when(categoryRepository.findAll(Mockito.any(Example.class), Mockito.eq(pageable)))
                 .thenReturn(categoryPage);
@@ -68,13 +83,11 @@ public class CategoryServiceTest {
     @Test
     @DisplayName("Should create new category")
     public void shouldCreateNewCategory() {
-        CreateCategoryDTO dto = new CreateCategoryDTO("TEST");
-        Category category = Category.builder().name(dto.name()).id(UUID.randomUUID().toString()).build();
 
         Mockito.when(categoryRepository.existsByName(Mockito.anyString())).thenReturn(false);
         Mockito.when(categoryRepository.save(Mockito.any(Category.class))).thenReturn(category);
 
-        var result = categoryService.save(dto);
+        var result = categoryService.save(createDto);
 
         assertThat(result).isNotNull();
         assertThat(result.id()).isEqualTo(category.getId());
@@ -88,12 +101,9 @@ public class CategoryServiceTest {
     @DisplayName("Should return a error when try to create a new category")
     public void shouldReturnErrorWhenCreateACategoryAlreadyExists() {
 
-        CreateCategoryDTO dto = new CreateCategoryDTO("TEST");
-        Category category = Category.builder().name(dto.name()).id(UUID.randomUUID().toString()).build();
-
         Mockito.when(categoryRepository.existsByName(Mockito.anyString())).thenReturn(true);
 
-        var result = assertThrows(IllegalArgumentException.class, () -> categoryService.save(dto));
+        var result = assertThrows(IllegalArgumentException.class, () -> categoryService.save(createDto));
 
         assertThat(result).isInstanceOf(IllegalArgumentException.class);
         assertThat(result.getMessage()).isEqualTo("this category already exists");
@@ -103,5 +113,5 @@ public class CategoryServiceTest {
     }
 
 
-    
+
 }
