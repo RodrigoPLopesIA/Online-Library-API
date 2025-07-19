@@ -27,6 +27,8 @@ import br.com.rodrigo.onlinelibraryapi.dtos.category.CreateCategoryDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.category.ListCategoryDTO;
 import br.com.rodrigo.onlinelibraryapi.entities.Category;
 import br.com.rodrigo.onlinelibraryapi.repositories.CategoryRepository;
+import jakarta.persistence.EntityNotFoundException;
+
 import org.springframework.data.domain.Example;
 
 @ExtendWith(MockitoExtension.class)
@@ -115,29 +117,48 @@ public class CategoryServiceTest {
     }
 
     @Test
-@DisplayName("should update a category")
-public void shouldUpdateCategory() {
-    // Arrange
-    String categoryId = "d6e4331d-dd66-49b4-9be0-e0372a8f5013";
+    @DisplayName("should update a category")
+    public void shouldUpdateCategory() {
+        // Arrange
+        String categoryId = "d6e4331d-dd66-49b4-9be0-e0372a8f5013";
 
-    Mockito.when(categoryRepository.findById(categoryId))
-            .thenReturn(Optional.of(category));
+        Mockito.when(categoryRepository.findById(categoryId))
+                .thenReturn(Optional.of(category));
 
-    Mockito.when(categoryRepository.save(Mockito.any(Category.class)))
-            .thenReturn(category);
+        Mockito.when(categoryRepository.save(Mockito.any(Category.class)))
+                .thenReturn(category);
+
+        // Act
+        var result = categoryService.update(categoryId, createDto);
+
+        // Assert
+        assertThat(result).isNotNull();
+        assertThat(result.id()).isEqualTo(categoryId);
+        assertThat(result.name()).isEqualTo(createDto.name());
+
+        Mockito.verify(categoryRepository, times(1)).findById(categoryId);
+        Mockito.verify(categoryRepository, times(1)).save(category);
+    }
+
+    @Test
+    @DisplayName("should return a error when try to update a category not exists")
+    public void shouldUpdateCategoryNotExists() {
+        // Arrange
+        String categoryId = "d6e4331d-dd66-49b4-9be0-e0372a8f5013";
+
+        Mockito.when(categoryRepository.findById(categoryId))
+                .thenThrow(new EntityNotFoundException(String.format("Category %s not found!", categoryId)));
+
+        // Act
+        var result = catchThrowable(() -> categoryService.update(categoryId, createDto)); 
+
+        // Assert
+        assertThat(result).isInstanceOf(EntityNotFoundException.class);
+        assertThat(result.getMessage()).isEqualTo(String.format("Category %s not found!", categoryId));
 
 
-    // Act
-    var result = categoryService.update(categoryId, createDto);
-
-    // Assert
-    assertThat(result).isNotNull();
-    assertThat(result.id()).isEqualTo(categoryId);
-    assertThat(result.name()).isEqualTo(createDto.name());
-
-
-    Mockito.verify(categoryRepository, times(1)).findById(categoryId);
-    Mockito.verify(categoryRepository, times(1)).save(category);
-}
+        Mockito.verify(categoryRepository, times(1)).findById(categoryId);
+        Mockito.verify(categoryRepository, never()).save(category);
+    }
 
 }
