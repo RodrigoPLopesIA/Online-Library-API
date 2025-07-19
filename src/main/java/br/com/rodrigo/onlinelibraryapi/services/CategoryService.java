@@ -12,6 +12,7 @@ import br.com.rodrigo.onlinelibraryapi.dtos.category.CreateCategoryDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.category.ListCategoryDTO;
 import br.com.rodrigo.onlinelibraryapi.entities.Category;
 import br.com.rodrigo.onlinelibraryapi.repositories.CategoryRepository;
+import jakarta.persistence.EntityNotFoundException;
 
 @Service
 public class CategoryService {
@@ -24,10 +25,9 @@ public class CategoryService {
         Category category = Category.builder().name(name).build();
 
         ExampleMatcher matcher = ExampleMatcher
-        .matching()
-        .withIgnoreCase()
-        .withStringMatcher(StringMatcher.CONTAINING);
-        
+                .matching()
+                .withIgnoreCase()
+                .withStringMatcher(StringMatcher.CONTAINING);
 
         Example<Category> example = Example.of(category, matcher);
 
@@ -42,6 +42,20 @@ public class CategoryService {
             throw new IllegalArgumentException("this category already exists");
         }
         return new ListCategoryDTO(this.categoryRepository.save(entity));
+
+    }
+
+    public ListCategoryDTO update(String id, CreateCategoryDTO data){
+        var category = this.categoryRepository.findById(id)
+        .orElseThrow(() -> {
+            throw new EntityNotFoundException(String.format("Category %s not found!", id));
+        });
+
+        category.setName(data.name());
+
+        this.categoryRepository.save(category);
+        return new ListCategoryDTO(category);
+
 
     }
 }

@@ -1,6 +1,7 @@
 package br.com.rodrigo.onlinelibraryapi.services;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.*;
@@ -50,10 +51,10 @@ public class CategoryServiceTest {
     private Pageable pageable;
 
     @BeforeEach
-    public void setup(){
+    public void setup() {
         category = Category.builder()
                 .name("test")
-                .id(UUID.randomUUID().toString())
+                .id("d6e4331d-dd66-49b4-9be0-e0372a8f5013")
                 .build();
         createDto = new CreateCategoryDTO(category.getName());
 
@@ -62,6 +63,7 @@ public class CategoryServiceTest {
         categoryPage = new PageImpl<>(List.of(category), PageRequest.of(0, 100), 1);
         categoryPageDTO = new PageImpl<>(List.of(listDto), PageRequest.of(0, 100), 1);
         pageable = PageRequest.of(0, 100, Sort.unsorted());
+
     }
 
     @Test
@@ -112,6 +114,30 @@ public class CategoryServiceTest {
         Mockito.verify(categoryRepository, never()).save(Mockito.any(Category.class));
     }
 
+    @Test
+@DisplayName("should update a category")
+public void shouldUpdateCategory() {
+    // Arrange
+    String categoryId = "d6e4331d-dd66-49b4-9be0-e0372a8f5013";
 
+    Mockito.when(categoryRepository.findById(categoryId))
+            .thenReturn(Optional.of(category));
+
+    Mockito.when(categoryRepository.save(Mockito.any(Category.class)))
+            .thenReturn(category);
+
+
+    // Act
+    var result = categoryService.update(categoryId, createDto);
+
+    // Assert
+    assertThat(result).isNotNull();
+    assertThat(result.id()).isEqualTo(categoryId);
+    assertThat(result.name()).isEqualTo(createDto.name());
+
+
+    Mockito.verify(categoryRepository, times(1)).findById(categoryId);
+    Mockito.verify(categoryRepository, times(1)).save(category);
+}
 
 }
