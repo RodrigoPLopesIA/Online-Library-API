@@ -101,4 +101,7 @@ public class CategoryServiceTest {
         Mockito.verify(categoryRepository, times(1)).existsByName(Mockito.anyString());
         Mockito.verify(categoryRepository, never()).save(Mockito.any(Category.class));
     }
+
+
+    
 }
