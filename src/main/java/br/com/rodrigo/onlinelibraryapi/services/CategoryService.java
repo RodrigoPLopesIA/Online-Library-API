@@ -60,4 +60,10 @@ public class CategoryService {
         this.categoryRepository.save(category);
         return new ListCategoryDTO(category);
     }
+
+    public ListCategoryDTO show(String categoryId) {
+        var category = this.categoryRepository.findById(categoryId)
+                .orElseThrow(() -> new EntityNotFoundException(String.format("Category %s not found!", categoryId)));
+        return new ListCategoryDTO(category);
+    }
 }

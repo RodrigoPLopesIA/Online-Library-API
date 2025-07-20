@@ -169,7 +169,7 @@ public class CategoryServiceTest {
         category.setName("Old Name");
 
         CreateCategoryDTO createDto = new CreateCategoryDTO("New Name");
-        
+
         when(categoryRepository.findById(categoryId)).thenReturn(Optional.of(category));
         when(categoryRepository.existsByName("New Name")).thenReturn(true);
 
@@ -182,6 +182,21 @@ public class CategoryServiceTest {
 
         Mockito.verify(categoryRepository, times(1)).findById(categoryId);
         Mockito.verify(categoryRepository, never()).save(category);
+    }
+
+    @Test
+    @DisplayName("should return a category by id")
+    public void shouldReturnCategoryById() {
+        // Arrange
+
+        Mockito.when(categoryRepository.findById(Mockito.anyString()))
+                .thenReturn(Optional.of(category));
+
+        // Act
+        var result = categoryService.show(categoryId);
+
+        // Assert
+        assertThat(result).isEqualTo(listDto);
     }
 
 }
