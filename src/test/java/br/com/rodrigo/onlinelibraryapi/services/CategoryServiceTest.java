@@ -199,4 +199,20 @@ public class CategoryServiceTest {
         assertThat(result).isEqualTo(listDto);
     }
 
+    @Test
+    @DisplayName("should return a exception when try to find category by id")
+    public void shouldReturnEntityNoFounExceptionByCategoryById() {
+        // Arrange
+
+        Mockito.when(categoryRepository.findById(Mockito.anyString()))
+                .thenThrow(new EntityNotFoundException(String.format("Category %s not found!", categoryId)));
+
+        // Act
+        var result = catchThrowable(() -> categoryService.show(categoryId)); 
+
+        // Assert
+        assertThat(result).isInstanceOf(EntityNotFoundException.class);
+        assertThat(result.getMessage()).isEqualTo(String.format("Category %s not found!", categoryId));
+    }
+
 }
