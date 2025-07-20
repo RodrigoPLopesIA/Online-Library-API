@@ -20,8 +20,10 @@ import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilde
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -132,7 +134,7 @@ public class CategoryControllerTest {
                                 .willReturn(categoryPage);
 
                 mvc.perform(request)
-                .andExpect(status().isOk())
+                                .andExpect(status().isOk())
                                 .andExpect(jsonPath("$.content", Matchers.hasSize(1)));
 
                 Mockito.verify(categoryService, times(1)).index(Mockito.any(Pageable.class), Mockito.anyString());
@@ -276,8 +278,8 @@ public class CategoryControllerTest {
                                 .accept(MediaType.APPLICATION_JSON);
 
                 mvc.perform(request).andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").isNotEmpty())
-                .andExpect(jsonPath("$.name").isNotEmpty());
+                                .andExpect(jsonPath("$.id").isNotEmpty())
+                                .andExpect(jsonPath("$.name").isNotEmpty());
 
                 Mockito.verify(categoryService, times(1)).show(categoryId);
         }
@@ -301,6 +303,44 @@ public class CategoryControllerTest {
                                                 .value(String.format("Category with ID %s not found.", categoryId)));
 
                 Mockito.verify(categoryService, times(1)).show(categoryId);
+        }
+
+        @Test
+        @DisplayName("should return a category by category id")
+        @WithMockUser(username = "userTest")
+        public void shouldDeleteCategoryByIdSuccessfully() throws Exception {
+
+                var request = delete(CATEGORY_URI + "/" + categoryId)
+                                .accept(MediaType.APPLICATION_JSON);
+
+                // Act + Assert
+                mvc.perform(request)
+                                .andExpect(status().isNoContent()); 
+
+                verify(categoryService, times(1)).delete(categoryId);
+        }
+
+        @Test
+        @DisplayName("should return error 404 when try to find a category by category id")
+        @WithMockUser(username = "userTest")
+        public void shouldReturn404ErrorWhenTryToDeleteCategoryByCategoryId() throws Exception {
+
+
+
+                doThrow(new EntityNotFoundException(
+                                String.format("Category with ID %s not found.", categoryId))).when(categoryService)
+                                .delete(categoryId);
+
+                var request = delete(CATEGORY_URI + "/" + categoryId)
+                                .accept(MediaType.APPLICATION_JSON);
+
+                mvc.perform(request).andExpect(status().isNotFound())
+                                .andExpect(jsonPath("$.path").isNotEmpty())
+                                .andExpect(jsonPath("$.message").isNotEmpty())
+                                .andExpect(jsonPath("$.message")
+                                                .value(String.format("Category with ID %s not found.", categoryId)));
+
+                Mockito.verify(categoryService, times(1)).delete(categoryId);
         }
 
 }
