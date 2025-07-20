@@ -52,6 +52,8 @@ public class CategoryServiceTest {
 
     private Pageable pageable;
 
+    private String categoryId;
+
     @BeforeEach
     public void setup() {
         category = Category.builder()
@@ -65,7 +67,7 @@ public class CategoryServiceTest {
         categoryPage = new PageImpl<>(List.of(category), PageRequest.of(0, 100), 1);
         categoryPageDTO = new PageImpl<>(List.of(listDto), PageRequest.of(0, 100), 1);
         pageable = PageRequest.of(0, 100, Sort.unsorted());
-
+        categoryId = "d6e4331d-dd66-49b4-9be0-e0372a8f5013";
     }
 
     @Test
@@ -120,7 +122,6 @@ public class CategoryServiceTest {
     @DisplayName("should update a category")
     public void shouldUpdateCategory() {
         // Arrange
-        String categoryId = "d6e4331d-dd66-49b4-9be0-e0372a8f5013";
 
         Mockito.when(categoryRepository.findById(categoryId))
                 .thenReturn(Optional.of(category));
@@ -144,7 +145,6 @@ public class CategoryServiceTest {
     @DisplayName("should return a error when try to update a category not exists")
     public void shouldUpdateCategoryNotExists() {
         // Arrange
-        String categoryId = "d6e4331d-dd66-49b4-9be0-e0372a8f5013";
 
         Mockito.when(categoryRepository.findById(categoryId))
                 .thenThrow(new EntityNotFoundException(String.format("Category %s not found!", categoryId)));

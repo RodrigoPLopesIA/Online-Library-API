@@ -17,6 +17,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import static org.mockito.Mockito.never;
@@ -54,106 +55,139 @@ import org.springframework.security.test.context.support.WithMockUser;
 @Import(SpringSercurityConfig.class)
 public class CategoryControllerTest {
 
-    @Autowired
-    private MockMvc mvc;
+        @Autowired
+        private MockMvc mvc;
 
-    @MockBean
-    private CategoryService categoryService;
-    @MockBean
-    private AuthenticationService authenticationService;
+        @MockBean
+        private CategoryService categoryService;
+        @MockBean
+        private AuthenticationService authenticationService;
 
-    @MockBean
-    private AuthorService authorService;
+        @MockBean
+        private AuthorService authorService;
 
-    @MockBean
-    private UserService userService;
+        @MockBean
+        private UserService userService;
 
-    @MockBean
-    private AuthorMapper authorMapper;
+        @MockBean
+        private AuthorMapper authorMapper;
 
-    @MockBean
-    private BookService bookService;
+        @MockBean
+        private BookService bookService;
 
-    @MockBean
-    private BookMapper bookMapper;
-    @MockBean
-    private ProfileService profileService;
+        @MockBean
+        private BookMapper bookMapper;
+        @MockBean
+        private ProfileService profileService;
 
-    @MockBean
-    private UserMapper userMapper;
+        @MockBean
+        private UserMapper userMapper;
 
-    @MockBean
-    private UserRepository userRepository;
+        @MockBean
+        private UserRepository userRepository;
 
-    @MockBean
-    private JWTService jwtService;
+        @MockBean
+        private JWTService jwtService;
 
-    @Test
-    @WithMockUser(username = "userTest")
-    @DisplayName("Should return all book categories")
-    public void shouldReturnAllBookCategories() throws Exception {
-        var params = "?name=Horror";
+        Category category;
 
-        var request = get("/api/v1/categories".concat(params))
-                .accept(MediaType.APPLICATION_JSON);
+        CreateCategoryDTO createCategoryDTO;
 
-        Category category = Category.builder().name("HORROR").id(UUID.randomUUID().toString()).build();
-        ListCategoryDTO listCategoryDTO = new ListCategoryDTO(category);
+        String params;
 
-        Page<ListCategoryDTO> categoryPage = new PageImpl<>(List.of(listCategoryDTO), PageRequest.of(0, 100), 1);
+        String CATEGORY_URI;
 
-        BDDMockito.given(categoryService.index(Mockito.any(Pageable.class), Mockito.anyString()))
-                .willReturn(categoryPage);
+        ListCategoryDTO listCategoryDTO;
 
-        mvc.perform(request).andExpect(status().isOk())
-                .andExpect(jsonPath("$.content", Matchers.hasSize(1)));
+        Page<ListCategoryDTO> categoryPage;
 
-        Mockito.verify(categoryService, times(1)).index(Mockito.any(Pageable.class), Mockito.anyString());
+        String json;
 
-    }
+        @BeforeEach
+        public void setup() throws JsonProcessingException {
+                category = Category.builder().name("HORROR").id(UUID.randomUUID().toString()).build();
+                params = "?name=Horror";
+                CATEGORY_URI = "/api/v1/categories";
+                listCategoryDTO = new ListCategoryDTO(category);
+                categoryPage = new PageImpl<>(List.of(listCategoryDTO), PageRequest.of(0, 100),
+                                1);
+                createCategoryDTO = new CreateCategoryDTO("TEST");
 
-    @Test
-    @WithMockUser(username = "userTest")
-    @DisplayName("Should create a new category")
-    public void shouldCreateANewCategory() throws Exception {
-        CreateCategoryDTO createCategoryDTO = new CreateCategoryDTO("TEST");
-        String json = new ObjectMapper().writeValueAsString(createCategoryDTO);
+                json = new ObjectMapper().writeValueAsString(createCategoryDTO);
+        }
 
-        BDDMockito.given(categoryService.save(Mockito.any(CreateCategoryDTO.class)))
-                .willReturn(new ListCategoryDTO(UUID.randomUUID().toString(), "TEST"));
+        @Test
+        @WithMockUser(username = "userTest")
+        @DisplayName("Should return all book categories")
+        public void shouldReturnAllBookCategories() throws Exception {
 
-        var request = post("/api/v1/categories")
-                .accept(MediaType.APPLICATION_JSON)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(json);
+                var request = get(CATEGORY_URI.concat(params))
+                                .accept(MediaType.APPLICATION_JSON);
 
-        mvc.perform(request)
-                .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.id", Matchers.notNullValue()))
-                .andExpect(jsonPath("$.name", Matchers.notNullValue()))
-                .andExpect(header().exists("Location"));
+                BDDMockito.given(categoryService.index(Mockito.any(Pageable.class), Mockito.anyString()))
+                                .willReturn(categoryPage);
 
-        Mockito.verify(categoryService, times(1)).save(Mockito.any(CreateCategoryDTO.class));
-    }
+                mvc.perform(request).andExpect(status().isOk())
+                                .andExpect(jsonPath("$.content", Matchers.hasSize(1)));
 
-    @Test
-    @WithMockUser(username = "userTest")
-    @DisplayName("Should return a throw error when try to create a new category")
-    public void shouldReturnAThrowErrorWhenTryToCreateANewCategory() throws Exception {
-        CreateCategoryDTO createCategoryDTO = new CreateCategoryDTO("");
-        String json = new ObjectMapper().writeValueAsString(createCategoryDTO);
+                Mockito.verify(categoryService, times(1)).index(Mockito.any(Pageable.class), Mockito.anyString());
 
-        var request = post("/api/v1/categories")
-                .accept(MediaType.APPLICATION_JSON)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(json);
+        }
 
-        mvc.perform(request)
-                .andExpect(status().isUnprocessableEntity())
-                .andExpect(jsonPath("$.path").value(Matchers.any(String.class)))
-                .andExpect(jsonPath("$.message").value(Matchers.any(String.class)));
+        @Test
+        @WithMockUser(username = "userTest")
+        @DisplayName("Should create a new category")
+        public void shouldCreateANewCategory() throws Exception {
 
-        Mockito.verify(categoryService, never()).save(Mockito.any(CreateCategoryDTO.class));
-    }
+                BDDMockito.given(categoryService.save(Mockito.any(CreateCategoryDTO.class)))
+                                .willReturn(new ListCategoryDTO(UUID.randomUUID().toString(), "TEST"));
+
+                var request = post(CATEGORY_URI)
+                                .accept(MediaType.APPLICATION_JSON)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content(json);
+
+                mvc.perform(request)
+                                .andExpect(status().isCreated())
+                                .andExpect(jsonPath("$.id", Matchers.notNullValue()))
+                                .andExpect(jsonPath("$.name", Matchers.notNullValue()))
+                                .andExpect(header().exists("Location"));
+
+                Mockito.verify(categoryService, times(1)).save(Mockito.any(CreateCategoryDTO.class));
+        }
+
+        @Test
+        @WithMockUser(username = "userTest")
+        @DisplayName("Should return a throw error when try to create a new category")
+        public void shouldReturnAThrowErrorWhenTryToCreateANewCategory() throws Exception {
+
+                createCategoryDTO = new CreateCategoryDTO("");
+
+                json = new ObjectMapper().writeValueAsString(createCategoryDTO);
+
+                var request = post(CATEGORY_URI)
+                                .accept(MediaType.APPLICATION_JSON)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content(json);
+
+                mvc.perform(request)
+                                .andExpect(status().isUnprocessableEntity())
+                                .andExpect(jsonPath("$.path").value(Matchers.any(String.class)))
+                                .andExpect(jsonPath("$.message").value(Matchers.any(String.class)));
+
+                Mockito.verify(categoryService, never()).save(Mockito.any(CreateCategoryDTO.class));
+        }
+
+        @Test
+        @WithMockUser(username = "userTest")
+        public void shouldUpdateCategory() throws Exception {
+
+                var request = put(CATEGORY_URI)
+                                .accept(MediaType.APPLICATION_JSON)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content(json);
+
+                mvc.perform(request).andExpect(status().isOk());
+        }
 
 }
