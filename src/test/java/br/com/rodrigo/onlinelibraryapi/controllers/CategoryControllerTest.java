@@ -265,4 +265,15 @@ public class CategoryControllerTest {
                 Mockito.verify(categoryService, times(1)).update(categoryId, createCategoryDTO);
         }
 
+        @Test
+        @DisplayName("should return a category by category id")
+        @WithMockUser(username = "userTest")
+        public void shouldReturnCategoryByCategoryId() throws Exception {
+
+                var request = get(CATEGORY_URI + "/" + categoryId)
+                                .accept(MediaType.APPLICATION_JSON);
+
+                mvc.perform(request).andExpect(status().isOk());
+        }
+
 }

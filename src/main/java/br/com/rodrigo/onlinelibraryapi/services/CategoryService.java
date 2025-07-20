@@ -39,7 +39,7 @@ public class CategoryService {
         var entity = Category.builder().name(dto.name()).build();
 
         if (categoryRepository.existsByName(dto.name())) {
-            throw new IllegalArgumentException("this category already exists");
+            throw new IllegalArgumentException("This category already exists.");
         }
         return new ListCategoryDTO(this.categoryRepository.save(entity));
 
@@ -47,13 +47,13 @@ public class CategoryService {
 
     public ListCategoryDTO update(String id, CreateCategoryDTO data) {
         var category = this.categoryRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException(String.format("Category %s not found!", id)));
+                .orElseThrow(() -> new EntityNotFoundException(String.format("Category with ID %s not found.", id)));
 
         boolean nameAlreadyExists = categoryRepository.existsByName(data.name())
                 && !category.getName().equalsIgnoreCase(data.name());
 
         if (nameAlreadyExists) {
-            throw new IllegalArgumentException(String.format("Category %s already exists!", data.name()));
+            throw new IllegalArgumentException(String.format("Category name '%s' already exists.", data.name()));
         }
 
         category.setName(data.name());
@@ -63,7 +63,7 @@ public class CategoryService {
 
     public ListCategoryDTO show(String categoryId) {
         var category = this.categoryRepository.findById(categoryId)
-                .orElseThrow(() -> new EntityNotFoundException(String.format("Category %s not found!", categoryId)));
+                .orElseThrow(() -> new EntityNotFoundException(String.format("Category with ID %s not found.", categoryId)));
         return new ListCategoryDTO(category);
     }
 }

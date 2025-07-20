@@ -113,7 +113,7 @@ public class CategoryServiceTest {
         var result = assertThrows(IllegalArgumentException.class, () -> categoryService.save(createDto));
 
         assertThat(result).isInstanceOf(IllegalArgumentException.class);
-        assertThat(result.getMessage()).isEqualTo("this category already exists");
+        assertThat(result.getMessage()).isEqualTo("This category already exists.");
 
         Mockito.verify(categoryRepository, times(1)).existsByName(Mockito.anyString());
         Mockito.verify(categoryRepository, never()).save(Mockito.any(Category.class));
@@ -148,14 +148,14 @@ public class CategoryServiceTest {
         // Arrange
 
         Mockito.when(categoryRepository.findById(categoryId))
-                .thenThrow(new EntityNotFoundException(String.format("Category %s not found!", categoryId)));
+                .thenThrow(new EntityNotFoundException(String.format("Category with ID %s not found.", categoryId)));
 
         // Act
         var result = catchThrowable(() -> categoryService.update(categoryId, createDto));
 
         // Assert
         assertThat(result).isInstanceOf(EntityNotFoundException.class);
-        assertThat(result.getMessage()).isEqualTo(String.format("Category %s not found!", categoryId));
+        assertThat(result.getMessage()).isEqualTo(String.format("Category with ID %s not found.", categoryId));
 
         Mockito.verify(categoryRepository, times(1)).findById(categoryId);
         Mockito.verify(categoryRepository, never()).save(category);
@@ -178,7 +178,7 @@ public class CategoryServiceTest {
 
         // Assert
         assertThat(result).isInstanceOf(IllegalArgumentException.class);
-        assertThat(result.getMessage()).isEqualTo(String.format("Category %s already exists!", createDto.name()));
+        assertThat(result.getMessage()).isEqualTo(String.format("Category name '%s' already exists.", createDto.name()));
 
         Mockito.verify(categoryRepository, times(1)).findById(categoryId);
         Mockito.verify(categoryRepository, never()).save(category);
@@ -205,14 +205,14 @@ public class CategoryServiceTest {
         // Arrange
 
         Mockito.when(categoryRepository.findById(Mockito.anyString()))
-                .thenThrow(new EntityNotFoundException(String.format("Category %s not found!", categoryId)));
+                .thenThrow(new EntityNotFoundException(String.format("Category with ID %s not found.", categoryId)));
 
         // Act
         var result = catchThrowable(() -> categoryService.show(categoryId)); 
 
         // Assert
         assertThat(result).isInstanceOf(EntityNotFoundException.class);
-        assertThat(result.getMessage()).isEqualTo(String.format("Category %s not found!", categoryId));
+        assertThat(result.getMessage()).isEqualTo(String.format("Category with ID %s not found.", categoryId));
     }
 
 }
