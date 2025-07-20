@@ -277,6 +277,9 @@ public class CategoryControllerTest {
                 mvc.perform(request).andExpect(status().isOk());
                 mvc.perform(request).andExpect(jsonPath("$.id").isNotEmpty());
                 mvc.perform(request).andExpect(jsonPath("$.name").isNotEmpty());
+
+                Mockito.verify(categoryService, times(1)).show(categoryId);
         }
+
 
 }
