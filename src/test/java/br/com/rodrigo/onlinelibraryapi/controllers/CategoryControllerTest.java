@@ -161,8 +161,8 @@ public class CategoryControllerTest {
 
         @Test
         @WithMockUser(username = "userTest")
-        @DisplayName("Should return a throw error when try to create a new category")
-        public void shouldReturnAThrowErrorWhenTryToCreateANewCategory() throws Exception {
+        @DisplayName("Should return a throw error 422 when try to create a new category")
+        public void shouldReturnAThrowError422WhenTryToCreateANewCategory() throws Exception {
 
                 createCategoryDTO = new CreateCategoryDTO("");
 
@@ -183,20 +183,42 @@ public class CategoryControllerTest {
 
         @Test
         @WithMockUser(username = "userTest")
+        @DisplayName("Should return a 200 when try to update a new category")
         public void shouldUpdateCategory() throws Exception {
 
                 BDDMockito.given(categoryService.update(categoryId, createCategoryDTO)).willReturn(listCategoryDTO);
-                
+
                 var request = put(CATEGORY_URI.concat("/".concat(categoryId)))
                                 .accept(MediaType.APPLICATION_JSON)
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(json);
 
                 mvc.perform(request).andExpect(status().isOk())
-                .andExpect(jsonPath("$.name").value(createCategoryDTO.name()))
-                .andExpect(jsonPath("$.id").exists());
+                                .andExpect(jsonPath("$.name").value(createCategoryDTO.name()))
+                                .andExpect(jsonPath("$.id").exists());
 
                 Mockito.verify(categoryService, times(1)).update(categoryId, createCategoryDTO);
+        }
+
+        @Test
+        @WithMockUser(username = "userTest")
+        @DisplayName("Should return a throw error 422 when try to update a new category")
+        public void shouldReturn422ErrorWhenTryToUpdateCategory() throws Exception {
+                
+                createCategoryDTO = new CreateCategoryDTO("");
+                json = new ObjectMapper().writeValueAsString(createCategoryDTO);
+                
+                var request = put(CATEGORY_URI.concat("/".concat(categoryId)))
+                                .accept(MediaType.APPLICATION_JSON)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content(json);
+
+                mvc.perform(request)
+                                .andExpect(status().isUnprocessableEntity())
+                                .andExpect(jsonPath("$.path").value(Matchers.any(String.class)))
+                                .andExpect(jsonPath("$.message").value(Matchers.any(String.class)));
+
+                Mockito.verify(categoryService, never()).update(categoryId, createCategoryDTO);
         }
 
 }

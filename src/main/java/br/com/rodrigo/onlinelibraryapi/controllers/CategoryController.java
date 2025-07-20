@@ -47,7 +47,7 @@ public class CategoryController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ListCategoryDTO> update(@PathVariable String id, @RequestBody CreateCategoryDTO data) {
+    public ResponseEntity<ListCategoryDTO> update(@PathVariable String id, @Valid @RequestBody CreateCategoryDTO data) {
         ListCategoryDTO update = this.categoryService.update(id, data);
         
         return ResponseEntity.ok().body(update);
