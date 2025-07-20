@@ -46,6 +46,7 @@ import br.com.rodrigo.onlinelibraryapi.services.CategoryService;
 import br.com.rodrigo.onlinelibraryapi.services.JWTService;
 import br.com.rodrigo.onlinelibraryapi.services.ProfileService;
 import br.com.rodrigo.onlinelibraryapi.services.UserService;
+import jakarta.persistence.EntityNotFoundException;
 
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
@@ -204,10 +205,10 @@ public class CategoryControllerTest {
         @WithMockUser(username = "userTest")
         @DisplayName("Should return a throw error 422 when try to update a new category")
         public void shouldReturn422ErrorWhenTryToUpdateCategory() throws Exception {
-                
+
                 createCategoryDTO = new CreateCategoryDTO("");
                 json = new ObjectMapper().writeValueAsString(createCategoryDTO);
-                
+
                 var request = put(CATEGORY_URI.concat("/".concat(categoryId)))
                                 .accept(MediaType.APPLICATION_JSON)
                                 .contentType(MediaType.APPLICATION_JSON)
@@ -219,6 +220,27 @@ public class CategoryControllerTest {
                                 .andExpect(jsonPath("$.message").value(Matchers.any(String.class)));
 
                 Mockito.verify(categoryService, never()).update(categoryId, createCategoryDTO);
+        }
+
+        @Test
+        @WithMockUser(username = "userTest")
+        @DisplayName("should return 404 when updating non-existent category")
+        public void shouldReturn404WhenTryToUpdateCategory() throws Exception {
+
+                BDDMockito.given(categoryService.update(categoryId, createCategoryDTO))
+                                .willThrow(new EntityNotFoundException(String.format("Category %s not found!", categoryId)));
+
+                var request = put(CATEGORY_URI.concat("/".concat(categoryId)))
+                                .accept(MediaType.APPLICATION_JSON)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content(json);
+
+                mvc.perform(request)
+                                .andExpect(status().isNotFound())
+                                .andExpect(jsonPath("$.path").value(Matchers.any(String.class)))
+                                .andExpect(jsonPath("$.message").value(Matchers.any(String.class))); // ← Corrigido aqui
+
+                Mockito.verify(categoryService, times(1)).update(categoryId, createCategoryDTO);
         }
 
 }
