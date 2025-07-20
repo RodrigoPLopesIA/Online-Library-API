@@ -281,5 +281,25 @@ public class CategoryControllerTest {
                 Mockito.verify(categoryService, times(1)).show(categoryId);
         }
 
+        @Test
+        @DisplayName("should return error 404 when try to find a category by category id")
+        @WithMockUser(username = "userTest")
+        public void shouldReturn404ErrorWhenTryToFindCategoryByCategoryId() throws Exception {
+
+                BDDMockito.given(categoryService.show(Mockito.anyString()))
+                                .willThrow(new EntityNotFoundException(
+                                                String.format("Category with ID %s not found.", categoryId)));
+
+                var request = get(CATEGORY_URI + "/" + categoryId)
+                                .accept(MediaType.APPLICATION_JSON);
+
+                mvc.perform(request).andExpect(status().isNotFound())
+                                .andExpect(jsonPath("$.path").isNotEmpty())
+                                .andExpect(jsonPath("$.message").isNotEmpty())
+                                .andExpect(jsonPath("$.message")
+                                                .value(String.format("Category with ID %s not found.", categoryId)));
+
+                Mockito.verify(categoryService, times(1)).show(categoryId);
+        }
 
 }
