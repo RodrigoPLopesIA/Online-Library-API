@@ -8,6 +8,7 @@ import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -209,6 +210,37 @@ public class CategoryServiceTest {
 
         // Act
         var result = catchThrowable(() -> categoryService.show(categoryId)); 
+
+        // Assert
+        assertThat(result).isInstanceOf(EntityNotFoundException.class);
+        assertThat(result.getMessage()).isEqualTo(String.format("Category with ID %s not found.", categoryId));
+    }
+
+    @Test
+    @DisplayName("should delete a category by id")
+    public void shouldDeleteCategoryById() {
+        // Arrange
+
+        Mockito.when(categoryRepository.findById(Mockito.anyString()))
+                .thenReturn(Optional.of(category));
+
+        // Act
+        categoryService.delete(categoryId);
+
+        // Assert
+        verify(categoryRepository, times(1)).delete(category);
+    }
+
+    @Test
+    @DisplayName("should return a exception when try to delete category by id")
+    public void shouldReturnEntityNoFounExceptionWhenTryToDeleteByCategoryById() {
+        // Arrange
+
+        Mockito.when(categoryRepository.findById(Mockito.anyString()))
+                .thenThrow(new EntityNotFoundException(String.format("Category with ID %s not found.", categoryId)));
+
+        // Act
+        var result = catchThrowable(() -> categoryService.delete(categoryId)); 
 
         // Assert
         assertThat(result).isInstanceOf(EntityNotFoundException.class);
