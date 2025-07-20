@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 @RequestMapping("/api/v1/categories")
@@ -35,13 +37,20 @@ public class CategoryController {
     }
 
     @PostMapping
-    public ResponseEntity<ListCategoryDTO> postMethodName(@Valid @RequestBody CreateCategoryDTO data,
+    public ResponseEntity<ListCategoryDTO> create(@Valid @RequestBody CreateCategoryDTO data,
             UriComponentsBuilder uriBuilder) {
         ListCategoryDTO entity = this.categoryService.save(data);
 
         URI uri = uriBuilder.fromUriString("/api/v1/categories/{id}").buildAndExpand(entity.id()).toUri();
 
         return ResponseEntity.created(uri).body(entity);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ListCategoryDTO> update(@PathVariable String id, @RequestBody CreateCategoryDTO data) {
+        ListCategoryDTO update = this.categoryService.update(id, data);
+        
+        return ResponseEntity.ok().body(update);
     }
 
 }

@@ -103,6 +103,8 @@ public class CategoryControllerTest {
 
         String json;
 
+        String categoryId;
+
         @BeforeEach
         public void setup() throws JsonProcessingException {
                 category = Category.builder().name("HORROR").id(UUID.randomUUID().toString()).build();
@@ -111,9 +113,10 @@ public class CategoryControllerTest {
                 listCategoryDTO = new ListCategoryDTO(category);
                 categoryPage = new PageImpl<>(List.of(listCategoryDTO), PageRequest.of(0, 100),
                                 1);
-                createCategoryDTO = new CreateCategoryDTO("TEST");
+                createCategoryDTO = new CreateCategoryDTO("HORROR");
 
                 json = new ObjectMapper().writeValueAsString(createCategoryDTO);
+                categoryId = "d6e4331d-dd66-49b4-9be0-e0372a8f5013";
         }
 
         @Test
@@ -182,12 +185,18 @@ public class CategoryControllerTest {
         @WithMockUser(username = "userTest")
         public void shouldUpdateCategory() throws Exception {
 
-                var request = put(CATEGORY_URI)
+                BDDMockito.given(categoryService.update(categoryId, createCategoryDTO)).willReturn(listCategoryDTO);
+                
+                var request = put(CATEGORY_URI.concat("/".concat(categoryId)))
                                 .accept(MediaType.APPLICATION_JSON)
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(json);
 
-                mvc.perform(request).andExpect(status().isOk());
+                mvc.perform(request).andExpect(status().isOk())
+                .andExpect(jsonPath("$.name").value(createCategoryDTO.name()))
+                .andExpect(jsonPath("$.id").exists());
+
+                Mockito.verify(categoryService, times(1)).update(categoryId, createCategoryDTO);
         }
 
 }
