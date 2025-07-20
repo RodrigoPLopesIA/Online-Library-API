@@ -32,25 +32,32 @@ public class CategoryController {
     @GetMapping
     public ResponseEntity<Page<ListCategoryDTO>> index(Pageable page,
             @RequestParam(name = "name", required = false) String name) {
-        Page<ListCategoryDTO> index = categoryService.index(page, name);
-        return ResponseEntity.ok().body(index);
+        Page<ListCategoryDTO> response = categoryService.index(page, name);
+        return ResponseEntity.ok().body(response);
     }
 
     @PostMapping
     public ResponseEntity<ListCategoryDTO> create(@Valid @RequestBody CreateCategoryDTO data,
             UriComponentsBuilder uriBuilder) {
-        ListCategoryDTO entity = this.categoryService.save(data);
+        ListCategoryDTO response = this.categoryService.save(data);
 
-        URI uri = uriBuilder.fromUriString("/api/v1/categories/{id}").buildAndExpand(entity.id()).toUri();
+        URI uri = uriBuilder.fromUriString("/api/v1/categories/{id}").buildAndExpand(response.id()).toUri();
 
-        return ResponseEntity.created(uri).body(entity);
+        return ResponseEntity.created(uri).body(response);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<ListCategoryDTO> update(@PathVariable String id, @Valid @RequestBody CreateCategoryDTO data) {
-        ListCategoryDTO update = this.categoryService.update(id, data);
-        
-        return ResponseEntity.ok().body(update);
+        ListCategoryDTO response = this.categoryService.update(id, data);
+
+        return ResponseEntity.ok().body(response);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ListCategoryDTO> show(@PathVariable String id) {
+        ListCategoryDTO response = this.categoryService.show(id);
+
+        return ResponseEntity.ok().body(response);
     }
 
 }

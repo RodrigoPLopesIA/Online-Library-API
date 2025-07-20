@@ -270,10 +270,13 @@ public class CategoryControllerTest {
         @WithMockUser(username = "userTest")
         public void shouldReturnCategoryByCategoryId() throws Exception {
 
+                BDDMockito.given(categoryService.show(Mockito.anyString())).willReturn(listCategoryDTO);
                 var request = get(CATEGORY_URI + "/" + categoryId)
                                 .accept(MediaType.APPLICATION_JSON);
 
                 mvc.perform(request).andExpect(status().isOk());
+                mvc.perform(request).andExpect(jsonPath("$.id").isNotEmpty());
+                mvc.perform(request).andExpect(jsonPath("$.name").isNotEmpty());
         }
 
 }
