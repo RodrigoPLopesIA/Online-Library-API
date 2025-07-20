@@ -45,17 +45,19 @@ public class CategoryService {
 
     }
 
-    public ListCategoryDTO update(String id, CreateCategoryDTO data){
+    public ListCategoryDTO update(String id, CreateCategoryDTO data) {
         var category = this.categoryRepository.findById(id)
-        .orElseThrow(() -> {
-            throw new EntityNotFoundException(String.format("Category %s not found!", id));
-        });
+                .orElseThrow(() -> new EntityNotFoundException(String.format("Category %s not found!", id)));
+
+        boolean nameAlreadyExists = categoryRepository.existsByName(data.name())
+                && !category.getName().equalsIgnoreCase(data.name());
+
+        if (nameAlreadyExists) {
+            throw new IllegalArgumentException(String.format("Category %s already exists!", data.name()));
+        }
 
         category.setName(data.name());
-
         this.categoryRepository.save(category);
         return new ListCategoryDTO(category);
-
-
     }
 }
