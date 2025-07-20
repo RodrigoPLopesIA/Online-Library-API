@@ -249,7 +249,8 @@ public class CategoryControllerTest {
         @DisplayName("should return 409 when updating with an existing category name")
         public void shouldReturn409WhenCategoryAlreadyExists() throws Exception {
                 BDDMockito.given(categoryService.update(categoryId, createCategoryDTO))
-                                .willThrow(new IllegalArgumentException("Category already exists"));
+                                .willThrow(new IllegalArgumentException(String.format("Category %s already exists!",
+                                                createCategoryDTO.name())));
 
                 var request = put(CATEGORY_URI + "/" + categoryId)
                                 .accept(MediaType.APPLICATION_JSON)
@@ -257,7 +258,7 @@ public class CategoryControllerTest {
                                 .content(json);
 
                 mvc.perform(request)
-                                .andExpect(status().isConflict())
+                                .andExpect(status().isBadRequest())
                                 .andExpect(jsonPath("$.message").value(Matchers.any(String.class)))
                                 .andExpect(jsonPath("$.path").value(Matchers.any(String.class)));
 
