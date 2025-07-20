@@ -228,7 +228,8 @@ public class CategoryControllerTest {
         public void shouldReturn404WhenTryToUpdateCategory() throws Exception {
 
                 BDDMockito.given(categoryService.update(categoryId, createCategoryDTO))
-                                .willThrow(new EntityNotFoundException(String.format("Category %s not found!", categoryId)));
+                                .willThrow(new EntityNotFoundException(
+                                                String.format("Category %s not found!", categoryId)));
 
                 var request = put(CATEGORY_URI.concat("/".concat(categoryId)))
                                 .accept(MediaType.APPLICATION_JSON)
@@ -239,6 +240,26 @@ public class CategoryControllerTest {
                                 .andExpect(status().isNotFound())
                                 .andExpect(jsonPath("$.path").value(Matchers.any(String.class)))
                                 .andExpect(jsonPath("$.message").value(Matchers.any(String.class))); // ← Corrigido aqui
+
+                Mockito.verify(categoryService, times(1)).update(categoryId, createCategoryDTO);
+        }
+
+        @Test
+        @WithMockUser(username = "userTest")
+        @DisplayName("should return 409 when updating with an existing category name")
+        public void shouldReturn409WhenCategoryAlreadyExists() throws Exception {
+                BDDMockito.given(categoryService.update(categoryId, createCategoryDTO))
+                                .willThrow(new IllegalArgumentException("Category already exists"));
+
+                var request = put(CATEGORY_URI + "/" + categoryId)
+                                .accept(MediaType.APPLICATION_JSON)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content(json);
+
+                mvc.perform(request)
+                                .andExpect(status().isConflict())
+                                .andExpect(jsonPath("$.message").value(Matchers.any(String.class)))
+                                .andExpect(jsonPath("$.path").value(Matchers.any(String.class)));
 
                 Mockito.verify(categoryService, times(1)).update(categoryId, createCategoryDTO);
         }
