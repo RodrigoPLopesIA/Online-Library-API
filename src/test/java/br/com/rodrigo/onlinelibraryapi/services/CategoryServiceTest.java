@@ -8,6 +8,7 @@ import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -150,12 +151,34 @@ public class CategoryServiceTest {
                 .thenThrow(new EntityNotFoundException(String.format("Category %s not found!", categoryId)));
 
         // Act
-        var result = catchThrowable(() -> categoryService.update(categoryId, createDto)); 
+        var result = catchThrowable(() -> categoryService.update(categoryId, createDto));
 
         // Assert
         assertThat(result).isInstanceOf(EntityNotFoundException.class);
         assertThat(result.getMessage()).isEqualTo(String.format("Category %s not found!", categoryId));
 
+        Mockito.verify(categoryRepository, times(1)).findById(categoryId);
+        Mockito.verify(categoryRepository, never()).save(category);
+    }
+
+    @Test
+    @DisplayName("should return a error when try to update a exists category")
+    public void shouldUpdateCategoryAlreadyExists() {
+        // Arrange
+        Category category = new Category();
+        category.setName("Old Name");
+
+        CreateCategoryDTO createDto = new CreateCategoryDTO("New Name");
+        
+        when(categoryRepository.findById(categoryId)).thenReturn(Optional.of(category));
+        when(categoryRepository.existsByName("New Name")).thenReturn(true);
+
+        // Act
+        var result = catchThrowable(() -> categoryService.update(categoryId, createDto));
+
+        // Assert
+        assertThat(result).isInstanceOf(IllegalArgumentException.class);
+        assertThat(result.getMessage()).isEqualTo(String.format("Category %s already exists!", createDto.name()));
 
         Mockito.verify(categoryRepository, times(1)).findById(categoryId);
         Mockito.verify(categoryRepository, never()).save(category);
