@@ -6,9 +6,13 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.math.BigDecimal;
+import java.sql.Date;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.BDDMockito;
@@ -17,6 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
@@ -27,8 +32,10 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import br.com.rodrigo.onlinelibraryapi.config.SpringSercurityConfig;
 import br.com.rodrigo.onlinelibraryapi.dtos.books.CreateBookDTO;
+import br.com.rodrigo.onlinelibraryapi.dtos.books.ListBookDTO;
 import br.com.rodrigo.onlinelibraryapi.entities.Author;
 import br.com.rodrigo.onlinelibraryapi.entities.Book;
+import br.com.rodrigo.onlinelibraryapi.entities.User;
 import br.com.rodrigo.onlinelibraryapi.enums.Genre;
 import br.com.rodrigo.onlinelibraryapi.mapper.AuthorMapper;
 import br.com.rodrigo.onlinelibraryapi.mapper.BookMapper;
@@ -46,72 +53,191 @@ import br.com.rodrigo.onlinelibraryapi.services.UserService;
 @Import(SpringSercurityConfig.class)
 public class BookControllerTest {
 
-    @Autowired
-    private MockMvc mvc;
+        @Autowired
+        private MockMvc mvc;
 
-    @MockBean
-    private AuthenticationService authenticationService;
+        @MockBean
+        private AuthenticationService authenticationService;
 
-    @MockBean
-    private AuthorService authorService;
+        @MockBean
+        private AuthorService authorService;
 
-    @MockBean
-    private BookService bookService;
+        @MockBean
+        private BookService bookService;
 
-    @MockBean
-    private AuthorMapper authorMapper;
+        @MockBean
+        private AuthorMapper authorMapper;
 
-    @MockBean
-    private BookMapper bookMapper;
+        @MockBean
+        private BookMapper bookMapper;
 
-    @MockBean
-    private EmailService emailService;
+        @MockBean
+        private EmailService emailService;
 
-    @MockBean
-    private ProfileService profileService;
+        @MockBean
+        private ProfileService profileService;
 
-    @MockBean
-    private UserService userService;
+        @MockBean
+        private UserService userService;
 
-    @MockBean
-    private UserMapper userMapper;
+        @MockBean
+        private UserMapper userMapper;
 
-    @MockBean
-    private UserRepository userRepository;
+        @MockBean
+        private UserRepository userRepository;
 
-    @MockBean
-    private JWTService jwtService;
+        @MockBean
+        private JWTService jwtService;
 
+        @Test
+        @WithMockUser
+        @DisplayName("GET /api/v1/books -> should return list of books")
+        public void shouldReturnListOfBooks() throws Exception {
+                Author author = Author.builder().name("test").id(UUID.randomUUID()).nationality("test")
+                                .dateBirth(java.util.Date.from(Instant.now())).build();
+                ;
+                var book = Book.builder()
+                                .id(UUID.randomUUID())
+                                .title("test")
+                                .isbn("123456")
+                                .author(author)
+                                .build();
 
-    @Test
-    @WithMockUser(username = "testUser", roles = { "USER", "ADMIN" })
-    @DisplayName("POST /api/v1/books -> should create a new book")
-    public void shouldCreateANewBook() throws Exception {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.registerModule(new JavaTimeModule());
-        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+                var dto = new ListBookDTO(book);
 
-        var data = new CreateBookDTO("Test", "test", LocalDate.of(2025, 05, 25), Genre.Horror, BigDecimal.valueOf(25),
-                UUID.fromString("930892ea-c858-4aa6-9a01-0c1dd9e23771"));
-        var json = mapper.writeValueAsString(data);
+                var page = new PageImpl<>(java.util.List.of(book));
 
-        var author = Author.builder().id(UUID.fromString("930892ea-c858-4aa6-9a01-0c1dd9e23771")).name("asdasd")
-                .nationality("sadasd").build();
-        var book = Book.builder()
-                .id(UUID.fromString("930892ea-c858-4aa6-9a01-0c1dd9e23771"))
-                .isbn("Test")
-                .title("test")
-                .publicationDate(LocalDate.of(2025, 05, 25))
-                .author(author).build();
+                BDDMockito.given(bookService.index(Mockito.any(), Mockito.any(), Mockito.any(), Mockito.any(),
+                                Mockito.any(), Mockito.any()))
+                                .willReturn(page);
 
-        BDDMockito.given(bookService.create(any(CreateBookDTO.class), Mockito.any())).willReturn(book);
+                BDDMockito.given(bookMapper.toDto(Mockito.any(Book.class))).willReturn(dto);
 
+                mvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get("/api/v1/books")
+                                .accept(MediaType.APPLICATION_JSON))
+                                .andExpect(status().isOk());
+        }
 
-        var request = post("/api/v1/books")
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON).content(json);
+        @Test
+        @WithMockUser(username = "testUser", roles = { "USER", "ADMIN" })
+        @DisplayName("POST /api/v1/books -> should create a new book")
+        public void shouldCreateANewBook() throws Exception {
+                ObjectMapper mapper = new ObjectMapper();
+                mapper.registerModule(new JavaTimeModule());
+                mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 
-        mvc.perform(request).andExpect(status().isCreated());
-    }
+                var data = new CreateBookDTO("Test", "test", LocalDate.of(2025, 05, 25), Genre.Horror,
+                                BigDecimal.valueOf(25),
+                                UUID.fromString("930892ea-c858-4aa6-9a01-0c1dd9e23771"));
+                var json = mapper.writeValueAsString(data);
+
+                var author = Author.builder().id(UUID.fromString("930892ea-c858-4aa6-9a01-0c1dd9e23771")).name("asdasd")
+                                .nationality("sadasd").build();
+                var book = Book.builder()
+                                .id(UUID.fromString("930892ea-c858-4aa6-9a01-0c1dd9e23771"))
+                                .isbn("Test")
+                                .title("test")
+                                .publicationDate(LocalDate.of(2025, 05, 25))
+                                .author(author).build();
+
+                BDDMockito.given(bookService.create(any(CreateBookDTO.class), Mockito.any())).willReturn(book);
+
+                var request = post("/api/v1/books")
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .accept(MediaType.APPLICATION_JSON).content(json);
+
+                mvc.perform(request).andExpect(status().isCreated());
+        }
+
+        @Test
+        @WithMockUser
+        @DisplayName("GET /api/v1/books/{id} -> should return book by id")
+        public void shouldReturnBookById() throws Exception {
+                var bookId = UUID.randomUUID();
+                Author author = Author.builder().name("test").id(UUID.randomUUID()).nationality("test")
+                                .dateBirth(java.util.Date.from(Instant.now())).build();
+                
+
+                var book = Book.builder().id(bookId).title("test").isbn("123").author(author).build();
+                var dto = new ListBookDTO(book);
+
+                BDDMockito.given(bookService.show(eq(bookId))).willReturn(book);
+                BDDMockito.given(bookMapper.toDto(book)).willReturn(dto);
+
+                mvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+                                .get("/api/v1/books/" + bookId)
+                                .accept(MediaType.APPLICATION_JSON))
+                                .andExpect(status().isOk());
+        }
+
+        @Test
+        @WithMockUser
+        @DisplayName("PUT /api/v1/books/{id} -> should update book")
+        public void shouldUpdateBook() throws Exception {
+                ObjectMapper mapper = new ObjectMapper();
+                mapper.registerModule(new JavaTimeModule());
+                mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+
+                var data = new CreateBookDTO("Updated", "111111", LocalDate.of(2025, 05, 25), Genre.Fantasy,
+                                BigDecimal.valueOf(30),
+                                UUID.randomUUID());
+                 Author author = Author.builder().name("test").id(UUID.randomUUID()).nationality("test")
+                                .dateBirth(java.util.Date.from(Instant.now())).build();
+                var book = Book.builder().id(UUID.randomUUID()).title("Updated").author(author).isbn("111111").build();
+                var dto = new ListBookDTO(book);
+
+                BDDMockito.given(bookMapper.toEntity(data)).willReturn(book);
+                BDDMockito.given(bookService.update(eq(book.getId()), eq(book), Mockito.any())).willReturn(book);
+                BDDMockito.given(bookMapper.toDto(book)).willReturn(dto);
+
+                var json = mapper.writeValueAsString(data);
+
+                mvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+                                .put("/api/v1/books/" + book.getId())
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content(json))
+                                .andExpect(status().isOk());
+        }
+
+        @Test
+        @WithMockUser
+        @DisplayName("DELETE /api/v1/books/{id} -> should delete book")
+        public void shouldDeleteBook() throws Exception {
+                var bookId = UUID.randomUUID();
+
+                mvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+                                .delete("/api/v1/books/" + bookId))
+                                .andExpect(status().isNoContent());
+
+                Mockito.verify(bookService, Mockito.times(1)).delete(eq(bookId), Mockito.any());
+        }
+
+        @Test
+        @WithMockUser
+        @DisplayName("PATCH /api/v1/books/{id}/upload -> should upload book file")
+        public void shouldUploadBookFile() throws Exception {
+                var bookId = UUID.randomUUID();
+
+                var file = new org.springframework.mock.web.MockMultipartFile(
+                                "file",
+                                "book.pdf",
+                                MediaType.APPLICATION_PDF_VALUE,
+                                "dummy content".getBytes());
+
+                var uploadDto = new br.com.rodrigo.onlinelibraryapi.dtos.files.UploadFileDTO("book.pdf",
+                                "http://bucket/book.pdf");
+
+                BDDMockito.given(bookService.uploadBookFile(eq(bookId), Mockito.any(), Mockito.any()))
+                                .willReturn(uploadDto);
+
+                mvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders
+                                .multipart("/api/v1/books/" + bookId + "/upload")
+                                .file(file)
+                                .with(req -> {
+                                        req.setMethod("PATCH");
+                                        return req;
+                                }))
+                                .andExpect(status().isOk());
+        }
 
 }
