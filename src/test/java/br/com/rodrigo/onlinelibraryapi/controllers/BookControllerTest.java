@@ -126,9 +126,10 @@ public class BookControllerTest {
                 mapper.registerModule(new JavaTimeModule());
                 mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 
-                var data = new CreateBookDTO("Test", "test", LocalDate.of(2025, 05, 25), Genre.Horror,
+                var data = new CreateBookDTO("Test", "test", LocalDate.of(2025, 05, 25),
+                                "930892ea-c858-4aa6-9a01-0c1dd9e23772",
                                 BigDecimal.valueOf(25),
-                                UUID.fromString("930892ea-c858-4aa6-9a01-0c1dd9e23771"));
+                                "930892ea-c858-4aa6-9a01-0c1dd9e23771");
                 var json = mapper.writeValueAsString(data);
 
                 var author = Author.builder().id(UUID.fromString("930892ea-c858-4aa6-9a01-0c1dd9e23771")).name("asdasd")
@@ -156,7 +157,6 @@ public class BookControllerTest {
                 var bookId = UUID.randomUUID();
                 Author author = Author.builder().name("test").id(UUID.randomUUID()).nationality("test")
                                 .dateBirth(java.util.Date.from(Instant.now())).build();
-                
 
                 var book = Book.builder().id(bookId).title("test").isbn("123").author(author).build();
                 var dto = new ListBookDTO(book);
@@ -178,10 +178,11 @@ public class BookControllerTest {
                 mapper.registerModule(new JavaTimeModule());
                 mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 
-                var data = new CreateBookDTO("Updated", "111111", LocalDate.of(2025, 05, 25), Genre.Fantasy,
+                var data = new CreateBookDTO("Updated", "111111", LocalDate.of(2025, 05, 25),
+                                "930892ea-c858-4aa6-9a01-0c1dd9e23771",
                                 BigDecimal.valueOf(30),
-                                UUID.randomUUID());
-                 Author author = Author.builder().name("test").id(UUID.randomUUID()).nationality("test")
+                                "930892ea-c858-4aa6-9a01-0c1dd9e23772");
+                Author author = Author.builder().name("test").id(UUID.randomUUID()).nationality("test")
                                 .dateBirth(java.util.Date.from(Instant.now())).build();
                 var book = Book.builder().id(UUID.randomUUID()).title("Updated").author(author).isbn("111111").build();
                 var dto = new ListBookDTO(book);

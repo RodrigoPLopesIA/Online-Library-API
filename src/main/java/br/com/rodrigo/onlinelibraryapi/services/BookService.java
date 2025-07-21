@@ -87,7 +87,7 @@ public class BookService {
         }
 
         // verify if author exists by id
-        Author author = authorService.show(data.authorId());
+        Author author = authorService.show(UUID.fromString(data.authorId()));
         // verify if user exists by id
         User user = this.userService.findById(authUser.getId());
 
