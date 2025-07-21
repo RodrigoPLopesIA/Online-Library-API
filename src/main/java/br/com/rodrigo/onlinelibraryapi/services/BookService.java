@@ -87,7 +87,7 @@ public class BookService {
         }
 
         // verify if book already exists by title
-        if (this.existsByTitle(data.isbn())) {
+        if (this.existsByTitle(data.title())) {
             throw new IllegalArgumentException("Book with title " + data.title() + " already exists.");
         }
 
@@ -107,9 +107,10 @@ public class BookService {
 
         Book created = bookRepository.save(book);
 
-        author.setBooks(Arrays.asList(created));
-        user.setBooks(Arrays.asList(created));
+        author.setBooks(Arrays.asList(book));
+        user.setBooks(Arrays.asList(book));
         category.setBook(book);
+        
 
         emailService.send(user.getAuthentication().getEmail(), "Book created!", "mail/book-created", new BookEmailContextStrategy(book));
         return created;

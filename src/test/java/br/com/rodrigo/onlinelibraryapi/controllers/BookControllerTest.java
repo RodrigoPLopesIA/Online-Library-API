@@ -10,6 +10,8 @@ import java.sql.Date;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -35,8 +37,7 @@ import br.com.rodrigo.onlinelibraryapi.dtos.books.CreateBookDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.books.ListBookDTO;
 import br.com.rodrigo.onlinelibraryapi.entities.Author;
 import br.com.rodrigo.onlinelibraryapi.entities.Book;
-import br.com.rodrigo.onlinelibraryapi.entities.User;
-import br.com.rodrigo.onlinelibraryapi.enums.Genre;
+import br.com.rodrigo.onlinelibraryapi.entities.Category;
 import br.com.rodrigo.onlinelibraryapi.mapper.AuthorMapper;
 import br.com.rodrigo.onlinelibraryapi.mapper.BookMapper;
 import br.com.rodrigo.onlinelibraryapi.mapper.UserMapper;
@@ -96,10 +97,13 @@ public class BookControllerTest {
                 Author author = Author.builder().name("test").id(UUID.randomUUID()).nationality("test")
                                 .dateBirth(java.util.Date.from(Instant.now())).build();
                 ;
+                List<Category> categories = Arrays.asList(
+                                Category.builder().id("930892ea-c858-4aa6-9a01-0c1dd9e23772").name("test").build());
                 var book = Book.builder()
                                 .id(UUID.randomUUID())
                                 .title("test")
                                 .isbn("123456")
+                                .categories(categories)
                                 .author(author)
                                 .build();
 
@@ -134,10 +138,15 @@ public class BookControllerTest {
 
                 var author = Author.builder().id(UUID.fromString("930892ea-c858-4aa6-9a01-0c1dd9e23771")).name("asdasd")
                                 .nationality("sadasd").build();
+
+                List<Category> categories = Arrays.asList(
+                                Category.builder().id("930892ea-c858-4aa6-9a01-0c1dd9e23772").name("test").build());
+
                 var book = Book.builder()
                                 .id(UUID.fromString("930892ea-c858-4aa6-9a01-0c1dd9e23771"))
                                 .isbn("Test")
                                 .title("test")
+                                .categories(categories)
                                 .publicationDate(LocalDate.of(2025, 05, 25))
                                 .author(author).build();
 
@@ -158,7 +167,11 @@ public class BookControllerTest {
                 Author author = Author.builder().name("test").id(UUID.randomUUID()).nationality("test")
                                 .dateBirth(java.util.Date.from(Instant.now())).build();
 
-                var book = Book.builder().id(bookId).title("test").isbn("123").author(author).build();
+                List<Category> categories = Arrays.asList(
+                                Category.builder().id("930892ea-c858-4aa6-9a01-0c1dd9e23772").name("test").build());
+
+                var book = Book.builder().id(bookId).categories(categories).title("test").isbn("123").author(author)
+                                .build();
                 var dto = new ListBookDTO(book);
 
                 BDDMockito.given(bookService.show(eq(bookId))).willReturn(book);
@@ -184,7 +197,10 @@ public class BookControllerTest {
                                 "930892ea-c858-4aa6-9a01-0c1dd9e23772");
                 Author author = Author.builder().name("test").id(UUID.randomUUID()).nationality("test")
                                 .dateBirth(java.util.Date.from(Instant.now())).build();
-                var book = Book.builder().id(UUID.randomUUID()).title("Updated").author(author).isbn("111111").build();
+                List<Category> categories = Arrays.asList(
+                                Category.builder().id("930892ea-c858-4aa6-9a01-0c1dd9e23772").name("test").build());
+
+                var book = Book.builder().id(UUID.randomUUID()).categories(categories).title("Updated").author(author).isbn("111111").build();
                 var dto = new ListBookDTO(book);
 
                 BDDMockito.given(bookMapper.toEntity(data)).willReturn(book);

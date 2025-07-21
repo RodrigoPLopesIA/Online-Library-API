@@ -1,5 +1,7 @@
 package br.com.rodrigo.onlinelibraryapi.services;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
@@ -17,7 +19,10 @@ import org.junit.jupiter.api.Test;
 import org.mockito.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.web.multipart.MultipartFile;
 
 import br.com.rodrigo.onlinelibraryapi.dtos.books.CreateBookDTO;
@@ -27,7 +32,6 @@ import br.com.rodrigo.onlinelibraryapi.entities.embedded.Authentication;
 import br.com.rodrigo.onlinelibraryapi.entities.embedded.Name;
 import br.com.rodrigo.onlinelibraryapi.enums.Genre;
 import br.com.rodrigo.onlinelibraryapi.exceptions.UnauthorizedException;
-import br.com.rodrigo.onlinelibraryapi.exceptions.UniqueViolationException;
 import br.com.rodrigo.onlinelibraryapi.patterns.factory.BookFactory;
 import br.com.rodrigo.onlinelibraryapi.patterns.strategy.BookEmailContextStrategy;
 import br.com.rodrigo.onlinelibraryapi.repositories.BookRepository;
@@ -48,6 +52,9 @@ class BookServiceTest {
     private AuthorService authorService;
 
     @Mock
+    private CategoryService categoryService;
+
+    @Mock
     private UserService userService;
 
     @Mock
@@ -66,6 +73,7 @@ class BookServiceTest {
     private Author author;
     private Book book;
     private CreateBookDTO createBookDTO;
+    private Category category;
 
     @BeforeEach
     void setup() {
@@ -91,6 +99,8 @@ class BookServiceTest {
         createBookDTO = new CreateBookDTO(
                 "Book Title", "123", LocalDate.of(2024, 1, 1),
                 genre.getId(), BigDecimal.TEN, author.getId().toString());
+
+        category = Category.builder().id(UUID.randomUUID().toString()).name("test").build();
     }
 
     @Test
@@ -122,6 +132,7 @@ class BookServiceTest {
         when(bookRepository.existsByTitle("Book Title")).thenReturn(false);
         when(authorService.show(author.getId())).thenReturn(author);
         when(userService.findById(user.getId())).thenReturn(user);
+        when(categoryService.show(Mockito.anyString())).thenReturn(category);
         when(bookRepository.save(any(Book.class))).thenReturn(book);
 
         Book result = bookService.create(createBookDTO, user);
@@ -134,8 +145,19 @@ class BookServiceTest {
     @Test
     @DisplayName("Should not create if ISBN exists")
     void shouldThrowIfIsbnExists() {
-        when(bookRepository.existsByIsbn("123")).thenReturn(true);
-        assertThrows(IllegalArgumentException.class, () -> bookService.create(createBookDTO, user));
+        // Arrange
+        when(bookRepository.existsByIsbn(createBookDTO.isbn())).thenReturn(true);
+
+        // Act
+        Throwable thrown = catchThrowable(() -> bookService.create(createBookDTO, user));
+
+        // Assert
+        assertThat(thrown)
+                .isNotNull()
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("Book with ISBN " + createBookDTO.isbn() + " already exists");
+
+        verify(bookRepository, never()).save(any(Book.class));
     }
 
     @Test
@@ -214,12 +236,12 @@ class BookServiceTest {
     @DisplayName("Should return book list in index()")
     void shouldReturnBooksInIndex() {
         var pageable = Pageable.unpaged();
-        var page = new PageImpl<>(List.of(book));
+        var page = new PageImpl<>(List.of(book), PageRequest.of(1, 100), 101);
 
-        // when(bookRepository.findAll(any(), eq(pageable))).thenReturn(page);
+        when(bookRepository.findAll(any(Specification.class), eq(pageable))).thenReturn(page);
 
         Page<Book> result = bookService.index(pageable, "Title", "123", "Author", Genre.Fiction, "BR");
 
-        assertEquals(1, result.getTotalElements());
+        assertEquals(101, result.getTotalElements());
     }
 }
