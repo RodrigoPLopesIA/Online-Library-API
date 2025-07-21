@@ -1,5 +1,7 @@
 package br.com.rodrigo.onlinelibraryapi.mapper;
 
+import java.util.UUID;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +20,11 @@ public abstract class BookMapper {
 
     @Autowired
     protected CategoryRepository categoryRepository;
-    
 
     @Mapping(target = "author", expression = "java(authorRepository.findById(bookDto.author().id()).orElse(null))")
     public abstract Book toEntity(ListBookDTO bookDto);
 
-    @Mapping(target = "author", expression = "java(authorRepository.findById(bookDto.authorId()).orElse(null))")
+    @Mapping(target = "author", expression = "java(authorRepository.findById(UUID.fromString(bookDto.authorId())).orElse(null))")
     public abstract Book toEntity(CreateBookDTO bookDto);
 
     public abstract ListBookDTO toDto(Book book);
