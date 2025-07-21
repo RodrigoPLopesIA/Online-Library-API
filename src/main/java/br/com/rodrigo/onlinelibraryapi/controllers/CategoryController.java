@@ -56,7 +56,7 @@ public class CategoryController {
 
     @GetMapping("/{id}")
     public ResponseEntity<ListCategoryDTO> show(@PathVariable String id) {
-        ListCategoryDTO response = this.categoryService.show(id);
+        ListCategoryDTO response = new ListCategoryDTO(this.categoryService.show(id));
 
         return ResponseEntity.ok().body(response);
     }

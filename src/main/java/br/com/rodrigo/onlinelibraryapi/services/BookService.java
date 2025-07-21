@@ -11,9 +11,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import br.com.rodrigo.onlinelibraryapi.dtos.books.CreateBookDTO;
+import br.com.rodrigo.onlinelibraryapi.dtos.category.ListCategoryDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.files.UploadFileDTO;
 import br.com.rodrigo.onlinelibraryapi.entities.Author;
 import br.com.rodrigo.onlinelibraryapi.entities.Book;
+import br.com.rodrigo.onlinelibraryapi.entities.Category;
 import br.com.rodrigo.onlinelibraryapi.entities.User;
 import br.com.rodrigo.onlinelibraryapi.enums.Genre;
 import br.com.rodrigo.onlinelibraryapi.exceptions.UnauthorizedException;
@@ -39,6 +41,9 @@ public class BookService {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private CategoryService categoryService;
 
     @Autowired
     StorageService storageService;
@@ -86,19 +91,25 @@ public class BookService {
             throw new IllegalArgumentException("Book with title " + data.title() + " already exists.");
         }
 
+        // verify if category exists by id
+        Category category = categoryService.show(data.genreId());;
+
         // verify if author exists by id
         Author author = authorService.show(UUID.fromString(data.authorId()));
         // verify if user exists by id
-        User user = this.userService.findById(authUser.getId());
+        User user = userService.findById(authUser.getId());
 
         Book book = BookFactory.createFrom(data);
+
         book.setAuthor(author);
         book.setUser(user);
+        book.setCategories(Arrays.asList(category));
 
         Book created = bookRepository.save(book);
 
         author.setBooks(Arrays.asList(created));
         user.setBooks(Arrays.asList(created));
+        category.setBook(book);
 
         emailService.send(user.getAuthentication().getEmail(), "Book created!", "mail/book-created", new BookEmailContextStrategy(book));
         return created;

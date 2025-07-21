@@ -61,11 +61,11 @@ public class CategoryService {
         return new ListCategoryDTO(category);
     }
 
-    public ListCategoryDTO show(String categoryId) {
+    public Category show(String categoryId) {
         var category = this.categoryRepository.findById(categoryId)
                 .orElseThrow(
                         () -> new EntityNotFoundException(String.format("Category with ID %s not found.", categoryId)));
-        return new ListCategoryDTO(category);
+        return category;
     }
 
     public void delete(String categoryId) {

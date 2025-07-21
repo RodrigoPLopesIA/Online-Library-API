@@ -8,12 +8,17 @@ import br.com.rodrigo.onlinelibraryapi.dtos.books.CreateBookDTO;
 import br.com.rodrigo.onlinelibraryapi.dtos.books.ListBookDTO;
 import br.com.rodrigo.onlinelibraryapi.entities.Book;
 import br.com.rodrigo.onlinelibraryapi.repositories.AuthorRepository;
+import br.com.rodrigo.onlinelibraryapi.repositories.CategoryRepository;
 
 @Mapper(componentModel = "spring")
 public abstract class BookMapper {
 
     @Autowired
     protected AuthorRepository authorRepository;
+
+    @Autowired
+    protected CategoryRepository categoryRepository;
+    
 
     @Mapping(target = "author", expression = "java(authorRepository.findById(bookDto.author().id()).orElse(null))")
     public abstract Book toEntity(ListBookDTO bookDto);

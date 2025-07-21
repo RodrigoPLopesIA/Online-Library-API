@@ -1,6 +1,8 @@
 package br.com.rodrigo.onlinelibraryapi.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -20,6 +22,8 @@ import br.com.rodrigo.onlinelibraryapi.enums.Genre;
 @Table(name = "books")
 @Data
 @EntityListeners(AuditingEntityListener.class)
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 public class Book {
 
@@ -36,10 +40,6 @@ public class Book {
     @Column(name = "publication_date", nullable = false)
     private LocalDate publicationDate;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 50)
-    private Genre genre;
-
     @Column(precision = 15, scale = 2)
     private BigDecimal price;
 
@@ -51,7 +51,7 @@ public class Book {
     private Author author;
 
     @OneToMany(mappedBy = "book")
-    List<Category> categories = new ArrayList<>();
+    List<Category> categories;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
@@ -65,86 +65,4 @@ public class Book {
     @Column(nullable = false, name = "updated_at")
     private Instant updatedAt;
 
-    // Builder implementation
-    public static Builder builder() {
-        return new Builder();
-    }
-
-    public static class Builder {
-        private UUID id;
-        private String isbn;
-        private String title;
-        private LocalDate publicationDate;
-        private Genre genre;
-        private BigDecimal price;
-        private Author author;
-        private User user;
-        private Instant createdAt;
-        private Instant updatedAt;
-
-        public Builder id(UUID id) {
-            this.id = id;
-            return this;
-        }
-
-        public Builder isbn(String isbn) {
-            this.isbn = isbn;
-            return this;
-        }
-
-        public Builder title(String title) {
-            this.title = title;
-            return this;
-        }
-
-        public Builder publicationDate(LocalDate publicationDate) {
-            this.publicationDate = publicationDate;
-            return this;
-        }
-
-        public Builder genre(Genre genre) {
-            this.genre = genre;
-            return this;
-        }
-
-        public Builder price(BigDecimal price) {
-            this.price = price;
-            return this;
-        }
-
-        public Builder author(Author author) {
-            this.author = author;
-            return this;
-        }
-
-        public Builder user(User user) {
-            this.user = user;
-            return this;
-        }
-
-        public Builder createdAt(Instant createdAt) {
-            this.createdAt = createdAt;
-            return this;
-        }
-
-        public Builder updatedAt(Instant updatedAt) {
-            this.updatedAt = updatedAt;
-            return this;
-        }
-
-        public Book build() {
-            Book book = new Book();
-            book.id = this.id;
-            book.isbn = this.isbn;
-            book.title = this.title;
-            book.publicationDate = this.publicationDate;
-            book.genre = this.genre;
-            book.price = this.price;
-            book.author = this.author;
-            book.user = this.user;
-            book.createdAt = this.createdAt;
-            book.updatedAt = this.updatedAt;
-            return book;
-        }
-    }
 }

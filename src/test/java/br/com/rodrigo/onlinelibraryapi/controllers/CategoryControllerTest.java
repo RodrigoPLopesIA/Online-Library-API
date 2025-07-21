@@ -273,7 +273,7 @@ public class CategoryControllerTest {
         @WithMockUser(username = "userTest")
         public void shouldReturnCategoryByCategoryId() throws Exception {
 
-                BDDMockito.given(categoryService.show(Mockito.anyString())).willReturn(listCategoryDTO);
+                BDDMockito.given(categoryService.show(Mockito.anyString())).willReturn(category);
                 var request = get(CATEGORY_URI + "/" + categoryId)
                                 .accept(MediaType.APPLICATION_JSON);
 
