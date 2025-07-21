@@ -126,6 +126,27 @@ class BookServiceTest {
     }
 
     @Test
+    @DisplayName("Should return false if ISBN dont exists")
+    void shouldCheckIsbnDontExists() {
+        when(bookRepository.existsByIsbn("123")).thenReturn(false);
+        assertFalse(bookService.existsByIsbn("123"));
+    }
+
+    @Test
+    @DisplayName("Should return true if Title exists")
+    void shouldCheckTitleExistence() {
+        when(bookRepository.existsByTitle("test")).thenReturn(true);
+        assertTrue(bookService.existsByTitle("test"));
+    }
+
+    @Test
+    @DisplayName("Should return false if ISBN dont exists")
+    void shouldCheckTitleDontExists() {
+        when(bookRepository.existsByTitle("test")).thenReturn(false);
+        assertFalse(bookService.existsByIsbn("test"));
+    }
+
+    @Test
     @DisplayName("Should create a book successfully")
     void shouldCreateBook() throws MessagingException {
         when(bookRepository.existsByIsbn("123")).thenReturn(false);
@@ -161,6 +182,24 @@ class BookServiceTest {
     }
 
     @Test
+    @DisplayName("Should not create if Title exists")
+    void shouldThrowIfTitleExists() {
+        // Arrange
+        when(bookRepository.existsByTitle(createBookDTO.title())).thenReturn(true);
+
+        // Act
+        Throwable thrown = catchThrowable(() -> bookService.create(createBookDTO, user));
+
+        // Assert
+        assertThat(thrown)
+                .isNotNull()
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("Book with title " + createBookDTO.title() + " already exists");
+
+        verify(bookRepository, never()).save(any(Book.class));
+    }
+
+    @Test
     @DisplayName("Should update a book successfully")
     void shouldUpdateBook() throws MessagingException {
         Book updated = BookFactory.createFrom(book);
@@ -179,6 +218,73 @@ class BookServiceTest {
         assertEquals(book.getTitle(), result.getTitle());
         verify(emailService).send(eq("user@test.com"), any(), any(), any(BookEmailContextStrategy.class));
     }
+
+    @Test
+    @DisplayName("Should throw exception when updating book to a title that already exists")
+    void shouldThrowWhenUpdatingToExistingTitle() {
+        // Arrange
+
+        var existingBook = Book.builder()
+                .id(UUID.randomUUID())
+                .title("Old Title")
+                .isbn("1234567890")
+                .author(author)
+                .user(user)
+                .build();
+
+        var updatedBook = Book.builder()
+                .title(createBookDTO.title())
+                .user(user)
+                .build();
+
+        when(bookRepository.findById(existingBook.getId())).thenReturn(Optional.of(existingBook));
+        when(bookRepository.existsByTitle(createBookDTO.title())).thenReturn(true);
+
+        // Act
+        Throwable thrown = catchThrowable(() -> bookService.update(existingBook.getId(), updatedBook, user));
+
+        // Assert
+        assertThat(thrown)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("Book with title " + createBookDTO.title() + " already exists");
+
+        verify(bookRepository, never()).save(any(Book.class));
+    }
+
+    @Test
+    @DisplayName("Should throw exception when updating book to a isbn that already exists")
+    void shouldThrowWhenUpdatingToExistingIsbn() {
+        // Arrange
+
+        var existingBook = Book.builder()
+                .id(UUID.randomUUID())
+                .title("Old Title")
+                .isbn("1234567890")
+                .author(author)
+                .user(user)
+                .build();
+
+        var updatedBook = Book.builder()
+                .title(createBookDTO.title())
+                .isbn(createBookDTO.isbn())
+                .user(user)
+                .build();
+
+        when(bookRepository.findById(existingBook.getId())).thenReturn(Optional.of(existingBook));
+        when(bookRepository.existsByIsbn(createBookDTO.isbn())).thenReturn(true);
+
+        // Act
+        Throwable thrown = catchThrowable(() -> bookService.update(existingBook.getId(), updatedBook, user));
+
+        // Assert
+        assertThat(thrown)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("Book with ISBN " + createBookDTO.isbn() + " already exists");
+
+        verify(bookRepository, never()).save(any(Book.class));
+    }
+
+    
 
     @Test
     @DisplayName("Should throw UnauthorizedException when updating not owned book")

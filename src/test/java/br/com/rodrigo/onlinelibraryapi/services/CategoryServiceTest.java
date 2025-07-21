@@ -197,7 +197,7 @@ public class CategoryServiceTest {
         var result = categoryService.show(categoryId);
 
         // Assert
-        assertThat(result).isEqualTo(listDto);
+        assertThat(result).isEqualTo(category);
     }
 
     @Test
