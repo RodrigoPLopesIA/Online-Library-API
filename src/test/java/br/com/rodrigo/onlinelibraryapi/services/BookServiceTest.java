@@ -4,10 +4,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 
 import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Optional;
@@ -32,6 +34,7 @@ import br.com.rodrigo.onlinelibraryapi.entities.embedded.Authentication;
 import br.com.rodrigo.onlinelibraryapi.entities.embedded.Name;
 import br.com.rodrigo.onlinelibraryapi.enums.Genre;
 import br.com.rodrigo.onlinelibraryapi.exceptions.UnauthorizedException;
+import br.com.rodrigo.onlinelibraryapi.exceptions.UniqueViolationException;
 import br.com.rodrigo.onlinelibraryapi.patterns.factory.BookFactory;
 import br.com.rodrigo.onlinelibraryapi.patterns.strategy.BookEmailContextStrategy;
 import br.com.rodrigo.onlinelibraryapi.repositories.BookRepository;
@@ -254,8 +257,8 @@ class BookServiceTest {
     @Test
     @DisplayName("Should throw exception when updating book to a isbn that already exists")
     void shouldThrowWhenUpdatingToExistingIsbn() {
-        // Arrange
 
+        // Arrange
         var existingBook = Book.builder()
                 .id(UUID.randomUUID())
                 .title("Old Title")
@@ -283,8 +286,6 @@ class BookServiceTest {
 
         verify(bookRepository, never()).save(any(Book.class));
     }
-
-    
 
     @Test
     @DisplayName("Should throw UnauthorizedException when updating not owned book")
@@ -336,6 +337,52 @@ class BookServiceTest {
 
         assertEquals("Upload successfully!", result.message());
         assertTrue(result.filePath().contains("http"));
+    }
+
+    @Test
+    @DisplayName("Should throw UnauthorizedException when upload file")
+    void shouldThrowUnauthorizedExceptionUploadBookFile() throws Exception {
+        var anotherUser = User.builder()
+                .id(UUID.randomUUID().toString())
+                .name(new Name("test", "test"))
+                .authentication(new Authentication("test@email.com"))
+                .build();
+
+        when(userService.findById(anotherUser.getId())).thenReturn(anotherUser);
+        when(bookRepository.findById(bookId)).thenReturn(Optional.of(book));
+        when(file.getOriginalFilename()).thenReturn("file.pdf");
+        when(file.getInputStream()).thenReturn(new ByteArrayInputStream("data".getBytes()));
+        when(file.getContentType()).thenReturn("application/pdf");
+        when(storageService.generateFileName(any(), any())).thenReturn("file-123.pdf");
+        when(storageService.getFileUrl(any(), any())).thenReturn("http://bucket/file-123.pdf");
+
+        Throwable result = catchThrowable(() -> bookService.uploadBookFile(bookId, anotherUser, file));
+
+        assertThat(result).isNotNull();
+        assertThat(result).isInstanceOf(UnauthorizedException.class);
+    }
+
+    @Test
+    @DisplayName("Should throw UniqueViolationException when storage upload fails")
+    void shouldThrowUniqueViolationExceptionWhenStorageFails() throws Exception {
+        // Arrange
+        when(userService.findById(user.getId())).thenReturn(user);
+        when(bookRepository.findById(bookId)).thenReturn(Optional.of(book));
+        when(file.getOriginalFilename()).thenReturn("file.pdf");
+        when(file.getInputStream()).thenReturn(new ByteArrayInputStream("data".getBytes()));
+        when(file.getContentType()).thenReturn("application/pdf");
+        when(storageService.generateFileName(any(), any())).thenReturn("file-123.pdf");
+
+        doThrow(new RuntimeException("Storage service failure")).when(storageService)
+                .uploadFile(anyString(), anyString(), any(InputStream.class), anyString());
+
+        // Act
+        Throwable result = catchThrowable(() -> bookService.uploadBookFile(bookId, user, file));
+
+        // Assert
+        assertThat(result)
+                .isInstanceOf(UniqueViolationException.class)
+                .hasMessageContaining("Storage service failure");
     }
 
     @Test

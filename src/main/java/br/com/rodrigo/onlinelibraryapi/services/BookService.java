@@ -92,7 +92,8 @@ public class BookService {
         }
 
         // verify if category exists by id
-        Category category = categoryService.show(data.genreId());;
+        Category category = categoryService.show(data.genreId());
+        ;
 
         // verify if author exists by id
         Author author = authorService.show(UUID.fromString(data.authorId()));
@@ -110,9 +111,9 @@ public class BookService {
         author.setBooks(Arrays.asList(book));
         user.setBooks(Arrays.asList(book));
         category.setBook(book);
-        
 
-        emailService.send(user.getAuthentication().getEmail(), "Book created!", "mail/book-created", new BookEmailContextStrategy(book));
+        emailService.send(user.getAuthentication().getEmail(), "Book created!", "mail/book-created",
+                new BookEmailContextStrategy(book));
         return created;
     }
 
@@ -151,7 +152,8 @@ public class BookService {
         author.setBooks(Arrays.asList(updated));
         user.setBooks(Arrays.asList(updated));
 
-        emailService.send(user.getAuthentication().getEmail(), "Book updated!", "mail/book-updated", new BookEmailContextStrategy(book));
+        emailService.send(user.getAuthentication().getEmail(), "Book updated!", "mail/book-updated",
+                new BookEmailContextStrategy(book));
 
         return book;
     }
@@ -169,7 +171,8 @@ public class BookService {
             throw new UnauthorizedException("You are not authorized to perform this action on this book");
         }
         bookRepository.delete(book);
-        emailService.send(user.getAuthentication().getEmail(), "Book deleted!", "mail/book-deleted", new BookEmailContextStrategy(book));
+        emailService.send(user.getAuthentication().getEmail(), "Book deleted!", "mail/book-deleted",
+                new BookEmailContextStrategy(book));
 
     }
 
@@ -212,6 +215,8 @@ public class BookService {
 
             return new UploadFileDTO("Upload successfully!", url_image);
 
+        } catch (UnauthorizedException e) {
+            throw e;
         } catch (Exception e) {
             throw new UniqueViolationException("Error: " + e.getMessage());
         }
