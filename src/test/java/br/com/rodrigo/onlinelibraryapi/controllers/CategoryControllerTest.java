@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 
@@ -61,35 +62,35 @@ public class CategoryControllerTest {
         @Autowired
         private MockMvc mvc;
 
-        @MockBean
+        @MockitoBean
         private CategoryService categoryService;
-        @MockBean
+        @MockitoBean
         private AuthenticationService authenticationService;
 
-        @MockBean
+        @MockitoBean
         private AuthorService authorService;
 
-        @MockBean
+        @MockitoBean
         private UserService userService;
 
-        @MockBean
+        @MockitoBean
         private AuthorMapper authorMapper;
 
-        @MockBean
+        @MockitoBean
         private BookService bookService;
 
-        @MockBean
+        @MockitoBean
         private BookMapper bookMapper;
-        @MockBean
+        @MockitoBean
         private ProfileService profileService;
 
-        @MockBean
+        @MockitoBean
         private UserMapper userMapper;
 
-        @MockBean
+        @MockitoBean
         private UserRepository userRepository;
 
-        @MockBean
+        @MockitoBean
         private JWTService jwtService;
 
         Category category;

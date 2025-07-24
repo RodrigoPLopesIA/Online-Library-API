@@ -26,6 +26,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -57,37 +58,37 @@ public class BookControllerTest {
         @Autowired
         private MockMvc mvc;
 
-        @MockBean
+        @MockitoBean
         private AuthenticationService authenticationService;
 
-        @MockBean
+        @MockitoBean
         private AuthorService authorService;
 
-        @MockBean
+        @MockitoBean
         private BookService bookService;
 
-        @MockBean
+        @MockitoBean
         private AuthorMapper authorMapper;
 
-        @MockBean
+        @MockitoBean
         private BookMapper bookMapper;
 
-        @MockBean
+        @MockitoBean
         private EmailService emailService;
 
-        @MockBean
+        @MockitoBean
         private ProfileService profileService;
 
-        @MockBean
+        @MockitoBean
         private UserService userService;
 
-        @MockBean
+        @MockitoBean
         private UserMapper userMapper;
 
-        @MockBean
+        @MockitoBean
         private UserRepository userRepository;
 
-        @MockBean
+        @MockitoBean
         private JWTService jwtService;
 
         @Test
@@ -200,7 +201,8 @@ public class BookControllerTest {
                 List<Category> categories = Arrays.asList(
                                 Category.builder().id("930892ea-c858-4aa6-9a01-0c1dd9e23772").name("test").build());
 
-                var book = Book.builder().id(UUID.randomUUID()).categories(categories).title("Updated").author(author).isbn("111111").build();
+                var book = Book.builder().id(UUID.randomUUID()).categories(categories).title("Updated").author(author)
+                                .isbn("111111").build();
                 var dto = new ListBookDTO(book);
 
                 BDDMockito.given(bookMapper.toEntity(data)).willReturn(book);
