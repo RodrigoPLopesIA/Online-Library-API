@@ -12,21 +12,21 @@ import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.lifecycle.Startables;
 
 @ContextConfiguration(initializers = AbstractIntegrationTest.Initializer.class)
-class AbstractIntegrationTest {
+public class AbstractIntegrationTest {
 
     static class Initializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
 
-        public static PostgreSQLContainer<?> container = new PostgreSQLContainer<>("postgres:latest");
+        public static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:latest");
 
         public static void startContainers() {
-            Startables.deepStart(Stream.of(container)).join();
+            Startables.deepStart(Stream.of(postgres)).join();
         }
 
         public static Map<String, String> createConnectionConfiguration() {
             return Map.of(
-                    "spring.datasource.url", container.getJdbcUrl(),
-                    "spring.datasource.username", container.getUsername(),
-                    "spring.datasource.password", container.getPassword());
+                    "spring.datasource.url", postgres.getJdbcUrl(),
+                    "spring.datasource.username", postgres.getUsername(),
+                    "spring.datasource.password", postgres.getPassword());
         }
 
         @Override
