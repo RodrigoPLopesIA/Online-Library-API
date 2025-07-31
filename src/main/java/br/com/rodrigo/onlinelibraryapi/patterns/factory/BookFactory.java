@@ -10,7 +10,6 @@ public class BookFactory {
                 .id(data.getId())
                 .isbn(data.getIsbn())
                 .title(data.getTitle())
-                .genre(data.getGenre())
                 .publicationDate(data.getPublicationDate())
                 .price(data.getPrice()).build();
     }
@@ -19,7 +18,6 @@ public class BookFactory {
         return Book.builder()
                 .isbn(data.isbn())
                 .title(data.title())
-                .genre(data.genre())
                 .publicationDate(data.publicationDate())
                 .price(data.price())
                 .build();

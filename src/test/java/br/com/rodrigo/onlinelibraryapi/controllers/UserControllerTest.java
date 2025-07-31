@@ -28,6 +28,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -49,16 +50,16 @@ public class UserControllerTest {
         @Autowired
         private MockMvc mvc;
 
-        @MockBean
+        @MockitoBean
         private UserService userService;
 
-        @MockBean
+        @MockitoBean
         private UserMapper userMapper;
 
-        @MockBean
+        @MockitoBean
         private UserRepository userRepository;
 
-        @MockBean
+        @MockitoBean
         private JWTService jwtService;
 
         @Autowired

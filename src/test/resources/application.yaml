@@ -1,0 +1,35 @@
+server: 
+  port: 8888
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format-sql: true
+  mail:
+    host: localhost
+    port: 1025
+    username: 
+    password: 
+    properties:
+      mail:
+        smtp:
+          auth: false
+          starttls:
+            enable: false
+            required: false
+
+mail:
+  from: suport@onlinelibrary.com
+minio:
+  url: http://localhost:9000
+  access:
+    name: admin
+    secret: adminadmin
+  bucket:
+    name: onlinelibrary

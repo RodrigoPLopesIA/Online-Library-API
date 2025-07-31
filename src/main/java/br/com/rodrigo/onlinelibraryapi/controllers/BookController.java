@@ -95,7 +95,7 @@ public class BookController {
 
                 URI uriBuilder = uri.path("/books/{id}").buildAndExpand(book.getId()).toUri();
 
-                return ResponseEntity.created(uriBuilder).body(mapper.toDto(book));
+                return ResponseEntity.created(uriBuilder).body(new ListBookDTO(book));
         }
 
         @Operation(summary = "Update a book", responses = {
