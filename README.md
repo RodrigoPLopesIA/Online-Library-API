@@ -1,7 +1,7 @@
 # API De Livraria Online
 
 
- API REST desenvolvida em Java com Spring Boot para gerenciamento de tarefas. Permite criação, atualização, exclusão e listagem de tarefas com autenticação via JWT.
+ API REST desenvolvida em Java com Spring Boot para gerenciamento de livros online. Permite criação, atualização, exclusão e listagem de livros com autenticação via JWT.
 
 
 # Tecnologias Usadas
